@@ -45,7 +45,7 @@ different iterators. Later, for computing the shortest path we will also
 need ``seqan/graph_algorithms.h`` which includes the implementations of
 most of SeqAn's graph algorithms.
 
-.. includefrags:: eqan-1.4.0/core/demos/tutorial/graph/graph_dijkstra.cpp
+.. includefrags:: core/demos/tutorial/graph/graph_dijkstra.cpp
    :fragment: includes
 
 We want to model the network of cities as an undirected graph and label
@@ -66,7 +66,7 @@ the distances between the cities, our edge labels, using the cargo type
 have to provide a distance when adding an edge. And when we remove an
 edge we also remove the distance.
 
-.. includefrags:: eqan-1.4.0/core/demos/tutorial/graph/graph_dijkstra.cpp
+.. includefrags:: core/demos/tutorial/graph/graph_dijkstra.cpp
    :fragment: main-typedefs
 
 Each vertex and each edge in a graph is identified by a so-called
@@ -79,9 +79,9 @@ descriptors.
 
 We can now create the graph ``g`` of our type ``TGraph``.
 
-::
+.. code-block:: cpp
 
-        TGraph g;
+   TGraph g;
 
 For our example, we add five vertices for the five cities, and six edges
 connecting the cities.
