@@ -1,0 +1,3 @@
+.. raw:: mediawiki
+
+   {{TracNotice|{{PAGENAME}}}}

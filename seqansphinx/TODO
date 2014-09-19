@@ -1,0 +1,5 @@
+* regexp for link translation
+* remove title == target duplication
+* fix #cpp inline code
+* add inclusion
+* fragment inclusion swallows last line? See first steps
