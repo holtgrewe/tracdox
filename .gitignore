@@ -1,0 +1,11 @@
+*~
+virtualenv
+seqansphinx/build
+seqansphinx/dist
+*.egg
+*.swo
+*.swp
+*.egg-info
+trac-sphinx/build
+venv
+seqan

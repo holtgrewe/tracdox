@@ -21,12 +21,11 @@ Tutorial
    Tutorial/BackgroundAndMotivation
 
    Tutorial/Sequences
+   Tutorial/Alphabets
 
    Tutorial/AlignmentRepresentation
 
 .. commented out for now
-.. Tutorial/Sequences
-   Tutorial/Alphabets
    Tutorial/StringSets
    Tutorial/SequencesInDepth
 
