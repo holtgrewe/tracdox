@@ -25,6 +25,8 @@ Tutorial
    Tutorial/StringSets
    Tutorial/SequencesInDepth
 
+   Tutorial/Iterators
+
    Tutorial/AlignmentRepresentation
 
 The SeqAn tutorials are the best way to get started with learning how to develop using SeqAn.
