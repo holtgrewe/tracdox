@@ -12,6 +12,8 @@
 Tutorial
 --------
 
+.. The inclusion order in the following determines the order in the table
+   of contents to the left.
 .. toctree::
    :hidden:
    :maxdepth: 2
@@ -30,6 +32,8 @@ Tutorial
    Tutorial/AlignmentRepresentation
    Tutorial/PairwiseSequenceAlignment
    Tutorial/MultipleSequenceAlignment
+
+   Tutorial/Randomness
 
 The SeqAn tutorials are the best way to get started with learning how to develop using SeqAn.
 In contrast, the `API Documentation <http://docs.seqan.de/>`_ gives more comprehensive but less verbose documentation about the library while the How-Tos are strictly task driven and narrower in scope.
