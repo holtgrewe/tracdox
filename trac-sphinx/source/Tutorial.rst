@@ -22,11 +22,11 @@ Tutorial
 
    Tutorial/Sequences
    Tutorial/Alphabets
+   Tutorial/StringSets
 
    Tutorial/AlignmentRepresentation
 
 .. commented out for now
-   Tutorial/StringSets
    Tutorial/SequencesInDepth
 
 The SeqAn tutorials are the best way to get started with learning how to develop using SeqAn.
