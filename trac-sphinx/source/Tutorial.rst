@@ -20,6 +20,8 @@ Tutorial
    Tutorial/FirstStepsInSeqAn
    Tutorial/BackgroundAndMotivation
 
+   Tutorial/Sequences
+
    Tutorial/AlignmentRepresentation
 
 .. commented out for now
