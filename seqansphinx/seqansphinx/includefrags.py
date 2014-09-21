@@ -88,10 +88,10 @@ class IncludeFrags(Directive):
         fragment = self.options.get('fragment')
         if fragment is not None:
             active = False
-            needle = '// FRAGMENT(%s)' % fragment
+            needle = 'FRAGMENT(%s)' % fragment
             result = []
             for line in lines:
-                if '// FRAGMENT(' in line and needle not in line:
+                if 'FRAGMENT(' in line and needle not in line:
                     active = False
                 elif needle in line:
                     active = True
