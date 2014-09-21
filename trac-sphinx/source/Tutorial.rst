@@ -23,11 +23,9 @@ Tutorial
    Tutorial/Sequences
    Tutorial/Alphabets
    Tutorial/StringSets
+   Tutorial/SequencesInDepth
 
    Tutorial/AlignmentRepresentation
-
-.. commented out for now
-   Tutorial/SequencesInDepth
 
 The SeqAn tutorials are the best way to get started with learning how to develop using SeqAn.
 In contrast, the `API Documentation <http://docs.seqan.de/>`_ gives more comprehensive but less verbose documentation about the library while the How-Tos are strictly task driven and narrower in scope.
