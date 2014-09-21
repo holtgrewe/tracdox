@@ -98,7 +98,7 @@ class IncludeFrags(Directive):
                     continue
                 if active:
                     result.append(line)
-            while result and result[-1].strip():
+            while result and not result[-1].strip():
                 result.pop()
             lines = result                    
 
