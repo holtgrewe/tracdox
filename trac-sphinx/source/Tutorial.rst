@@ -176,6 +176,34 @@ The article :ref:`build-manual-integration-with-your-own-build-system` contains 
 
 .. rubric:: :rubric-heading2:`More I/O`
 
+These tutorials explain how to use the I/O functionality in SeqAn beyond the basic sequence, SAM/BAM and indexed FASTA I/O from above.
+The tutorials are targeted at developers that either want to use the lower level I/O routines in SeqAn or write their own parsers.
+We recommended to start out reading the I/O Overview and then jump to the chapter that interests you most.
+
+:ref:`tutorial-input-output-overview`
+  This article gives an overview of the I/O functionality in SeqAn.
+
+After reading, you will have a better understanding of the different bits in this section of the library.
+The following tutorials introduce the lower level I/O routines for specific file formats.
+
+:ref:`tutorial-reading-sequence-files`
+  This tutorial explains the RecordReader- and Stream-based interface for reading sequence files.
+
+:ref:`tutorial-sam-bam-io`
+  This tutorial explains the lower level API for reading and writing SAM and BAM files.
+
+Read the following tutorials to learn how to write your own I/O routines.
+
+:ref:`tutorial-file-io`
+  This chapter shows how to use the file I/O facilities of SeqAn, including streams, compressed streams and memory mapped files.
+
+:ref:`tutorial-lexical-casting`
+  This tutorial explains the :dox:`lexicalCast` and :dox:`lexicalCast2` functions that allow to convert strings representing numbers into their numeric values.
+
+:ref:`tutorial-parsing`
+  In this part of the tutorial, you will be introduced to the parsing and tokenizing functionality using the RecordReader class.
+  You will get the necessary information to write your own file parsers.
+
 .. rubric:: :rubric-heading1:`Advanced Tutorials`
 
 :ref:`tutorial-fragment-store`
