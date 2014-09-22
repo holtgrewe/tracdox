@@ -19,7 +19,7 @@ Duration
   30-60 min
 
 Prerequisites
-  :ref:`tutorial-first-steps-in-seqan`, :ref:`tutorail-sequences`, familiarity with building SeqAn apps
+  :ref:`tutorial-first-steps-in-seqan`, :ref:`tutorial-sequences`, familiarity with building SeqAn apps
 
 The simplest possible and also most flexible interface to a program is through the command line. This tutorial explains how to parse the command line using the SeqAn library's [dox:ArgumentParser ArgumentParser] class.
 
