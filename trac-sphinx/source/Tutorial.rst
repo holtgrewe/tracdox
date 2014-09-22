@@ -35,6 +35,7 @@ Tutorial
 
    Tutorial/Indices
    Tutorial/IndexIterators
+   Tutorial/IndexQGram
 
    Tutorial/PatternMatching
 
