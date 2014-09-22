@@ -17,6 +17,8 @@ Contents:
    BuildManual
    StyleGuide
 
+   zreferences
+
 Indices and tables
 ==================
 

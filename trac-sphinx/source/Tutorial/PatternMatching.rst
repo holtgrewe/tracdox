@@ -350,7 +350,3 @@ But nevertheless, there are approximate search filters available that can be use
 The regions found by these filters potentially contain a match and must be verified afterwards.
 :dox:`Finder#beginPosition beginPosition`, :dox:`Finder#endPosition endPosition` and :dox:`Finder#infix infix` can be used to return the boundaries or sequence of such a potential match.
 For more details on using filters, see the `SWIFT howto <HowTo/FilterSimilarSequences>`__.
-
-.. rubric:: References
-
-.. bibliography:: ../seqan.bib
