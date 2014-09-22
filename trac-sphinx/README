@@ -20,7 +20,7 @@ Setup virtualenv
   # cd tracdox
   # virtualenv virtualenv
   # . virtualenv/bin/activate
-  # pip install sphinx sphinx_rtd_theme
+  # pip install sphinx sphinx_rtd_theme sphinxcontrib-bibtex
 
 Install seqansphinx package (in virtualenv because of `. virtualenv/bin/activate`.
 
