@@ -35,6 +35,8 @@ Tutorial
 
    Tutorial/PatternMatching
 
+   Tutorial/Graphs
+
    Tutorial/Randomness
 
 The SeqAn tutorials are the best way to get started with learning how to develop using SeqAn.
