@@ -41,6 +41,8 @@ Tutorial
 
    Tutorial/Graphs
 
+   Tutorial/Modifiers
+
    Tutorial/Randomness
 
 .. Tutorial/IndexIterators
