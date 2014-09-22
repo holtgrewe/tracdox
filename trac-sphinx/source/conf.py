@@ -34,6 +34,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
+    'sphinxcontrib.bibtex',
     'seqansphinx.doxlinks',
     'seqansphinx.includefrags',
 ]
