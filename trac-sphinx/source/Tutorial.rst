@@ -34,6 +34,7 @@ Tutorial
    Tutorial/MultipleSequenceAlignment
 
    Tutorial/Indices
+   Tutorial/IndexIterators
 
    Tutorial/PatternMatching
 
