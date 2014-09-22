@@ -251,8 +251,6 @@ Tutorial Template
 
 ::
 
-    TODO, this is still missing.
-
     .. sidebar:: ToC
 
        .. contents::
@@ -265,175 +263,136 @@ Tutorial Template
 
     [[TOC]]
 
-    ||= Meta Information =||= Example =||
-    {{{#!td valign=top width=300
-     Learning Objective 
-      Describe the learning objective in your own words.
-     Difficulty 
-      [Very basic, Basic, Average, Advanced, Very advanced]
-     Duration 
+     Learning Objective
+       Describe the learning objective in your own words.
+       **Example:**
+       You will be able to write a tutorial that meets our quality standards.
+
+     Difficulty
+       [Very basic, Basic, Average, Advanced, Very advanced]
+       **Example:**
+       Basic
+
+     Duration
       In average how much time will a user spend on absolving this tutorial?
-      If you expect more than 90 minutes please '''split your tutorial up''' into multiple ones.
+      If you expect more than 90 minutes please **split your tutorial up** into multiple ones.
+      **Example:**
+      1 h
+
      Prerequisites
       A list of absolved tutorials and other requirements you expect your reader to fulfill.
-    }}}
-    {{{#!td valign=top width=300
-     Learning Objective 
-      You will be able to write a tutorial that meets our quality standards.
-     Difficulty 
-      Basic
-     Duration 
-      1h
-     Prerequisites 
-      [wiki:Tutorial/Basics], [wiki:Tutorial/MotifFinding], English language skills
-    }}}
+      **Example:** :ref:`tutorial-first-steps-in-seqan`, :ref:`tutorial-pattern-matching`, English language
 
-    Please only use this template in conjunction with the [HowTo/WriteTutorials How To: Write Tutorials].
-
-    This is the place where introductory need to be in given.[[BR]]
-    e.g. "This page constitutes the template for all future SeqAn tutorials".
-
-    It is accompanied by the [wiki:HowTo/WriteTutorials How To: Write Tutorials] guide and gives an example of what a template should look like and what it is supposed to contain.
+    This is the place where introductory need to be in given, e.g. "This page constitutes the template for all future SeqAn tutorials".
 
     Use this and optional further paragraphs to give the following information:
-       - What is this tutorial about?
-       - Why are the information important?
-       - What are the communicated information used for?
-       - What can the reader expect to know after having absolved the tutorial?
 
-    {{{
-    #!WarningBox
-    This is a warning message.[[BR]]
-    Here you can inform users about important bugs or other relevant issues. The content (and thereby the box itself) are always of '''temporary''' nature and should '''only be used thriftily'''.
-    }}}
+    * What is this tutorial about?
+    * Why are the information important?
+    * What are the communicated information used for?
+    * What can the reader expect to know after having absolved the tutorial?
 
-    == Section ==
+    .. warning::
+
+       This is a warning message.
+
+       Here you can inform users about important bugs or other relevant issues.
+
+    Section
+    ^^^^^^^
 
     Use this and optional further paragraphs to give the following information:
-       - What is this section about?
-       - What are the central concepts in this section?
-       - What is your partial learning objective?
 
-    When your describe and explain your topic give '''as many examples as possible'''.
-    Try to adopt the reader's perspective and imagine - based on your target group and prerequisites - your '''reader's mental model'''.
+    * What is this section about?
+    * What are the central concepts in this section?
+    * What is your partial learning objective?
+
+    When your describe and explain your topic give **as many examples as possible**.
+    Try to adopt the reader's perspective and imagine - based on your target group and prerequisites - your **reader's mental model**.
     The mental model can be described as an imagination of the interaction of central concepts.
-    Use a '''simple language''' and try to support the reader in developing a mental model that fits best to your topic.
+    Use a **simple language** and try to support the reader in developing a mental model that fits best to your topic.
 
-    {{{#!InfoBox
-    '''Information:''' What are InfoBoxes for?
+    .. tip::
 
-    An InfoBox ist useful to give information that are '''optional''' and thus don't need to be read.
-    Typical information are '''further details''' that support the understanding but are too distinct to be put in a normal paragraph.
+       What are tips for?
 
-    In this example you could tell the reader more about didactics and give him some useful links.
-    }}}
+       An ``.. tip`` ist useful to give information that are **optional** and thus don't need to be read.
+       Typical information are **further details** that support the understanding but are too distinct to be put in a normal paragraph.
 
-    {{{#!ImportantBox
-    '''Important:''' What are ImportantBoxes for?
+       In this example you could tell the reader more about didactics and give him some useful links.
 
-    These boxes contain information that '''should be kept in mind''' since the described phenomenon is very likely to be encountered by the reader again and again when working with SeqAn.
+    .. important::
 
-    In contrast to the CautionBox this box type is of '''permanent''' nature and the given information are valid for a long time.
-    }}}
+       What are importants for?
+
+       These boxes contain information that **should be kept in mind** since the described phenomenon is very likely to be encountered by the reader again and again when working with SeqAn.
 
     If you give code examples tell the reader what he can see and what is crucial to your snippet.
-    Link all classes and other resources to the SeqAn documentation system by using `seqan:"[Concept].[Name]"` (e.g. seqan:"Class.String").
-    In order to include code snippets use `[[Include(source:trunk/PATH, fragment=FRAGMENT)]]` where `PATH` (e.g. `extras/demos/tutorial/find_motif_pms1.cpp`) locates the source code file in the subversion repository and `FRAGMENT` (e.g. `search`) the segment to include in the tutorial. 
+    Link all classes and other resources to the SeqAn documentation system by using ``:dox:Item` (e.g. :dox:`String`).
+    In order to include code snippets use ``.. includefrags:: path``.
 
-    [[Include(source:trunk/extras/demos/tutorial/find_motif_pms1.cpp, fragment=search)]]
+    .. includefrags:: core/demos/tutorial/alignments/alignment_banded.cpp
+       :fragment: alignment
 
-    If possible also include what output it generated by given code in the console. Here is one example:
+    If possible also include the generated output by given code in the console.
+    Here is one example:
 
-    {{{
-    #!ShellBox
-    0: ACAG
-    1: AGCC
-    2: CCAG
-    3: GCAG
-    4: TCAG
-    }}}
+    .. code-block:: console
+
+       0: ACAG
+       1: AGCC
+       2: CCAG
+       3: GCAG
+       4: TCAG
 
     Now that you gave an overview of important concepts of your topic let the user play with it!
-    Formulate '''small assignments''' to allow the reader to fortify his newly acquainted knowledge.
+    Formulate **small assignments** to allow the reader to fortify his newly acquainted knowledge.
 
-    === Assignment 1 ===
-    {{{#!AssignmentBox
+    Assignment 1
+    """"""""""""
 
-    ||= Meta Information =||= Example =||
-    {{{#!td valign=top width=300
-     Type 
-      [Review, Application, Transfer]
-      Note that your readers will be in different phases of learning. For the sake of simplicity we restrict ourselves to the following three levels:
-       1. knowledge fortification (mainly through repetition, optionally with slight variations)
-       1. supervised problem solving (finely grained step-by-step assignment with at least one hint and the interim solution per step)
-       1. knowledge transfer (problem solving in a related problem domain / class)
-     Objective 
-      Assignment description.
-     Hints  
-      ...
-     Solution 
-      Link to the complete solution.
-    }}}
-    {{{#!td valign=top width=300
-     Type  Application
-     Objective  Output all symbols a given alphabet can have. The output should look like this:
-    {{{
-    #!ShellBox
-    0: ACAG
-    1: AGCC
-    2: CCAG
-    3: GCAG
-    4: TCAG
-    }}}
-     Hints 
-    {{{
-    #!FoldOut
-    ----
-    Hints go here...
-    }}}
-     Solution 
-    {{{
-    #!FoldOut
-    ----
-    Solution itself or a link to the solution go here...
-    }}}
-    }}}
+    .. container:: assignment
 
+       Type
+         [Review, Application, Transfer]
 
-    This part of the assignment is to give partial solutions.
-    A partial solution starts with a sentence of what this step is about and gives the lines of code that are needed to implement this step.
+         Note that your readers will be in different phases of learning. For the sake of simplicity we restrict ourselves to the following three levels:
 
-    {{{#!FoldOut
-    ==== Solution Step 1 ====
-    ----
-    The given sequences are of alphabet .... Therefore you have to .... 
+         #. knowledge fortification (mainly through repetition, optionally with slight variations)
+         #. supervised problem solving (finely grained step-by-step assignment with at least one hint and the interim solution per step)
+         #. knowledge transfer (problem solving in a related problem domain / class)
 
-    [[Include(source:trunk/extras/demos/tutorial/find_motif_pms1.cpp, fragment=includes)]]
-    }}}
+         **Example:** Application
 
-    {{{#!FoldOut
-    ==== Solution Step 2 ====
-    ----
-    The given sequences are of alphabet .... Therefore you have to .... 
+       Objective
+         The objective of the assignment.
+         **Example:**
+         Output all symbols a given alphabet can have.
+         The output should look like this: ...
 
-    [[Include(source:trunk/extras/demos/tutorial/find_motif_pms1.cpp, fragment=typedefs)]]
-    }}}
+       Hints
+         ...
 
-    }}}
+       Solution
+         .. container:: foldable
 
+            Foldable solution with description.
 
-    === Assignment 2 ===
+         This part of the assignment is to give partial solutions.
+         A partial solution starts with a sentence of what this step is about and gives the lines of code that are needed to implement this step.
 
-    see assignment 1
+         Solution Step 1
+           .. container:: foldable
+             The given sequence are of alphabet...
+             Therefore, you have to...
 
-    == Section ==
+             .. includefrags:: core/demos/tutorial/alignments/alignment_banded.cpp
+                :fragment: main
 
-    see section 1
+         Solution Step 2
+           .. container:: foldable
+             The given sequence are of alphabet...
+             Therefore, you have to...
 
-    === Assignment 3 ===
-
-    see assignment 1
-
-    === Assignment 4 ===
-
-    see assignment 1
+             .. includefrags:: core/demos/tutorial/alignments/alignment_banded.cpp
+                :fragment: fragment
