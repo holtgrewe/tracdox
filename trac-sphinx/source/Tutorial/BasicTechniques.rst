@@ -1,7 +1,12 @@
+.. sidebar:: ToC
+
+   .. contents::
+
+
+.. _tutorial-basic-techniques:
+
 Basic techniques
 ----------------
-
-TOC
 
 ::
 

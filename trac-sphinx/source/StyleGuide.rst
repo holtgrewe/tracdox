@@ -1,3 +1,5 @@
+.. _style-guide:
+
 SeqAn Style Guides
 ------------------
 

@@ -3,7 +3,7 @@
    .. contents::
 
 
-.. _style-guild-dox-api-docs:
+.. _style-guide-dox-api-docs:
 
 Dox API Docs
 ------------

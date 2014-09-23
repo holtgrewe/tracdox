@@ -72,6 +72,11 @@ Tutorial
    Tutorial/JournalSet
    Tutorial/KnimeNode
 
+   Tutorial/BasicTechniques
+   Tutorial/Metafunctions
+   Tutorial/TemplateSubclassing
+   Tutorial/GlobalFunctionInterface
+
 The SeqAn tutorials are the best way to get started with learning how to develop using SeqAn.
 In contrast, the `API Documentation <http://docs.seqan.de/>`_ gives more comprehensive but less verbose documentation about the library while the How-Tos are strictly task driven and narrower in scope.
 
@@ -205,6 +210,8 @@ The article :ref:`build-manual-integration-with-your-own-build-system` contains 
 These tutorials explain how to use the I/O functionality in SeqAn beyond the basic sequence, SAM/BAM and indexed FASTA I/O from above.
 The tutorials are targeted at developers that either want to use the lower level I/O routines in SeqAn or write their own parsers.
 We recommended to start out reading the I/O Overview and then jump to the chapter that interests you most.
+In this Section we introduce the three main techniques of programming in SeqAn, namely the ''global function interface'', the use of
+''Metafunctions'', and the concept of  ''Template subclassing''. 
 
 :ref:`tutorial-input-output-overview`
   This article gives an overview of the I/O functionality in SeqAn.
@@ -253,4 +260,29 @@ Read the following tutorials to learn how to write your own I/O routines.
 :ref:`tutorial-knime-nodes`
   Here you can learn how to use SeqAn apps in KNIME.
 
+.. rubric:: :rubric-heading1:`Developer's Corner`
 
+First, congratulations on becoming an offical SeqAn developer!
+After you went through the tutorials and before you actually start to develop your own application with SeqAn you might want to learn :ref:`how-to-write-tests` and read about the :ref:`API documentation <style-guide-dox-api-docs>`.
+In addition, we follow a SeqAn specific :ref:`style-guide`.
+Information like this can be found on the section site.
+There are plenty of information completing your knowledge about SeqAn so have a look!
+
+.. rubric:: :rubric-heading2:`Frequently used Software Techniques`
+
+We assume that the user is acquainted with the basic data types of SeqAn, the introductory example and the demo programs. 
+Also you should be acquainted with the STL and template programming.
+In this Section we introduce the three main techniques of programming in SeqAn, namely the *global function interface*, the use of
+*Metafunctions*, and the concept of *Template subclassing*. 
+
+:ref:`tutorial-basic-techniques`
+  Here we remind you of the basics of template programming and the use of the STL.
+
+:ref:`tutorial-metafunctions`
+  In this section you find an introductory explanation how Metafunctions are used in SeqAn to obtain information about data types used which will only be instantiated at compile time.
+
+:ref:`tutorial-template-subclassing`
+  In this section you find a short example that illustrates the power of template subclassing.
+
+:ref:`tutorial-global-function-interface`
+  In this section you find a useful piece of code that shows you the flexibility of the global function interface. 
