@@ -58,6 +58,13 @@ Tutorial
 
    Tutorial/AnnotationStore
 
+   Tutorial/InputOutputOverview
+   Tutorial/SequenceFileIO
+   Tutorial/SamBamIO
+   Tutorial/FileIO
+   Tutorial/LexicalCasting
+   Tutorial/Parsing
+
    Tutorial/FragmentStore
    Tutorial/SimpleRnaSeq
    Tutorial/SimpleReadMapping
@@ -205,7 +212,7 @@ We recommended to start out reading the I/O Overview and then jump to the chapte
 After reading, you will have a better understanding of the different bits in this section of the library.
 The following tutorials introduce the lower level I/O routines for specific file formats.
 
-:ref:`tutorial-reading-sequence-files`
+:ref:`tutorial-sequence-file-io`
   This tutorial explains the RecordReader- and Stream-based interface for reading sequence files.
 
 :ref:`tutorial-sam-bam-io`
