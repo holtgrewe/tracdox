@@ -19,7 +19,7 @@ Duration
   0:45h
 
 Prerequisites
-  :ref:`tutorial-metafunctions`, :ref:`tutorial-alphabets`, :ref:`tutorial-sequence`, :ref:`tutorial-string-sets`, :ref:`tutorial-iterators`
+  :ref:`tutorial-first-steps-in-seqan`, :ref:`tutorial-alphabets`, :ref:`tutorial-sequences`, :ref:`tutorial-string-sets`, :ref:`tutorial-iterators`
 
 Before we want to explain SeqAn's alignment algorithms in detail, we will give you an insight in the underlying data structures that are used to actually represent an alignment in SeqAn.
 First, we put our focus on the possible representations of alignments and the ways to access and edit different information of an alignment.

@@ -18,7 +18,7 @@ Duration
   1h
 
 Prerequisites
-  :ref:`tutorial-basics`, :ref:`tutorial-iterators`, :ref:`tutorial-alphabets`, :ref:`tutorial-sequences`, :ref:`tutorial-alignment-representation`
+  :ref:`tutorial-first-steps-in-seqan`, :ref:`tutorial-iterators`, :ref:`tutorial-alphabets`, :ref:`tutorial-sequences`, :ref:`tutorial-alignment-representation`
 
 Alignments are one of the most basic and important ways to measure similarity between two or more sequences.
 In general, a pairwise sequence alignment is an optimization problem which determines the best transcript of how one sequence was derived from the other.

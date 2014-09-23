@@ -19,7 +19,7 @@ Duration
   60 min
 
 Prerequisites
-  :ref:`tutorial-input-output-overview`, :ref:`tutorial-indexed-fasta`, :ref:`tutorial-basic-sam-bam-io`
+  :ref:`tutorial-input-output-overview`, :ref:`tutorial-indexed-fasta-io`, :ref:`tutorial-basic-sam-bam-io`
 
 This tutorial introduces the low-level facilities of file I/O in SeqAn:
 

@@ -1,17 +1,21 @@
-How To: Accessing Index Fibres Directly
----------------------------------------
+.. sidebar:: ToC
 
-TOC
+   .. contents::
+
+
+.. _how-to-access-index-fibres:
+
+How To: Access Index Fibres
+===========================
 
 Overview
-~~~~~~~~
+--------
 
-Basically each index consists of a set of tables, called fibres. The set
-of available fibres of an index ``Index<TText, TSpec>`` depends on the
-index specialization ``TSpec``.
+Basically each index consists of a set of tables, called fibres.
+The set of available fibres of an index ``Index<TText, TSpec>`` depends on the index specialization ``TSpec``.
 
 +----------------------------------+-----------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-| **seqan:Spec.IndexEsa Fibres**   | **Description**                                                                                                       | **Type**                                                                                                 |
+| seqan:Spec.IndexEsa Fibres       | Description                                                                                                           | Type                                                                                                     |
 +==================================+=======================================================================================================================+==========================================================================================================+
 | EsaText                          | The original text the index should be based on.                                                                       | First template argument of the seqan:Class.Index. Can be either a sequence or a seqan:Class.StringSet.   |
 +----------------------------------+-----------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -29,7 +33,7 @@ index specialization ``TSpec``.
 +----------------------------------+-----------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
 
 +-----------------------------------+------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-| **seqan:Spec.IndexWotd Fibres**   | **Description**                                                                                                  | **Type**                                                                                                 |
+| seqan:Spec.IndexWotd Fibres       | Description                                                                                                      | Type                                                                                                     |
 +===================================+==================================================================================================================+==========================================================================================================+
 | WotdText                          | The original text the index should be based on.                                                                  | First template argument of the seqan:Class.Index. Can be either a sequence or a seqan:Class.StringSet.   |
 +-----------------------------------+------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -42,11 +46,10 @@ index specialization ``TSpec``.
 | WotdRawSA                         | Virtually transforms all positions of WotdSA fibre to global positions (see [seqan:Metafunction.SAValue here])   | seqan:Concept.Container over seqan:Metafunction.Size type of the index.                                  |
 +-----------------------------------+------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
 
-The seqan:Spec.Dfi index contains the same fibres as the
-seqan:Spec.IndexWotd index:
+The seqan:Spec.Dfi index contains the same fibres as the seqan:Spec.IndexWotd index:
 
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-| **seqan:Spec.Dfi Fibres**   | **Description**                                                                                                 | **Type**                                                                                                 |
+| seqan:Spec.Dfi Fibres       | Description                                                                                                     | Type                                                                                                     |
 +=============================+=================================================================================================================+==========================================================================================================+
 | DfiText                     | The original text the index should be based on.                                                                 | First template argument of the seqan:Class.Index. Can be either a sequence or a seqan:Class.StringSet.   |
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -60,7 +63,7 @@ seqan:Spec.IndexWotd index:
 +-----------------------------+-----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
 
 +------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-| **seqan:Spec.IndexQGram Fibres**   | **Description**                                                                                                   | **Type**                                                                                                 |
+| seqan:Spec.IndexQGram Fibres       | Description                                                                                                       | Type                                                                                                     |
 +====================================+===================================================================================================================+==========================================================================================================+
 | QGramText                          | The original text the index should be based on.                                                                   | First template argument of the seqan:Class.Index. Can be either a sequence or a seqan:Class.StringSet.   |
 +------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
@@ -82,46 +85,38 @@ seqan:Spec.IndexWotd index:
 +------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
 
 +------------------------------------------------------------+--------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
-| **[seqan:"Spec.Pizza & Chili Index" PizzaChili] Fibres**   | **Description**                                                          | **Type**                                                                                                       |
+| [seqan:"Spec.Pizza & Chili Index" PizzaChili] Fibres       | Description                                                              | Type                                                                                                           |
 +============================================================+==========================================================================+================================================================================================================+
 | PizzaChiliText                                             | The original text the index should be based on.                          | First template argument of the seqan:Class.Index. Must be a sequence (no support for seqan:Class.StringSet).   |
 +------------------------------------------------------------+--------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
 | PizzaChiliCompressed                                       | Specialization dependent data structure to store the compressed index.   | Depends on the compressed index.                                                                               |
 +------------------------------------------------------------+--------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
 
-The first column in each table above contains the tags to select the
-corresponding fibre. Most of these tags are aliases for the same tag,
-e.g. ``EsaSA``, ``QGramSA``, ... are aliases for ``FibreSA``. If you
-write an algorithm that is generic in the type of index can use
-``FibreText`` to specify the fibre that stores the index text.
+The first column in each table above contains the tags to select the corresponding fibre.
+Most of these tags are aliases for the same tag, e.g. ``EsaSA``, ``QGramSA``, ... are aliases for ``FibreSA``.
+If you write an algorithm that is generic in the type of index can use ``FibreText`` to specify the fibre that stores the index text.
 
 Creation
-~~~~~~~~
+--------
 
 In most cases you don't need to create the fibres of an index by hand.
-Most algorithms and data structures create them automatically, e.g.
-seqan:Class.Finder or seqan:"Spec.VSTree Iterator". If you want to
-specify a certain index construction algorithm, have to recreate a fibre
-or manually access a fibre you can recreate or create on-demand a fibre
-by seqan:Function.indexCreate and seqan:Function.indexRequire. If your
-algorithm should behave differently depending on the presence or absence
-of a fibre (and the fibre should then not be created), you can test for
-presence by seqan:Function.indexSupplied.
+Most algorithms and data structures create them automatically, e.g. seqan:Class.Finder or seqan:"Spec.VSTree Iterator".
+If you want to specify a certain index construction algorithm, have to recreate a fibre or manually access a fibre you can recreate or create on-demand a fibre by seqan:Function.indexCreate and seqan:Function.indexRequire.
+If your algorithm should behave differently depending on the presence or absence of a fibre (and the fibre should then not be created), you can test for presence by seqan:Function.indexSupplied.
 
 Access
-~~~~~~
+------
 
-The type of each fibre can be determined by the metafunction
-seqan:Metafunction.Fibre. To access a fibre you can use the function
-seqan:Function.getFibre whose return type is the result of
-seqan:Metafunction.Fibre. The second argument of both functions is a tag
-to select a specific fibre. See the first column in the tables above.
-One fibre in every index is the text to be indexed itself. This fibre
-can be assigned during the construction. For the ease of use, there
-exist shortcuts to access frequently used fibres:
+The type of each fibre can be determined by the metafunction seqan:Metafunction.Fibre.
+To access a fibre you can use the function seqan:Function.getFibre whose return type is the result of seqan:Metafunction.Fibre.
+The second argument of both functions is a tag to select a specific fibre.
+See the first column in the tables above.
+One fibre in every index is the text to be indexed itself.
+This fibre can be assigned during the construction.
+For the ease of use, there exist shortcuts to access frequently used fibres:
 
 +---------------------------------------------------------+---------------------------------------------------------------+
-| **Shortcut**                                            | **Expands To ...**                                            |
+| Shortcut                                                | Expands To ...                                                |
 +=========================================================+===============================================================+
 | [seqan:Function.indexBucketMap indexBucketMap(index)]   | [seqan:Function.getFibre getFibre(index, FibreBucketMap())]   |
 +---------------------------------------------------------+---------------------------------------------------------------+
@@ -149,7 +144,7 @@ exist shortcuts to access frequently used fibres:
 and to access a single values:
 
 +----------------------------------------------------+--------------------------------------------------------------+
-| **Shortcut**                                       | **Expands To ...**                                           |
+| Shortcut                                           | Expands To ...                                               |
 +====================================================+==============================================================+
 | [seqan:Function.bwtAt bwtAt(pos, index)]           | [seqan:Function.indexBwt "indexBwt[index](pos)"]             |
 +----------------------------------------------------+--------------------------------------------------------------+
@@ -168,10 +163,4 @@ and to access a single values:
 | [seqan:Function.textAt textAt(pos, index)]         | [seqan:Function.indexText "indexText[index](pos)"]           |
 +----------------------------------------------------+--------------------------------------------------------------+
 
-Please note that seqan:Function.textAt can also be used if the index
-text is a seqan:Class.StringSet. ``pos`` can then be a
-seqan:Metafunction.SAValue.
-
-.. raw:: mediawiki
-
-   {{TracNotice|{{PAGENAME}}}}
+Please note that seqan:Function.textAt can also be used if the index text is a seqan:Class.StringSet. ``pos`` can then be a seqan:Metafunction.SAValue.

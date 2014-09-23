@@ -160,7 +160,7 @@ In SeqAn, the concept [dox:StreamConcept StreamConcept] provides an interface fo
 SeqAn provides adaptions from the standardized C and C++ file interfaces to the :dox:`StreamConcept` concept.
 You can use the I/O streams from the ``<iostream>`` library, the string buffer streams from the ``<sstream>`` library as well as the ``FILE *`` type from the ``<cstdio>`` library.
 Furthermore, SeqAn provides the [dox:Stream Stream] class and specializations for accessing ``char`` arrays and zlib and bzip compressed files as streams.
-The :ref:`tutorial-stream-io` tutorial gives a more detailed introduction into this topic.
+The :ref:`tutorial-input-output-overview` tutorial gives a more detailed introduction into this topic.
 
 You already saw above how the streams from the ``<iostream>`` library can be used for reading and writing.
 Using the adaption in the SeqAn library, we can simply use ``FILE *`` instead of ``std::fstream``.
@@ -212,7 +212,7 @@ We use ``ferror()`` instead of the member function ``good()``. The modified exam
 
    On Windows, however, there is a difference.
    When opening a file in non-binary, and thus "text" mode, all line endings will automatically be converted into Windows style.
-   If your file contains <tt>"\n"</tt>, you will actually read <tt>"\r\n"</tt>.
+   If your file contains ``"\n"``, you will actually read ``"\r\n"``.
    '''This wreaks havoc when getting or setting the position in the current file.'''
 
    Thus: '''Always open your file in binary mode.'''

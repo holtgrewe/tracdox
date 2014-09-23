@@ -37,7 +37,7 @@ For simple variants such as SNPs and small indels, each record corresponds to a 
 More complex variants can be stored in multiple records (see the VCF standard on "breakends" for more information).
 
 The ``vcf_io`` module of SeqAn allows the record-wise reading and writing to VCF files.
-Since the structure of the fields in the VCF format often is very complex and the format undergoes changes in this respect, SeqAn only offers basic parsing functionality: The position is stored as a 0-based integer, reference names are stored in a reference name store (similar as in the :ref:`tutorial-bam-stream` Tutorial), and the quality is stored as a ``float`` value.
+Since the structure of the fields in the VCF format often is very complex and the format undergoes changes in this respect, SeqAn only offers basic parsing functionality: The position is stored as a 0-based integer, reference names are stored in a reference name store (similar as in the :ref:`tutorial-basic-sam-bam-io` Tutorial), and the quality is stored as a ``float`` value.
 
 The remaining fields have to be parsed from and composed as strings in the user's application.
 

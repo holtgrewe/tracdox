@@ -321,4 +321,4 @@ So if you only have a few strings you could save even more memory like this.
 How To: Accessing Index Fibres Directly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :ref:`how-to-access-index-fibres-directly` for more information.
+See :ref:`how-to-access-index-fibres` for more information.

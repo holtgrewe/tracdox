@@ -1,27 +1,30 @@
-How To: Work With Custom Score Matrices
----------------------------------------
+.. sidebar:: ToC
 
-This How To describes how to create new scoring matrices for Amino Acids
-and DNA alphabets and how to load score matrices from files.
+   .. contents::
+
+
+.. _how-to-work-with-custom-score-matrices:
+
+How To: Work With Custom Score Matrices
+=======================================
+
+This How To describes how to create new scoring matrices for Amino Acids and DNA alphabets and how to load score matrices from files.
 
 Creating A New Built-In Score Matrix
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------
 
-The following example can be found in the file
-[source:trunk/core/demos/howto/scores/init\_score.cpp init\_score.cpp].
-First, we include the required Seqan headers.
+The following program demonstrate how to implement a new built-in score matrix.
 
 .. includefrags:: core/demos/howto/scores/init_score.cpp
    :fragment: includes
 
-Then, we perform the necessary definitions for the matrix. This consists
-of three steps:
+Then, we perform the necessary definitions for the matrix.
+This consists of three steps:
 
--  defining a tag struct
--  specializing the class ``ScoringMatrixData_`` with your tag
+* defining a tag struct
+* specializing the class ``ScoringMatrixData_`` with your tag
 
-Note how we use enum values to compute the matrix size which itself is
-retrieved from the seqan:Metafunction.ValueSize metafunction.
+Note how we use enum values to compute the matrix size which itself is retrieved from the seqan:Metafunction.ValueSize metafunction.
 
 .. includefrags:: core/demos/howto/scores/init_score.cpp
    :fragment: user-defined-matrix
@@ -31,26 +34,21 @@ We define a function ``showScoringMatrix`` for displaying a matrix.
 .. includefrags:: core/demos/howto/scores/init_score.cpp
    :fragment: show-scoring-matrix
 
-Finally, the function ``main`` function demostrates some of the things
-you can do with scores:
+Finally, the function ``main`` function demostrates some of the things you can do with scores:
 
--  Construct empty score matrix object (2.)
--  Programatically fill the matrix with a built-in matrix values (3.1)
--  Programmatically fill the score matrix in a loop (3.2)
--  Programatically fill the matrix with the user-defined matrix values
-   (3.3)
--  Directly create a score matrix with the user-defined matrix values
-   (4)
+* Construct empty score matrix object (2.)
+* Programatically fill the matrix with a built-in matrix values (3.1)
+* Programmatically fill the score matrix in a loop (3.2)
+* Programatically fill the matrix with the user-defined matrix values (3.3)
+* Directly create a score matrix with the user-defined matrix values (4)
 
 .. includefrags:: core/demos/howto/scores/init_score.cpp
    :fragment: main
 
 Here is the output of the program:
 
-::
+.. code-block:: console
 
-    #html
-    <pre class="wiki" style="background-color:black;color:lightgray">
     $ make tutorial_init_score
     $ ./demos/tutorial_init_score
     BLOSUM 30
@@ -106,6 +104,7 @@ Here is the output of the program:
     Z   0   21  42  63  84  105 126 147 168 189 210 231 252 273 294 315 336 357 378 399 420 441 462 483
     X   0   22  44  66  88  110 132 154 176 198 220 242 264 286 308 330 352 374 396 418 440 462 484 506
     *   0   23  46  69  92  115 138 161 184 207 230 253 276 299 322 345 368 391 414 437 460 483 506 529
+
     User defined matrix (also BLOSUM 30)...
         A   R   N   D   C   Q   E   G   H   I   L   K   M   F   P   S   T   W   Y   V   B   Z   X   *
     A   4   -1  0   0   -3  1   0   0   -2  0   -1  0   1   -2  -1  1   1   -5  -4  1   0   0   0   -7
@@ -132,6 +131,7 @@ Here is the output of the program:
     Z   0   0   -1  0   0   4   5   -2  0   -3  -1  1   -1  -4  0   -1  -1  -1  -2  -3  0   4   0   -7
     X   0   -1  0   -1  -2  0   -1  -1  -1  0   0   0   0   -1  -1  0   0   -2  -1  0   -1  0   -1  -7
     *   -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  1
+
         A   R   N   D   C   Q   E   G   H   I   L   K   M   F   P   S   T   W   Y   V   B   Z   X   *
     A   4   -1  0   0   -3  1   0   0   -2  0   -1  0   1   -2  -1  1   1   -5  -4  1   0   0   0   -7
     R   -1  8   -2  -1  -2  3   -1  -2  -1  -3  -2  1   0   -1  -1  -1  -3  0   0   -1  -2  0   -1  -7
@@ -157,6 +157,7 @@ Here is the output of the program:
     Z   0   0   -1  0   0   4   5   -2  0   -3  -1  1   -1  -4  0   -1  -1  -1  -2  -3  0   4   0   -7
     X   0   -1  0   -1  -2  0   -1  -1  -1  0   0   0   0   -1  -1  0   0   -2  -1  0   -1  0   -1  -7
     *   -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  -7  1
+
     User DNA scoring scheme...
         A   C   G   T   N
     A   1   0   0   0   0
@@ -165,18 +166,11 @@ Here is the output of the program:
     T   0   0   0   1   0
     N   0   0   0   0   0
 
-.. raw:: html
-
-   </pre>
-
 Loading Score Matrices From File
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------
 
 This small demo program shows how to load a score matrix from a file.
-Examples for score file are
-[source:trunk/core/demos/howto/scores/dna\_example.txt dna\_example.txt]
-for DNA alphabets and [source:trunk/projects/tests/score/PAM250 PAM250]
-for amino acids.
+Examples for score file are ``core/demos/howto/scores/dna_example.txt`` for DNA alphabets and ``core/tests/score/PAM250`` for amino acids.
 
 Include the necessary headers.
 
@@ -188,30 +182,20 @@ We define a function that can show a scoring matrix.
 .. includefrags:: core/demos/howto/scores/load_score.cpp
    :fragment: show-scoring-matrix
 
-Finally, the main program loads the scoring matrix from the file given
-on the command line and then shows it.
+Finally, the main program loads the scoring matrix from the file given on the command line and then shows it.
 
 .. includefrags:: core/demos/howto/scores/load_score.cpp
    :fragment: main
 
 Here's the program output.
 
-::
+.. code-block:: console
 
-    #html
-    <pre class="wiki" style="background-color:black;color:lightgray">
-    $ make tutorial_load_score
-    $ ./demos/tutorial_load_score ../../demos/howto/scores/dna_example.txt
-        A   C   G   T
-    A   1   -1  -1  -1
-    C   -1  1   -1  -1
-    G   -1  -1  1   -1
-    T   -1  -1  -1  1
+   $ make tutorial_load_score
+   $ ./demos/tutorial_load_score ../../demos/howto/scores/dna_example.txt
+       A   C   G   T
+   A   1   -1  -1  -1
+   C   -1  1   -1  -1
+   G   -1  -1  1   -1
+   T   -1  -1  -1  1
 
-.. raw:: html
-
-   </pre>
-
-.. raw:: mediawiki
-
-   {{TracNotice|{{PAGENAME}}}}

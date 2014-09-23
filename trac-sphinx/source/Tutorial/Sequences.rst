@@ -10,7 +10,7 @@ Sequences
 
 Learning Objective
   You will learn about the SeqAn sequence concept and its main class :dox:`String` as well as the class :dox:`Segment`.
-  After completing this tutorial, you will be able to use important functionalities of sequences in SeqAn and you will be ready to continue with the more specific tutorials, e.g. :ref:`tutorial-iterators`, :ref:`tutorial-alignments`.
+  After completing this tutorial, you will be able to use important functionalities of sequences in SeqAn and you will be ready to continue with the more specific tutorials, e.g. :ref:`tutorial-iterators`, :ref:`tutorial-alignment-representation`, or :ref:`tutorial-pairwise-sequence-alignment`.
 
 Difficulty
   Very basic

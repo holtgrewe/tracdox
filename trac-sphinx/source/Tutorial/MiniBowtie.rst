@@ -283,7 +283,7 @@ Assignment 4
    Solution
      .. container:: foldable
 
-        .. includefrags:: extras/demos/tutorial/mini_bowtie/solution4.cpp)]]
+        .. includefrags:: extras/demos/tutorial/mini_bowtie/solution4.cpp
 
 So this is already the fundamental part of our program.
 What's left to do is to write the result into a SAM file.

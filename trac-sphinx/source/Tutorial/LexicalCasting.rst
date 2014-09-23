@@ -127,5 +127,5 @@ Assignment 1
    Solution
      .. container:: foldable
 
-        .. includefrasg:: core/demos/tutorial/lexical_casting/solution1.cpp
+        .. includefrags:: core/demos/tutorial/lexical_casting/solution1.cpp
 

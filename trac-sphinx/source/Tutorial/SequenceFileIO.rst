@@ -395,6 +395,6 @@ Next Steps
 ----------
 
 * Read the Wikipedia articles about the `FASTA file format <http://en.wikipedia.org/wiki/FASTA_format>`_ and the `FASTQ file format and quality values <http://en.wikipedia.org/wiki/FASTQ_format>`_ to refresh your knowledge.
-* Read the :ref:`basic-sequence-io` tutorial to learn how to use the :dox:`SequenceStream` class.
+* Read the :ref:`tutorial-basic-sequence-io` tutorial to learn how to use the :dox:`SequenceStream` class.
 * Read the :ref:`tutorial-indexed-fasta-io` tutorial tutorial to learn how to read FASTA files efficiently in a random-access fashion.
 * Continue with :ref:`tutorial`.

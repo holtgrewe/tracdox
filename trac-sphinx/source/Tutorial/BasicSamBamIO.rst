@@ -44,7 +44,7 @@ The :ref:`tutorial-fragment-store` Tutorial shows how to get a more high-level a
 
     SAM/BAM I/O vs. Fragment Store
 
-    The :ref:`tutorial-fragmen-store` provides a high-level view of multi-read alignments.
+    The :ref:`tutorial-fragment-store` provides a high-level view of multi-read alignments.
     This is very useful if you want to do SNP or small indel detection because you need to access the alignment of the reads around your candidate regions.
     However, storing the whole alignment of a 120GB BAM file obviously is not a good idea.
 

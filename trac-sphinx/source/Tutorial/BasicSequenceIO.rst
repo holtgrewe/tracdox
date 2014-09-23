@@ -27,7 +27,7 @@ The SeqAn library's I/O functionality (i.e. reading from and writing to files) i
 This flexibility comes at a slight cost of performance, compared to using the more low-level APIs.
 
 The lower layers are responsible for providing raw file I/O functionality and adding parsing functionality.
-Their usage is not part of this tutorial and is explainend in the Tutorials :ref:`tutorial-file-io`, :ref:`tutorial-reading-sequence-files`, and :ref:`tutorial-parsing`.
+Their usage is not part of this tutorial and is explainend in the Tutorials :ref:`tutorial-file-io`, :ref:`tutorial-sequence-file-io`, and :ref:`tutorial-parsing`.
 
 After completing the tutorial, you will be able to read and write sequence files in the formats supported by the [dox:SequenceStream SequenceStream] class.
 
