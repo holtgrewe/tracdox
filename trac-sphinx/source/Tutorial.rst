@@ -42,6 +42,11 @@ Tutorial
    Tutorial/Graphs
 
    Tutorial/BasicSequenceIO
+   Tutorial/IndexedFastaIO
+   Tutorial/BasicSamBamIO
+   Tutorial/VcfIO
+   Tutorial/BedIO
+   Tutorial/GffGtfIO
 
    Tutorial/Modifiers
 
@@ -159,7 +164,7 @@ The article :ref:`build-manual-integration-with-your-own-build-system` contains 
 :ref:`tutorial-bed-io`
   BED I/O This tutorial explains how to use the high-level API for reading and writing BED files.
 
-:ref:`tutorial-gff-and-tf-io`
+:ref:`tutorial-gff-and-gtf-io`
   GFF and GTF I/O This tutorial explains how to use the high-level API for reading and writing GFF and GTF files.
 
 .. rubric:: :rubric-heading2:`Modifiers`
