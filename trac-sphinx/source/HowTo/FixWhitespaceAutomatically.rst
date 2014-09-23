@@ -1,5 +1,12 @@
+.. sidebar:: ToC
+
+   .. contents::
+
+
+.. _style-guide-dox-api-docs:
+
 How To: Fix Whitespace Automatically
-------------------------------------
+====================================
 
 This page describes how to use `Universal Indent
 GUI <http://universalindent.sourceforge.net/>`__ and
@@ -21,7 +28,7 @@ Guide <StyleGuide/Cpp>`__ more closely.
     Always check the result before applying the changes to the original file.
 
 Installing Universal Indent GUI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
 
 This one is pretty easy. On Ubuntu and other Linux systems, you can use
 the package management system to install the GUI and the reformatting
@@ -30,7 +37,7 @@ page <http://sourceforge.net/projects/universalindent/files/uigui/>`__
 has binaries for Mac Os X and Windows.
 
 Preview with Universal Indent GUI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------
 
 When started, the program will present you with a window like the
 following.
@@ -64,7 +71,7 @@ stored, using "File" -> "Save Source File" and "File" -> "Save Source
 File As...".
 
 Using The Command Line
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 Uncrustify can also be used via the command line. This is best done
 after a rough visual verification that the uncrustify.cfg yields works
@@ -78,28 +85,21 @@ Work on single file:
 
 Batch work:
 
-::
+.. code-block:: console
 
-    $ find path/to -name '*.cpp' > list.txt
-    $ uncrustify -c ${CHECKOUT}/misc/uncrustify.cfg --replace -F list.txt
+   $ find path/to -name '*.cpp' > list.txt
+   $ uncrustify -c ${CHECKOUT}/misc/uncrustify.cfg --replace -F list.txt
 
 Automatically fix whitespaces in Xcode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------
 
-Uncrustify can also be used directly from Xcode. With Xcode 4 Apple
-introduced so called "Behaviors" that can be executed using for instance
-keyboard shortcuts. To use uncrustify you can add a new behavior in the
-Xcode Preferences (tab Behaviors) and select "*Run*\ ". Here you add the
-attached ruby script.
+Uncrustify can also be used directly from Xcode.
+With Xcode 4 Apple introduced so called "Behaviors" that can be executed using for instance keyboard shortcuts.
+To use uncrustify you can add a new behavior in the Xcode Preferences (tab Behaviors) and select "*Run*".
+Here you add the attached ruby script.
 
-`Image(Xcode - Behavior.png,
-400px) <Image(Xcode - Behavior.png, 400px)>`__
+.. figure:: Xcode - Behavior.png
 
-**Note:** The script does **not** uncrustify the currently opened source
-file but all source files that were changed in your current svn
-checkout. Xcode does not provide the information which source file is
-currently opened.
+**Note:** The script does **not** uncrustify the currently opened source file but all source files that were changed in your current svn checkout.
+Xcode does not provide the information which source file is currently opened.
 
-.. raw:: mediawiki
-
-   {{TracNotice|{{PAGENAME}}}}
