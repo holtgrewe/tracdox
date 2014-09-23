@@ -52,6 +52,7 @@ Tutorial
    Tutorial/AnnotationStore
 
    Tutorial/FragmentStore
+   Tutorial/SimpleRnaSeq
 
 The SeqAn tutorials are the best way to get started with learning how to develop using SeqAn.
 In contrast, the `API Documentation <http://docs.seqan.de/>`_ gives more comprehensive but less verbose documentation about the library while the How-Tos are strictly task driven and narrower in scope.
@@ -225,7 +226,8 @@ Read the following tutorials to learn how to write your own I/O routines.
   This tutorial shows how to implement a simple read mapping program based on the SWIFT filter and online Hamming finder for verification.
 
 :ref:`tutorial-mini-bowtie`
-  Mini-Bowtie is a very basic read aligner that is inspired by the well known Bowtie program (Langmead, 2009). It serves as an example to show that you can write sophisticated programs with SeqAn using few lines of code.
+  Mini-Bowtie is a very basic read aligner that is inspired by the well known Bowtie program :cite:`Langmead2009`.
+  It serves as an example to show that you can write sophisticated programs with SeqAn using few lines of code.
 
 :ref:`tutorial-data-journaling`
   In this tutorial we demonstrate how you can handle multiple large sequence in main memory while the data structures themself support a certain parallel sequence analysis.
