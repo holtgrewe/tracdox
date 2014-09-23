@@ -56,6 +56,7 @@ Tutorial
    Tutorial/SimpleReadMapping
    Tutorial/MiniBowtie
    Tutorial/JournalSet
+   Tutorial/KnimeNode
 
 The SeqAn tutorials are the best way to get started with learning how to develop using SeqAn.
 In contrast, the `API Documentation <http://docs.seqan.de/>`_ gives more comprehensive but less verbose documentation about the library while the How-Tos are strictly task driven and narrower in scope.
@@ -235,7 +236,7 @@ Read the following tutorials to learn how to write your own I/O routines.
 :ref:`tutorial-data-journaling`
   In this tutorial we demonstrate how you can handle multiple large sequence in main memory while the data structures themself support a certain parallel sequence analysis.
 
-:ref:`tutorial-seqan-knime-nodes`
+:ref:`tutorial-knime-nodes`
   Here you can learn how to use SeqAn apps in KNIME.
 
 
