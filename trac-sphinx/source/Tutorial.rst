@@ -41,6 +41,8 @@ Tutorial
 
    Tutorial/Graphs
 
+   Tutorial/BasicSequenceIO
+
    Tutorial/Modifiers
 
    Tutorial/Randomness
