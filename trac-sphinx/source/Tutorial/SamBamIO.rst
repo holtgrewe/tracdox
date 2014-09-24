@@ -56,7 +56,7 @@ For example, the tags are stored as a binary string, the same as in a BAM file.
 When reading SAM, the tags are converted into the BAM representation whereas BAM tags can be copied verbatim.
 There is one important deviation, though: The qualities are stored using a phred-style ASCII encoding for consistencies with the rest of the SeqAn library.
 
-As a reminder, here is the synopsis of the [dox:BamAlignmentRecord BamAlignmentRecord] class again.
+As a reminder, here is the synopsis of the :dox:`BamAlignmentRecord` class again.
 
 .. code-block:: cpp
 
@@ -90,12 +90,12 @@ As a reminder, here is the synopsis of the [dox:BamAlignmentRecord BamAlignmentR
 Name Stores and Name Store Caches
 ---------------------------------
 
-In order to translate from numeric reference id (``rID``) to text reference sequence name, the names have to be stored in a [dox:StringSet StringSet] which we will call a **name store**.
-For being able to translate back from a textual name (stored as a [dox:CharString CharString], for example), we need a :dox:`NameStoreCache` that allows the fast lookup of numeric ids from textual names.
-Both the name store and the cache are then wrapped by a [dox:BamIOContext BamIOContext].
+In order to translate from numeric reference id (``rID``) to text reference sequence name, the names have to be stored in a :dox:`StringSet` which we will call a **name store**.
+For being able to translate back from a textual name (stored as a :dox:`CharString`, for example), we need a :dox:`NameStoreCache` that allows the fast lookup of numeric ids from textual names.
+Both the name store and the cache are then wrapped by a :dox:`BamIOContext`.
 This context object is used to prescient from the differences of SAM and BAM files when reading and writing.
 
-For example, when writing out a [dox:BamAlignmentRecord BamAlignmentRecord] to a SAM file, we need to look up the name of the reference from its numeric id to write it out as a string.
+For example, when writing out a :dox:`BamAlignmentRecord` to a SAM file, we need to look up the name of the reference from its numeric id to write it out as a string.
 When reading a record from a SAM file, we have to translate its name string into a numeric id.
 Even more, if the sequence is not know yet (remember, the ``@SQ`` headers are optional), we have to append it to the name store and register it with the cache.
 
@@ -152,12 +152,12 @@ The data structure :dox:`BamHeader` has already been described in the :ref:`tuto
 Instead, we will focus on how to read headers from SAM and BAM files.
 
 Here is a minimal example of reading and writing a header from and to a SAM file.
-The example contains the creation of a [dox:BamIOContext BamIOContext], the necessary :dox:`RecordReader` and full error handling.
+The example contains the creation of a :dox:`BamIOContext`, the necessary :dox:`RecordReader` and full error handling.
 
 .. includefrags:: extras/demos/tutorial/bam_io/example4.cpp
 
 Reading and writing headers from and to BAM files is simple.
-We simply replace ``seqan::Sam()`` by ``seqan::Bam()`` and use [dox:BgzfStream BGZF Stream] objects instead of uncompressed streams.
+We simply replace ``seqan::Sam()`` by ``seqan::Bam()`` and use :dox:`BgzfStream BGZF Stream` objects instead of uncompressed streams.
 Also, we do not need a :dox:`RecordReader` any more.
 
 .. includefrags:: extras/demos/tutorial/bam_io/example5.cpp

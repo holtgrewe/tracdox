@@ -39,7 +39,7 @@ Now lets define a function that exchanges the first two values in a string:
        str[1] = temp;
    }
 
-Since this function only works for instances of [dox:String String<]:dox:`AminoAcid AminoAcid>`, we could try to make it more general by making a template out of it.
+Since this function only works for instances of :dox:`String String<`:dox:`AminoAcid AminoAcid>`, we could try to make it more general by making a template out of it.
 
 .. code-block:: cpp
 
@@ -158,15 +158,15 @@ Assignment 1
    Solution
      .. container:: foldable
 
-        We want to have a generic version, similar to the function ``ExchangeFirstValues`` on the previous page. 
+        We want to have a generic version, similar to the function ``ExchangeFirstValues`` on the previous page.
 
         Hence we could define the function as follows:
 
         .. includefrags:: core/demos/tutorial/basics/swap.cpp
            :fragment: swap-declaration
 
-        The function is now quite generic allowing any container of type ``T``. 
-        In addition we specify two positions that should be swapped (as integers which is not really generic, but it suffices for the demo) an the length of the swapped region. 
+        The function is now quite generic allowing any container of type ``T``.
+        In addition we specify two positions that should be swapped (as integers which is not really generic, but it suffices for the demo) an the length of the swapped region.
         Now we can define a helper variable ``help``, which can be of type ``T``.
 
         .. includefrags:: core/demos/tutorial/basics/swap.cpp
@@ -177,7 +177,7 @@ Assignment 1
         .. includefrags:: core/demos/tutorial/basics/swap.cpp
            :fragment: swap-work
 
-        Thats it. 
+        Thats it.
         We can now test our generic swap function using for example a `String` of characters or a `String` of integers.
 
         .. includefrags:: core/demos/tutorial/basics/swap.cpp
@@ -207,7 +207,7 @@ Assignment 1
 
         .. code-block:: console
 
-           # ./demos/tutorial_swap 
+           # ./demos/tutorial_swap
            ATTAAATT
            133111311333
 

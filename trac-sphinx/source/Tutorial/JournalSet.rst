@@ -149,7 +149,7 @@ The Journal Set is a specialization of the :dox:`OwnerStringSet Owner` concept o
    :fragment: main
 
 In the subsequent steps we want to set a reference sequence to the Journal Set and add some sequences to it.
-We can set the reference sequence by using the function [dox:JournaledSet#setGlobalReference setGlobalReference].
+We can set the reference sequence by using the function :dox:`JournaledSet#setGlobalReference setGlobalReference`.
 This function stores only a pointer to the given sequence.
 In some cases it might be necessary to copy the reference sequence instead.
 For this purpose you can use the function :dox:`JournaledSet#createGlobalReference createGlobalReference`.
@@ -315,7 +315,7 @@ Assignment 2
            .. code-block:: console
 
               Search for: GTGGT:
-              Hit in reference  at 311: GTGGT	644: GTGGT	
+              Hit in reference  at 311: GTGGT	644: GTGGT
 
 We know can search for all occurrences of a pattern in the reference sequence.
 Now we can try to find all occurrences in the journaled sequences.
@@ -395,8 +395,8 @@ Assignment 3
           We know implement the method to search for hits in an original node.
           We only need to check if the current node covers a region of the reference in which we've found a hit.
           We use the function `std::upper_bound <http://www.cplusplus.com/reference/algorithm/upper_bound/>`_ to find the first element that is greater than the current physical position.
-          Since, we've found an upper bound we have to check additionally if there exists a previous hit that lies directly on the physical begin position of our current node. 
-          We then include all hits that fit into this current node until we have found the first position where the pattern would cross the border of this node or we have reached the end of the reference hit set. 
+          Since, we've found an upper bound we have to check additionally if there exists a previous hit that lies directly on the physical begin position of our current node.
+          We then include all hits that fit into this current node until we have found the first position where the pattern would cross the border of this node or we have reached the end of the reference hit set.
 
           .. includefrags:: extras/demos/tutorial/data_journaling/solution_online_search_assignment3.cpp
             :fragment: findInOriginalNode
@@ -441,13 +441,13 @@ Assignment 3
           .. code-block:: console
 
              Search for: GTGGT:
-             Hit in reference  at 311: GTGGT	644: GTGGT	
-             Hit in sequence 0 at 312: GTGGT	
-             Hit in sequence 1 at 308: GTGGT	
-             Hit in sequence 2 at 311: GTGGT	
-             Hit in sequence 3 at 327: GTGGT	
-             Hit in sequence 4 at 317: GTGGT	
-             Hit in sequence 5 at 320: GTGGT	
+             Hit in reference  at 311: GTGGT	644: GTGGT
+             Hit in sequence 0 at 312: GTGGT
+             Hit in sequence 1 at 308: GTGGT
+             Hit in sequence 2 at 311: GTGGT
+             Hit in sequence 3 at 327: GTGGT
+             Hit in sequence 4 at 317: GTGGT
+             Hit in sequence 5 at 320: GTGGT
 
 We are almost at the end of our online-search algorithm.
 Let's now implement the method ``_findInPatchNode``.
@@ -559,12 +559,12 @@ Assignment 4
           .. code-block:: console
 
              Search for: GTGGT:
-             Hit in reference  at 311: GTGGT	644: GTGGT	
-             Hit in sequence 0 at 151: GTGGT	312: GTGGT	
-             Hit in sequence 1 at 308: GTGGT	
-             Hit in sequence 2 at 311: GTGGT	507: GTGGT	
-             Hit in sequence 3 at 327: GTGGT	
-             Hit in sequence 4 at 307: GTGGT	312: GTGGT	317: GTGGT	
+             Hit in reference  at 311: GTGGT	644: GTGGT
+             Hit in sequence 0 at 151: GTGGT	312: GTGGT
+             Hit in sequence 1 at 308: GTGGT
+             Hit in sequence 2 at 311: GTGGT	507: GTGGT
+             Hit in sequence 3 at 327: GTGGT
+             Hit in sequence 4 at 307: GTGGT	312: GTGGT	317: GTGGT
              Hit in sequence 5 at 0: GTGGT	320: GTGGT	986: GTGGT
 
 Congratulations!
@@ -603,7 +603,7 @@ Assignment 5
         .. includefrags:: extras/demos/tutorial/data_journaling/solution_online_search_finder.cpp
           :fragment: include
 
-        Now we can use the :dox:`Finder` interface of SeqAn. 
+        Now we can use the :dox:`Finder` interface of SeqAn.
         One cool thing of the usage of the Finder class is that we don't have to check for the borders anymore.
         This will do the Finder for us.
         We only have to specify the correct infix over which the Finder should iterate to find the pattern.
@@ -612,7 +612,7 @@ Assignment 5
         We also have to define the :dox:`Pattern` object which gets the pattern we are searching for.
         Then we can simply call the function :dox:`Finder#find` until we there is no more match.
         Be careful when storing the position that the Finder is returning.
-        We have to recompute the correct virtual position since we used an infix of the original search text. 
+        We have to recompute the correct virtual position since we used an infix of the original search text.
 
         .. includefrags:: extras/demos/tutorial/data_journaling/solution_online_search_finder.cpp
           :fragment: searchAtBorder
@@ -633,7 +633,7 @@ Assignment 5
         .. includefrags:: extras/demos/tutorial/data_journaling/solution_online_search_finder.cpp
           :fragment: findPatternInJournalString
 
-        We will switch to the Finder concept for the function `findPatternInReference` too. 
+        We will switch to the Finder concept for the function `findPatternInReference` too.
         This is done quickly, since we have the basis already laid down in the previous functions.
 
         .. includefrags:: extras/demos/tutorial/data_journaling/solution_online_search_finder.cpp
@@ -659,10 +659,10 @@ Assignment 5
         .. code-block:: console
 
            Search for: GTGGT:
-           Hit in reference  at 311: GTGGT	644: GTGGT	
-           Hit in sequence 0 at 151: GTGGT	312: GTGGT	
-           Hit in sequence 1 at 308: GTGGT	
-           Hit in sequence 2 at 311: GTGGT	507: GTGGT	
-           Hit in sequence 3 at 327: GTGGT	
-           Hit in sequence 4 at 307: GTGGT	312: GTGGT	317: GTGGT	
+           Hit in reference  at 311: GTGGT	644: GTGGT
+           Hit in sequence 0 at 151: GTGGT	312: GTGGT
+           Hit in sequence 1 at 308: GTGGT
+           Hit in sequence 2 at 311: GTGGT	507: GTGGT
+           Hit in sequence 3 at 327: GTGGT
+           Hit in sequence 4 at 307: GTGGT	312: GTGGT	317: GTGGT
            Hit in sequence 5 at 0: GTGGT	320: GTGGT	986: GTGGT

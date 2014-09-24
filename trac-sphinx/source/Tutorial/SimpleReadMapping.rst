@@ -83,7 +83,7 @@ Mismatches and indels are taken into consideration.
 .. includefrags:: core/demos/tutorial/read_mapping/minimapper.cpp
    :fragment: swift
 
-Now, verify each possible match using a :dox:`HammingSimpleFinder HammingSimple` Pattern.
+Now, verify each possible match using a :dox:`HammingSimplePattern`.
 The verified matches will have Hamming distance < *floor(EPSILON \* :dox:`ContainerConcept#length length(read)`)*, edit distance is not considered.
 
 .. includefrags:: core/demos/tutorial/read_mapping/minimapper.cpp

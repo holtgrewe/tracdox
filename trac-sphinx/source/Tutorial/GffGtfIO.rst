@@ -236,7 +236,7 @@ The static funtion ``INVALID_SCORE()`` returns the IEEE float "NaN" value.
 In C++11, there will be a ``std::nan()`` function but for now, we need this here.
 
 The member ``ref`` stores the contig/reference name of the genomic interval.
-This information is somewhat redundant with the ``rID`` member that is filled automatically when reading from a [dox:GffStream GffStream] such that the GffStream's ``sequenceNames[record.rID] == record.ref``.
+This information is somewhat redundant with the ``rID`` member that is filled automatically when reading from a :dox:`GffStream` such that the GffStream's ``sequenceNames[record.rID] == record.ref``.
 Translating reference names to integers is useful in many applications.
 
 When writing and ``record.rID == INVALID_REFID`` then ``record.ref`` is written out as the reference name and ``sequenceNames[record.rID]`` is written out otherwise.

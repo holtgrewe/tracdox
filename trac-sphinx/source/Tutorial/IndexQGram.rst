@@ -58,7 +58,7 @@ With :dox:`Shape#hash hash`and :dox:`Shape#hash hashNext`, we can compute the ha
    :fragment: hash_loop1
 
 Note that the shape not only stores the length and gaps of a q-gram shape but also stores the hash value returned by the last hash/hashNext call.
-This hash value can be retrieved by calling [dox:Shape#value value] on the shape.
+This hash value can be retrieved by calling :dox:`Shape#value value` on the shape.
 However, one drawback of the example loop above is that the first hash value must be computed with :dox:`Shape#hash hash` while the hash values of the following overlapping q-grams can more efficiently be computed by :dox:`Shape#hashNext hashNext`.
 This complicates the structure of algorithms that need to iterate all hash values, as they have to handle this first hash differently.
 As a remedy, the :dox:`Shape#hashInit hashInit` function can be used first and then :dox:`Shape#hashNext hashNext` on the first and all following text positions in the same way:
@@ -132,7 +132,7 @@ Assignment 1
 	.. includefrags:: core/demos/tutorial/index/index_assignment5.cpp
           :fragment: output
 
-	.. tip:: 
+	.. tip::
 
 	   Instead of ``length(getOccurrences(...))`` we could have used :dox:`IndexQGram#countOccurrences`.
 	   But beware that ::dox:`IndexQGram#countOccurrences` requires only the ``QGram_Dir`` fibre, whereas :dox:`IndexQGram#getOccurrences` requires both ``QGram_Dir`` and  ``QGram_SA``, see :ref:`how-to-access-index-fibres`.

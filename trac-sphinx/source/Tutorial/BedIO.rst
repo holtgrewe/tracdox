@@ -120,11 +120,11 @@ You can read from stdin and write to stdout using ``"-"`` as the file name.
 The member ``sequenceNames`` of your :dox:`BedStream` object ``bedIn`` contains the names of the reference sequences that have been seen in records so far.
 This :dox:`StringSet` of :dox:`CharString` thus gets new elements as you read the BED file.
 For the translation between reference names and numeric ids, a cache is used.
-The function [dox:BedStream#addSequenceName addSequenceName] can be used to register the sequence name with the ``bedOut`` stream.
+The function :dox:`BedStream#addSequenceName addSequenceName` can be used to register the sequence name with the ``bedOut`` stream.
 This will also update the cache.
 
 The BED records are read into :dox:`BedRecord` objects which we will focus on below.
-In this case, we use the [dox:Bed3Record Bed3Record] specialization of the :dox:`BedRecord` class.
+In this case, we use the :dox:`Bed3Record` specialization of the :dox:`BedRecord` class.
 
 .. tip::
 
@@ -180,7 +180,7 @@ The Class :dox:`BedRecord`
 
 The class :dox:`BedRecord` stores one record in a BED file.
 Note that there are various specializations, each storing a different number of fields.
-We show the quasi-definition of [dox:Bed12Record Bed12Record] below.
+We show the quasi-definition of :dox:`Bed12Record` below.
 The other specializations have less fields.
 
 .. code-block:: cpp
@@ -217,7 +217,7 @@ The other specializations have less fields.
 The static members ``INVALID_POS``, ``INVALID_REFID`` store sentinel values for marking positions and reference sequence ids as invalid.
 
 The member ``ref`` stores the contig/reference name of the genomic interval.
-This information is somewhat redundant with the ``rID`` member that is filled automatically when reading from a [dox:BedStream BedStream] such that the BedStream's ``sequenceNames[record.rID] == record.ref``.
+This information is somewhat redundant with the ``rID`` member that is filled automatically when reading from a :dox:`BedStream` such that the BedStream's ``sequenceNames[record.rID] == record.ref``.
 Translating reference names to integers is useful in many applications.
 
 When writing and ``record.rID == INVALID_REFID`` then ``record.ref`` is written out as the reference name and ``sequenceNames[record.rID]`` is written out otherwise.

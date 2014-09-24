@@ -25,7 +25,7 @@ This article is not a real tutorial but more of a survey of the I/O functionalit
 It is targeted at more advanced developers that want to learn more about how I/O works in SeqAn and get background information.
 
 The article first gives a rough overview of the I/O functionality in SeqAn.
-This is then followed by an overview of the [dox:StreamConcept StreamConcept] concept, the :dox:`StreamConcept` class and adaptions to the :dox:`StreamConcept` concept.
+This is then followed by an overview of the :dox:`StreamConcept` concept, the :dox:`StreamConcept` class and adaptions to the :dox:`StreamConcept` concept.
 Finally, the :dox:`RecordReader` class is introduced and you learn about the record and document reading API.
 After reading this tutorial, you will have an overview about the I/O layers in SeqAn.
 You can then proceed to read the :ref:`tutorial-file-io` and the :ref:`tutorial-parsing` tutorials to learn more about Streams and RecordReaders.
@@ -155,11 +155,11 @@ Streams
 Most data formats in bioinformatics simply contain a series of records, often preceded by a header.
 The most important use case if reading sequentially over such a data stream, with the occasional jump.
 In computer science, it is common to call the abstraction to such data sources **streams**.
-In SeqAn, the concept [dox:StreamConcept StreamConcept] provides an interface for such stream data types.
+In SeqAn, the concept :dox:`StreamConcept` provides an interface for such stream data types.
 
 SeqAn provides adaptions from the standardized C and C++ file interfaces to the :dox:`StreamConcept` concept.
 You can use the I/O streams from the ``<iostream>`` library, the string buffer streams from the ``<sstream>`` library as well as the ``FILE *`` type from the ``<cstdio>`` library.
-Furthermore, SeqAn provides the [dox:Stream Stream] class and specializations for accessing ``char`` arrays and zlib and bzip compressed files as streams.
+Furthermore, SeqAn provides the :dox:`Stream` class and specializations for accessing ``char`` arrays and zlib and bzip compressed files as streams.
 The :ref:`tutorial-input-output-overview` tutorial gives a more detailed introduction into this topic.
 
 You already saw above how the streams from the ``<iostream>`` library can be used for reading and writing.
@@ -202,7 +202,7 @@ We use ``ferror()`` instead of the member function ``good()``. The modified exam
 
    fclose(inStream);
 
-.. important:: 
+.. important::
 
    Always Use Binary File Open Mode
 
@@ -222,10 +222,10 @@ Record Readers
 --------------
 
 The :dox:`RecordReader` class is a wrapper around file-like objects, such as Streams.
-However, as you will learn in the `File I/O <Tutorial/FileIO>`__ tutorial, it also provides a generalized interface for memory mapped files that are accessed as [dox:MMapString MMap String] objects.
+However, as you will learn in the `File I/O <Tutorial/FileIO>`__ tutorial, it also provides a generalized interface for memory mapped files that are accessed as :dox:`MMapString MMap String` objects.
 Depending on the actual specialization, [:dox:`RecordReader` RecordReaders] also add a buffer which allows to re-read the first several thousand characters of a file which is very useful for automatic file type detection.
 
-When using the :dox:`RecordReader` class in the Lower-Level I/O layer, you only have to know how to create a [dox:RecordReader RecordReader] for reading.
+When using the :dox:`RecordReader` class in the Lower-Level I/O layer, you only have to know how to create a :dox:`RecordReader` for reading.
 You do not have to know how to implement parsing functionality with them.
 
 Constructing :dox:`RecordReader` objects is easy.
@@ -238,7 +238,7 @@ Note that the file already has to be opened for reading.
    std::fstream inputFile("filename.fasta", std::ios::input | std::ios::binary);
    seqan::RecordReader<std::fstream, seqan::SinglePass<> > reader(inputFile);
 
-You can learn about how to implement parsers using the [dox:RecordReader RecordReader] API in the :ref:`tutorial-parsing` Tutorial.
+You can learn about how to implement parsers using the :dox:`RecordReader` API in the :ref:`tutorial-parsing` Tutorial.
 
 Record vs. Document I/O
 -----------------------

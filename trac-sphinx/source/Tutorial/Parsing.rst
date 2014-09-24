@@ -21,9 +21,9 @@ Duration
 Prerequisites
   :ref:`tutorial-input-output-overview`, :ref:`tutorial-lexical-casting`
 
-In this tutorial, you will learn how to use the [dox:RecordReader RecordReader] functions to easily create parsers for structured text file formats.
+In this tutorial, you will learn how to use the :dox:`RecordReader` functions to easily create parsers for structured text file formats.
 We will first give a quick example for parsing a simple TSV format.
-Then, single-pass parsing will be explained (which is the most important variant) and the interface of the [dox:RecordReader RecordReader] class and the ``skip*()`` and ``read*()`` functions will be described.
+Then, single-pass parsing will be explained (which is the most important variant) and the interface of the :dox:`RecordReader` class and the ``skip*()`` and ``read*()`` functions will be described.
 This is followed by extensive examples on parsing the GFF and BLAST tabular format and an example on how to parse the non-linear Newick format for phylogenetic trees.
 The tutorial closes with an explanation of how to write double-pass I/O code and in which situations it is useful to do so.
 
@@ -114,7 +114,7 @@ For example:
 The ``read*`` And ``skip*`` Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The parsing functionality in SeqAn built on top of the :dox:`StreamConcept` concept and [dox:RecordReader RecordReader] class is optimized for reading Bioinformatics text file formats.
+The parsing functionality in SeqAn built on top of the :dox:`StreamConcept` concept and :dox:`RecordReader` class is optimized for reading Bioinformatics text file formats.
 
 These formats mostly consist of fairly flat data files, i.e. a sequence of records, each having very few levels of subrecords.
 A typical example are FASTQ files where one record consists of adjacent lines, containing the identifier, sequence, and qualities.
@@ -128,7 +128,7 @@ In Bioinformatics, files having multiple GB are not uncommon, e.g. NGS data or t
 Thus, in SeqAn, the files are parsed "on the fly" as they are read.
 Using compiler nomenclauture, bioinformatics parsers often only have to be `tokenizers <http://en.wikipedia.org/wiki/Tokenizing>`_.
 Making writing such simple parsers easy is the main aim of the ``read*`` and ``skip*`` functions in SeqAn.
-NB: By using [dox:CharArrayStream Char Array Streams], you can also use the parsing infrastructure on in-memory data.
+NB: By using :dox:`CharArrayStream Char Array Streams`, you can also use the parsing infrastructure on in-memory data.
 
 For each considered class of characters, there often is a read and a skip function.
 There are two big types of classes: White-listing/inclusion (``read*X*``) of certain characters and black-listing/exclusion (``readUntil*X*``) of certain characters.
@@ -700,7 +700,7 @@ The program's output looks as follow:
 Double-Pass I/O Using the ``RecordReader``
 ------------------------------------------
 
-The :dox:`DoublePassRecordReader Double-Pass RecordReader` reader's API extends the function described above for the [dox:SinglePassRecordReader Single-Pass RecordReader].
+The :dox:`DoublePassRecordReader Double-Pass RecordReader` reader's API extends the function described above for the :dox:`SinglePassRecordReader Single-Pass RecordReader`.
 It provides the following additional global interface functions.
 
 +----------------------------------------------------------------+--------------------------------+
@@ -714,7 +714,7 @@ It provides the following additional global interface functions.
 It is used as follows: For each section of the file that is to be read in the next step (one or multiple records), you first call :dox:`DoublePassRecordReader#startFirstPass startFirstPass`.
 This memoizes the current position in the file.
 Then, you use the same API as for the single-pass reader to read the file.
-When you are done with this section, you call [dox:DoublePassRecordReader#startSecondPass startSecondPass].
+When you are done with this section, you call :dox:`DoublePassRecordReader#startSecondPass startSecondPass`.
 This will reset the position of the reader to the one where :dox:`DoublePassRecordReader#startFirstPass startFirstPass` was called.
 
 Here is an example for using double-pass I/O:

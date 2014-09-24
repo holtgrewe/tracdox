@@ -21,7 +21,7 @@ Duration
 Prerequisites
   :ref:`tutorial-first-steps-in-seqan`, :ref:`tutorial-sequences`, familiarity with building SeqAn apps
 
-The simplest possible and also most flexible interface to a program is through the command line. This tutorial explains how to parse the command line using the SeqAn library's [dox:ArgumentParser ArgumentParser] class.
+The simplest possible and also most flexible interface to a program is through the command line. This tutorial explains how to parse the command line using the SeqAn library's :dox:`ArgumentParser` class.
 
 Using this class will give you the following functionality:
 
@@ -56,7 +56,7 @@ and/or a **short name** (e.g. ``-i``).
 A First Working Example
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The following small program will (1) setup a [dox:ArgumentParser ArgumentParser] object named ``parser``, (2) parse the command line, (3) exit the program if there were errors or the user requested a functionality that is already built into the command line parser, and (4) printing the settings given from the command line.
+The following small program will (1) setup a :dox:`ArgumentParser` object named ``parser``, (2) parse the command line, (3) exit the program if there were errors or the user requested a functionality that is already built into the command line parser, and (4) printing the settings given from the command line.
 Such functionality is printing the help, for example.
 
 .. code-block:: cpp
@@ -165,8 +165,8 @@ We call the :dox:`ArgParseArgument` constructor with three parameters: the type 
    addArgument(parser, seqan::ArgParseArgument(
        seqan::ArgParseArgument::STRING, "TEXT"));
 
-Then, we add options to the parser using [dox:ArgumentParser#addOption addOption].
-We pass the parser and an [dox:ArgParseOption ArgParseOption] object.
+Then, we add options to the parser using :dox:`ArgumentParser#addOption addOption`.
+We pass the parser and an :dox:`ArgParseOption` object.
 
 .. code-block:: console
 
@@ -177,7 +177,7 @@ We pass the parser and an [dox:ArgParseOption ArgParseOption] object.
        "U", "uppercase", "Select to-uppercase as operation."));
 
 The :dox:`ArgParseOption` constructor is called in two different variants.
-Within the first [dox:ArgumentParser#addOption addOption] call, we construct an integer option with a short and long name, a documentation string, and give it the label "INT".
+Within the first :dox:`ArgumentParser#addOption addOption` call, we construct an integer option with a short and long name, a documentation string, and give it the label "INT".
 The second option is a flag (indicated by not giving a type) with a short and a long name and a description.
 
 .. tip::
@@ -194,7 +194,7 @@ The second option is a flag (indicated by not giving a type) with a short and a 
 If the option ``a`` is not a list then the occurence ``-a 3`` overwrites all previous settings.
 
 However, if ``a`` is marked to be a list, then all values (``1``, ``2``, and ``3``) are stored as its values.
-We can get the number of elements using the function [dox:ArgumentParser#getOptionValueCount getOptionValueCount] and then access the individual arguments using the function :dox:`ArgumentParser#getOptionValue getOptionValue`.
+We can get the number of elements using the function :dox:`ArgumentParser#getOptionValueCount getOptionValueCount` and then access the individual arguments using the function :dox:`ArgumentParser#getOptionValue getOptionValue`.
 You can mark an option and arguments to be lists by using the ``isList`` parameter to the :dox:`ArgParseArgument` and :dox:`ArgParseOption` constructors.
 
 For arguments, only the first or the last argument or none can be a list but not both.
@@ -1306,7 +1306,7 @@ Click **more...** to see the complete program.
 
 .. container:: foldable
 
-   .. code-block:: cpp 
+   .. code-block:: cpp
 
       #include <iostream>
 

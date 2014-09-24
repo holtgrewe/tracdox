@@ -48,7 +48,7 @@ Specialization :dox:`AllocString Alloc String`
   * **Applications**
     The default string implementation that can be used for general purposes.
   * **Limitations**
-    Changing the :dox:`String#capacity capacity` can be very costly since all values must be copied.
+    Changing the :dox:`SequenceConcept#capacity capacity` can be very costly since all values must be copied.
 
 Specialization :dox:`ArrayString Array String`
   * **Description**

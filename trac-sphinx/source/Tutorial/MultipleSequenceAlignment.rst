@@ -24,7 +24,7 @@ Apart from pairwise alignments, also multiple sequence alignments can be compute
 The easiest way to do this is by using the function :dox:`globalMsaAlignment`.
 This function computes a heuristic alignment based on a consistency-based progressive alignment strategy as described in `Seqan::TCoffee <http://bioinformatics.oxfordjournals.org/cgi/content/abstract/24/16/i187>`__ paper.
 
-In the following example, we align four amino acid sequences using the :dox:`AlignmentGraph` data structure and the [dox:Blosum62 Blosum62] scoring matrix with gap extension penalty -11 and gap open penalty -1.
+In the following example, we align four amino acid sequences using the :dox:`AlignmentGraph` data structure and the :dox:`Blosum62` scoring matrix with gap extension penalty -11 and gap open penalty -1.
 The required header for multiple sequence alignments is ``<seqan/graph_msa.h>``.
 
 .. includefrags:: core/demos/tutorial/alignments/alignment_msa.cpp

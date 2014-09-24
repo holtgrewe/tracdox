@@ -149,7 +149,7 @@ loaded. Optionally, we can specify an extra path to the FAI file:
    if (res != 0)
        std::cerr << "ERROR: Could not load FAI index path/to/index.fai\n";
 
-After loading the index, we can then use the index to map a sequence id to its (zero-based) position (a position *i* meaning that it is the *i*-th sequence) in the FASTA file using [dox:FaiIndex#getIdByName getIdByName].
+After loading the index, we can then use the index to map a sequence id to its (zero-based) position (a position *i* meaning that it is the *i*-th sequence) in the FASTA file using :dox:`FaiIndex#getIdByName getIdByName`.
 The function gets the :dox:`FaiIndex` to use, the id of the sequence, and an ``unsigned`` position as parameters.
 It returns a ``bool`` indicating whether the mapping was successful (``true`` on success, ``false`` on failure).
 

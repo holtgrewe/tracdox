@@ -31,7 +31,7 @@ AnnotationStore as Part of the FragmentStore
 
 This section will give you a short introduction to data structures relevant for working with annotations.
 
-In SeqAn, annotations are stored in the so-called :dox:`FragmentStore#annotationStore annotationStore`, which is part of the :dox:`FragmentStore`.
+In SeqAn, annotations are stored in the so-called :dox:`FragmentStore:;annotationStore annotationStore`, which is part of the :dox:`FragmentStore`.
 The annotationStore can only be used together with the FragmentStore, because the latter stores additional information, e.g. the contig names or sequences.
 The FragmentStore is a data structure specifically designed for read mapping, genome assembly or gene annotation.
 
@@ -39,20 +39,20 @@ The FragmentStore can be seen as a database, where each table (called "store") i
 Each row of the table corresponds to an element in the string.
 The position of each element in the string implicitly represents the Id of such element in the table.
 All such strings are members of the class :dox:`FragmentStore`, are always present and empty if unused.
-For example, the member :dox:`FragmentStore#contigStore contigStore` is a string of elements, each one containing among others a contig sequence.
+For example, the member :dox:`FragmentStore::contigStore contigStore` is a string of elements, each one containing among others a contig sequence.
 
 For detailed information about the :dox:`FragmentStore` read the :ref:`tutorial-fragment-store` Tutorial.
 
-Accordingly, the :dox:`FragmentStore#annotationStore annotationStore` is a :dox:`String`, where each element represents one annotation.
+Accordingly, the :dox:`FragmentStore::annotationStore annotationStore` is a :dox:`String`, where each element represents one annotation.
 Each element holds the necessary information, e.g. beginPos, endPos, parentId etc., as data members.
 
-.. Like many other stores, the :dox:`FragmentStore#annotationStore annotationStore` has an associated name store, namely the :dox:`FragmentStore#annotationNameStore annotationNameStore`, to store its element names.
+.. Like many other stores, the :dox:`FragmentStore::annotationStore annotationStore` has an associated name store, namely the :dox:`FragmentStore::annotationNameStore annotationNameStore`, to store its element names.
    The name store is a  StringSet that stores the element name at the position of its id.
 
 AnnotationStore
 ~~~~~~~~~~~~~~~
 
-In this section you will learn how to work with the :dox:`FragmentStore#annotationStore annotationStore` itself.
+In this section you will learn how to work with the :dox:`FragmentStore::annotationStore annotationStore` itself.
 
 Annotations are represented hierarchically by a tree having at least a root node.
 
@@ -71,7 +71,7 @@ The following entity-relationship diagram shows the tables holding store annotat
 
    Stores involved in gene annotation
 
-The instantiation of an :dox:`FragmentStore#annotationStore annotationStore` happens implicitly with the instantiation of a :dox:`FragmentStore`.
+The instantiation of an :dox:`FragmentStore::annotationStore annotationStore` happens implicitly with the instantiation of a :dox:`FragmentStore`.
 Therefore we simply type:
 
 .. code-block:: cpp
@@ -103,7 +103,7 @@ They must be read by two consecutive calls of :dox:`File#read read` (first ``kno
     An annotation can be loaded without loading the corresponding contigs.
 
     In that case empty contigs are created in the contigStore with names given in the annonation.
-    A subsequent call of :dox:`FragementStore#loadContigs loadContigs` would load the sequences of these contigs, if they have the same identifier in the contig file.
+    A subsequent call of :dox:`FragmentStore#loadContigs loadContigs` would load the sequences of these contigs, if they have the same identifier in the contig file.
 
 Traversing the Annotation Tree
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

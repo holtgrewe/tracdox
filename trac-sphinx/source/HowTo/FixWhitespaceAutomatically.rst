@@ -3,7 +3,7 @@
    .. contents::
 
 
-.. _style-guide-dox-api-docs:
+.. _how-to-fix-whitespace-automatically:
 
 How To: Fix Whitespace Automatically
 ====================================

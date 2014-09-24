@@ -154,7 +154,7 @@ Iterating over String Sets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As well as for other containers, SeqAn has implemented iterators for :dox:`StringSet StringSets`.
-The generall usage of iterators is described in the tutorial :dox:`tutorial-iterators`.
+The generall usage of iterators is described in the tutorial :ref:`tutorial-iterators`.
 The following example illustrates, how to iterate over the :dox:`StringSet`.
 
 .. code-block:: cpp

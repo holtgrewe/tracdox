@@ -26,7 +26,7 @@ This tutorial introduces the low-level facilities of file I/O in SeqAn:
 * There is a concept called :dox:`StreamConcept` in the SeqAn library that stream data types have to implement.
   There also is the class :dox:`Stream Stream` that provides implementations of the concept together with its specializations.
   (If you want to provide your own Stream implementation, you should specialize the class :dox:`Stream Stream`).
-* Particularly, there are the specializations [dox:GzFileStream GzFileStream] and :dox:`BZ2FileStream BZ2 FileStream` that provide access to compressed files.
+* Particularly, there are the specializations :dox:`GzFileStream` and :dox:`BZ2FileStream BZ2 FileStream` that provide access to compressed files.
 * Furthermore, SeqAn allows to access memory mapped files using the :dox:`MMapString MMap String` specialization.
 
 The target audience consists of developers (1) who want to learn how to use memory mapped files and compressed streams, or (2) who want to have raw, byte-wise read and write access to files, or (3) who want to get a deeper understanding of the I/O system in the SeqAn library.
@@ -90,7 +90,7 @@ The following C/C++ I/O interfaces can be adapted to the :dox:`StreamConcept` co
 This way, we can use the common C++ I/O types through a common interface.
 Also, we could add adaptions of other file and stream data types to the :dox:`StreamConcept` concept.
 
-The following example shows how to use the [dox:StreamConcept StreamConcept] global interface functions to copy the contents of the file ``in.txt`` to the file ``out.txt``.
+The following example shows how to use the :dox:`StreamConcept` global interface functions to copy the contents of the file ``in.txt`` to the file ``out.txt``.
 
 .. includefrags:: extras/demos/tutorial/file_io/example1.cpp
 
@@ -191,7 +191,7 @@ And finally, the code that calls the functions from above.
 Now, let's test the program.
 We'll first create gzip and bzip2 compressed text files and an uncompressed text file.
 Then, we'll run our demo program on these files.
-Note that the [dox:BZ2FileStream BZ2FileStream] fails when reading from the file, not when opening the file.
+Note that the :dox:`BZ2FileStream` fails when reading from the file, not when opening the file.
 
 .. code-block:: console
 
@@ -237,7 +237,7 @@ Memory Mapped Files
 Memory mapped files allow very fast access to files since they enable you to read data with few, if any additional buffers.
 Wikipedia has a `nice article on memory mapped files <http://en.wikipedia.org/wiki/Memory-mapped_file>`_.
 
-In SeqAn, you access memory mapped files using the [dox:MMapString MMapString] specialization.
+In SeqAn, you access memory mapped files using the :dox:`MMapString` specialization.
 After opening the mapped string using :dox:`File#open open`, you can access its contents as if you were manipulating a normal :dox:`String`.
 The following shows a simple example:
 

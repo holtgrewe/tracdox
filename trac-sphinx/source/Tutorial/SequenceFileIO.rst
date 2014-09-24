@@ -20,10 +20,10 @@ Duration
 Prerequisites
   :ref:`tutorial-input-output-overview`
 
-This tutorial explains how to read using the [dox:RecordReader RecordReader] class and the :dox:`MultiSeqFile MultipleSeqFile` API and how to write sequence files using :dox:`StreamConcept Streams`.
+This tutorial explains how to read using the :dox:`RecordReader` class and the :dox:`MultiSeqFile MultipleSeqFile` API and how to write sequence files using :dox:`StreamConcept Streams`.
 Currently, SeqAn supports reading sequences (and qualities where it applies) in FASTA, FASTQ, EMBL and GenBank format.
 
-This tutorial does not explain how to use the [dox:SequenceStream SequenceStream] class.
+This tutorial does not explain how to use the :dox:`SequenceStream` class.
 This class is covered in the `Basic Sequence I/O tutorial <Tutorial/BasicSequenceIO>`__.
 
 Reading Sequence Files
@@ -84,7 +84,7 @@ Assignment 1
         .. includefrags:: core/demos/tutorial/sequence_io/solution1.cpp
 
 When we want to read a whole sequence (e.g. FASTA or FASTQ) file into memory then we only have to slightly adjust the example from above.
-For example, here is how we can read a whole FASTQ file into memory using the function :dox:`RecordReader#read read` into [dox:StringSet StringSets] of :dox:`CharString CharStrings` and [dox:Dna5String Dna5Strings].
+For example, here is how we can read a whole FASTQ file into memory using the function :dox:`RecordReader#read read` into :dox:`StringSet StringSets` of :dox:`CharString CharStrings` and :dox:`Dna5String Dna5Strings`.
 
 .. warning::
 
@@ -113,13 +113,13 @@ Assignment 2
 Choice of Record Reader
 -----------------------
 
-In most cases, you will want to use a [dox:SinglePassRecordReader Single-Pass RecordReader] for reading files.
+In most cases, you will want to use a :dox:`SinglePassRecordReader Single-Pass RecordReader` for reading files.
 Mostly, it is the fastest and best way to read files and also all file formats have a single-pass implementation.
 
 Using a double-pass record reader almost only makes sense if read a whole file into main memory using the document reading API.
 The file is read twice.
 In the first pass, the total length of ids and sequence characters is determined.
-When reading sequences into [dox:StringSet StringSets], the exact number of elements can be reserved.
+When reading sequences into :dox:`StringSet StringSets`, the exact number of elements can be reserved.
 Even more, when using :dox:`ConcatDirectStringSets Concat-Direct StringSet`, no superflous memory has to be allocated at all.
 The string sets are then filled in the second pass.
 
@@ -175,7 +175,7 @@ Otherwise, you can use a variable of type :dox:`AutoSeqStreamFormat` instead of 
 This function tries to parse the file as different formats on the first some thousand bytes.
 When this succeeds, the successfully recognized file type is stored in the object.
 
-You can then subsequently use the [dox:AutoSeqStreamFormat AutoSeqStreamFormat] instead of a tag to the functions :dox:`RecordReader#readRecord readRecord` or [dox:RecordReader#read read].
+You can then subsequently use the :dox:`AutoSeqStreamFormat` instead of a tag to the functions :dox:`RecordReader#readRecord readRecord` or :dox:`RecordReader#read read`.
 
 .. includefrags:: core/demos/tutorial/sequence_io/example9.cpp
 
@@ -285,7 +285,7 @@ Then, we can access the identifier, sequence, and quality string of a record usi
 Indexed reading can be done through :dox:`MultiSeqFile` which is a shortcut to a memory mapped string set.
 We open the file using :dox:`File#open open` on its ``concat`` member (which is a :dox:`MMapString MMap String`).
 The function :dox:`split` then parses the file contents and sets the separating indexes of the :dox:`StringSet`.
-For this, we need the file format. We could give a specify format in the tag (e.g. ``seqan::Fastq()``) or use :dox:`AutoSeqFormat` together with [dox:guessFormat guessFormat].
+For this, we need the file format. We could give a specify format in the tag (e.g. ``seqan::Fastq()``) or use :dox:`AutoSeqFormat` together with :dox:`guessFormat`.
 
 The following example demonstrates how to use :dox:`MultiSeqFile` to read sequence files.
 First, we include the necessary headers and start our ``main()`` function.
@@ -344,7 +344,7 @@ Indexed reading has multiple advantages.
    The user can access the file almost at random and only the used parts will be loaded into main memory.
    This is quite efficient when only few sequences are needed.
 
-If you need to have fast random access to all sequences in a file then loading it into a :dox:`ConcatDirectStringSet Concat-Direct StringSet` with the batch-reading API is faster than using [dox:MultiSeqFile MultiSeqFile].
+If you need to have fast random access to all sequences in a file then loading it into a :dox:`ConcatDirectStringSet Concat-Direct StringSet` with the batch-reading API is faster than using :dox:`MultiSeqFile`.
 
 .. container:: assignment
 

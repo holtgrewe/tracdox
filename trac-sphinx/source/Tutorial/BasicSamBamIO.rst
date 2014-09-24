@@ -147,7 +147,7 @@ If you want to try out this program then create a file with the sample SAM conte
 
 The program first opens a :dox:`BamStream` for reading, then one for writing.
 Note that :dox:`BamStream` automatically guesses the file type from the file contents when reading and from the file name when writing.
-You can also force a format using :dox:`BamStream#BamStream BamStream's constructor`.
+You can also force a format using :dox:`BamStream::BamStream BamStream's constructor`.
 You can read from stdin and write to stdout using ``"-"`` as the file name.
 
 The header is automatically read when a :dox:`BamStream` is opened.
@@ -246,8 +246,8 @@ Note that we use the :dox:`CigarElement` class to store entries in the CIGAR str
 
 The static members ``INVALID_POS``, ``INVALID_REFID``, and ``INVALID_LEN`` store sentinel values for marking positions, reference sequence ids, and lengths as invalid or N/A.
 
-An important related type is the enum [dox:BamAlignmentRecord#BamFlags BamFlags] that provides constants for bit operations on the ``flag`` field.
-The functions [dox:BamAlignmentRecord#hasFlagAllProper hasFlagAllProper], [dox:BamAlignmentRecord#ahasFlagDuplicate hasFlagDuplicate], :dox:`BamAlignmentRecord#hasFlagFirst hasFlagFirst`, :dox:`BamAlignmentRecord#hasFlagLast hasFlagLast`, :dox:`BamAlignmentRecord#hasFlagMultiple hasFlagMultiple`, :dox:`BamAlignmentRecord#hasFlagNextRC hasFlagNextRC`, [dox:BamAlignmentRecord#hasFlagNextUnmapped hasFlagNextUnmapped], [dox:BamAlignmentRecord#hasFlagQCNoPass hasFlagQCNoPass], :dox:`BamAlignmentRecord#hasFlagRC hasFlagRC`, :dox:`BamAlignmentRecord#hasFlagSecondary hasFlagSecondary`, :dox:`BamAlignmentRecord#hasFlagUnmapped hasFlagUnmapped`, and :dox:`BamAlignmentRecord#hasFlagSupplementary hasFlagSupplementary` allow for easy reading of flags.
+An important related type is the enum :dox:`BamAlignmentRecord#BamFlags BamFlags` that provides constants for bit operations on the ``flag`` field.
+The functions :dox:`BamAlignmentRecord#hasFlagAllProper hasFlagAllProper`, :dox:`BamAlignmentRecord#ahasFlagDuplicate hasFlagDuplicate`, :dox:`BamAlignmentRecord#hasFlagFirst hasFlagFirst`, :dox:`BamAlignmentRecord#hasFlagLast hasFlagLast`, :dox:`BamAlignmentRecord#hasFlagMultiple hasFlagMultiple`, :dox:`BamAlignmentRecord#hasFlagNextRC hasFlagNextRC`, :dox:`BamAlignmentRecord#hasFlagNextUnmapped hasFlagNextUnmapped`, :dox:`BamAlignmentRecord#hasFlagQCNoPass hasFlagQCNoPass`, :dox:`BamAlignmentRecord#hasFlagRC hasFlagRC`, :dox:`BamAlignmentRecord#hasFlagSecondary hasFlagSecondary`, :dox:`BamAlignmentRecord#hasFlagUnmapped hasFlagUnmapped`, and :dox:`BamAlignmentRecord#hasFlagSupplementary hasFlagSupplementary` allow for easy reading of flags.
 
 For example, the following loop sums up the length of the sequences that did not align:
 
@@ -285,7 +285,7 @@ This class gives a unified in-memory representation for SAM and BAM files.
 
 The class has two members: ``records`` and ``sequenceInfos``.
 We will focus on ``sequenceInfos`` here.
-``sequenceInfos`` is a [dox:String String] of :dox:`Pair` objects.
+``sequenceInfos`` is a :dox:`String` of :dox:`Pair` objects.
 The first entry of the pair is a :dox:`CharString` with the sequence name and the second entry is a ``__int32`` with the sequence length.
 Note that the ``@SQ`` header lines in the header and the ``sequenceInfos`` fields are not kept in sync automatically.
 
@@ -381,7 +381,7 @@ This class also performs the necessary casting when reading and writing tag list
    seqan::BamAlignmentRecord record;
    seqan::BamTagsDict tagsDict(record.tags);
 
-We can add a tag using the function [dox:BamTagsDict#setTagValue setTagValue].
+We can add a tag using the function :dox:`BamTagsDict#setTagValue setTagValue`.
 When setting an already existing tag's value, its value will be overwritten.
 Note that in the following, we give the tags value in SAM format because it is easier to read, although they are stored in BAM format internally.
 
@@ -419,7 +419,7 @@ Then, we can read the value from the :dox:`BamTagsDict` using the function :dox:
 The function returns a ``bool`` that is ``true`` on success and ``false`` otherwise.
 The extraction can fail if the index is out of bounds or the value in the dictionary cannot be cast to the type of the first parameter.
 
-The value in the tags dictionary will be casted to the type of the first parameter (result parameter) of [dox:BamTagsDict#extractTagValue extractTagValue]:
+The value in the tags dictionary will be casted to the type of the first parameter (result parameter) of :dox:`BamTagsDict#extractTagValue extractTagValue`:
 
 .. code-block:: cpp
 

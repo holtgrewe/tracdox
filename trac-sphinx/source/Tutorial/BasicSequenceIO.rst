@@ -29,7 +29,7 @@ This flexibility comes at a slight cost of performance, compared to using the mo
 The lower layers are responsible for providing raw file I/O functionality and adding parsing functionality.
 Their usage is not part of this tutorial and is explainend in the Tutorials :ref:`tutorial-file-io`, :ref:`tutorial-sequence-file-io`, and :ref:`tutorial-parsing`.
 
-After completing the tutorial, you will be able to read and write sequence files in the formats supported by the [dox:SequenceStream SequenceStream] class.
+After completing the tutorial, you will be able to read and write sequence files in the formats supported by the :dox:`SequenceStream` class.
 
 A First Working Example
 -----------------------
@@ -39,7 +39,7 @@ The following small program will read the file ``example.fa`` (which we will cre
 
 .. includefrags:: extras/demos/tutorial/basic_sequence_io/example1.cpp
 
-We use the [dox:SequenceStream#SequenceStream SequenceStream constructor] with one parameter, the path to the file we want to read.
+We use the :dox:`SequenceStream::SequenceStream SequenceStream constructor` with one parameter, the path to the file we want to read.
 This will open the file and guess the file format from the file contents.
 The class will read the first some thousand characters and try to guess what format the file is.
 Note that you can also pass ``"-"`` as the file name.
@@ -177,7 +177,7 @@ There are three major usage patterns for sequence I/O:
 #. We want to read a **batch of records** into memory, e.g. 100k records at a time.
    Then, we perform some computation on the records, for example in parallel with 4 threads on 25k records each.
 
-These use cases are supported by the functions :dox:`SequenceStream#readAll readAll`, [dox:SequenceStream#readRecord readRecord], and :dox:`SequenceStream#readBatch readBatch`.
+These use cases are supported by the functions :dox:`SequenceStream#readAll readAll`, :dox:`SequenceStream#readRecord readRecord`, and :dox:`SequenceStream#readBatch readBatch`.
 
 Each of these functions is available in two variants.
 The first accepting only the sequence identifier and sequence characters besides the :dox:`SequenceStream` object and the second also accepting the a :dox:`CharString` for the PHRED base qualities.
@@ -188,7 +188,7 @@ When :dox:`DnaQ` or :dox:`Dna5Q` are used, then you should use the function vari
 The qualities are simply stored directly in the sequence characters.
 
 As to be expected, when there are characters in the file that are not valid characters in the :dox:`String` then the alphabet-dependent conversion is performed.
-For example, for :dox:`Dna` and [dox:Rna Rna] this means a conversion of the invalid character to ``'A'``, and for :dox:`Dna5 Dna5 and [dox:Rna5 Rna5` this means a conversion to ``'N'``.
+For example, for :dox:`Dna` and :dox:`Rna` this means a conversion of the invalid character to ``'A'``, and for :dox:`Dna5 Dna5 and [dox:Rna5 Rna5` this means a conversion to ``'N'``.
 
 Here is an example for using :dox:`SequenceStream#readRecord readRecord`:
 
@@ -268,7 +268,7 @@ The Interface for Writing
 -------------------------
 
 Now that you know how to read sequence files, writing them will come easy to you.
-We can open files for writing by giving ``seqan::SequenceStream::WRITE`` as the second parameter to the :dox:`SequenceStream#SequenceStream SequenceStream constructor`.
+We can open files for writing by giving ``seqan::SequenceStream::WRITE`` as the second parameter to the :dox:`SequenceStream::SequenceStream SequenceStream constructor`.
 Create a new SeqAn app ``basic_seq_io_example2`` in your sandbox and change the C++ file ``basic_seq_io_example2.cpp`` in this application to have the content below.
 This program already has all the bells and whistles for error checking.
 
@@ -282,7 +282,7 @@ Also, instead of reading records, we write one record.
 The program writes out one sequence with id "seq1" and the contents "CGAT" to the file given on the command line.
 Note that :dox:`SequenceStream` will guess the format from the file name.
 A file ending in ``.fa`` and ``.fasta`` mean FASTA, ``.fq`` and ``.fastq`` means FASTQ.
-Optionally, you can force to use any file format with the third parameter to the [dox:SequenceStream#SequenceStream SequenceStream constructor].
+Optionally, you can force to use any file format with the third parameter to the :dox:`SequenceStream::SequenceStream SequenceStream constructor`.
 
 Let us try out the program from above:
 
@@ -322,7 +322,7 @@ Again, they come in one variant with and another variant without base qualities.
 When writing to a FASTQ file using the function without qualities, the PHRED score 40 is written for each character (``'I'``) and when writing to a FASTA file with the variant with qualities, the qualities are ignored.
 When using :dox:`DnaQ` or :dox:`Dna5Q`, the variant without qualities parameter writes out the qualities stored in the sequence characters themselves.
 
-Here is an example for using [dox:SequenceStream#writeRecord writeRecord]:
+Here is an example for using :dox:`SequenceStream#writeRecord writeRecord`:
 
 .. code-block:: cpp
 

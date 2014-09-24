@@ -70,7 +70,7 @@ A typical annotation tree looks as follows:
    Annotation tree example
 
 
-In the Fragment Store the tree is represented by :dox:`FragmentStore#annotationStore annotationStore`, :dox:`FragmentStore#annotationTypeStore annotationTypeStore`, :dox:`FragmentStore#annotationKeyStore annotationKeyStore`, and others.
+In the Fragment Store the tree is represented by :dox:`FragmentStore::annotationStore annotationStore`, :dox:`FragmentStore::annotationTypeStore annotationTypeStore`, :dox:`FragmentStore::annotationKeyStore annotationKeyStore`, and others.
 Instead of accessing these tables directly, the :dox:`AnnotationTreeIterator AnnotationTree Iterator` provides a high-level interface to traverse and access the annotation tree.
 
 Interval Tree
@@ -94,7 +94,7 @@ An empty ``FragmentStore`` can simply be created with:
 
    FragmentStore<> store;
 
-Files can be read from disk with the function :dox:`File#read read` that expects an open stream (e.g. a STL `ifstream <http://www.cplusplus.com/reference/iostream/ifstream>`_), a ``FragmentStore`` object, and a :dox:`SequenceStream#FileFormat File Format` tag.
+Files can be read from disk with the function :dox:`File#read read` that expects an open stream (e.g. a STL `ifstream <http://www.cplusplus.com/reference/iostream/ifstream>`_), a ``FragmentStore`` object, and a :dox:`SequenceStream::FileFormat File Format` tag.
 The contents of different files can be loaded with subsequent calls of ``read``.
 As we want the user to specify the files via command line, our application will parse them using the :dox:`ArgumentParser` and store them in an option object.
 
@@ -141,9 +141,9 @@ The strings of ``IntervalAndCargo`` objects should be grouped by ``contigId`` an
 For the sake of simplicity we don't differ between genes on the forward or reverse strand and instead always consider the corresponding intervals on the forward strand.
 
 To define this string of strings of ``IntervalAndCargo`` objects, we first need to determine the types used to represent an annotation.
-All annotations are stored in the :dox:`FragmentStore#annotationStore annotationStore` which is a Fragment Store member and whose type is :dox:`FragmentStore#TAnnotationStore TAnnotationStore`.
+All annotations are stored in the :dox:`FragmentStore::annotationStore annotationStore` which is a Fragment Store member and whose type is :dox:`FragmentStore::TAnnotationStore TAnnotationStore`.
 The value type of the annotation store is the class :dox:`AnnotationStoreElement`.
-Its member typedefs :dox:`AnnotationStoreElement#TPos TPos` and :dox:`AnnotationStoreElement#TId TId` define the types it uses to represent a genomic position or the annotation or contig id:
+Its member typedefs :dox:`AnnotationStoreElement::TPos TPos` and :dox:`AnnotationStoreElement::TId TId` define the types it uses to represent a genomic position or the annotation or contig id:
 
 .. code-block:: cpp
 
@@ -199,7 +199,7 @@ Assignment 2
    Hint
      .. container:: foldable
 
-        You can assume that all genes are children of the root node, i.e. create an :dox:`AnnotationTreeIterator AnnotationTree Iterator`, [:dox:`AnnotationTreeIterator#goDown" go down` to the first gene and :dox:`AnnotationTreeIterator#goRight go right` to visit all other genes.
+        You can assume that all genes are children of the root node, i.e. create an :dox:`AnnotationTreeIterator AnnotationTree Iterator`, [:dox:`AnnotationTreeIterator#goDown go down` to the first gene and :dox:`AnnotationTreeIterator#goRight go right` to visit all other genes.
         Use :dox:`AnnotationTreeIterator#getAnnotation getAnnotation` to access the gene annotation and :dox:`IteratorAssociatedTypesConcept#value value` to get the annotation id.
 
      .. container:: foldable
@@ -211,7 +211,7 @@ Assignment 2
 
            resize(intervals, length(store.contigStore));
 
-        Use :dox:`SequenceConcept#appendValue appendValue` to add a new ``TInverval`` object to the inner string, see :dox:`IntervalAndCargo#IntervalAndCargo IntervalAndCargo constructor` for the constructor.
+        Use :dox:`SequenceConcept#appendValue appendValue` to add a new ``TInverval`` object to the inner string, see :dox:`IntervalAndCargo::IntervalAndCargo IntervalAndCargo constructor` for the constructor.
 
    Solution
      .. container:: foldable
@@ -304,14 +304,14 @@ Therefore we use a string of counters addressed by the annotation id.
 For each read alignment we want to determine the overlapping genes by conducting a range query via :dox:`IntervalTree#findIntervals findIntervals` and then increment their counters by 1.
 To address the counter of a gene, we use its annotation id stored as cargo in the interval tree.
 
-Read alignments are stored in the :dox:`FragmentStore#alignedReadStore alignedReadStore`, a string of :dox:`AlignedReadStoreElement AlignedReadStoreElements` objects.
+Read alignments are stored in the :dox:`FragmentStore::alignedReadStore alignedReadStore`, a string of :dox:`AlignedReadStoreElement AlignedReadStoreElements` objects.
 Their actual type can simply be determined as follows:
 
 .. code-block:: cpp
 
    typedef Value<TStore::TAlignedReadStore>::Type TAlignedRead;
 
-Given the :dox:`AlignedReadStoreElement#contigId contigId`, :dox:`AlignedReadStoreElement#beginPos beginPos`, and :dox:`AlignedReadStoreElement#endPos endPos` we will retrieve the annotation ids of overlapping genes from the corresponding interval tree.
+Given the :dox:`AlignedReadStoreElement::contigId contigId`, :dox:`AlignedReadStoreElement::beginPos beginPos`, and :dox:`AlignedReadStoreElement::endPos endPos` we will retrieve the annotation ids of overlapping genes from the corresponding interval tree.
 
 Your fourth assignment is to implement the count function that performs all the above described steps.
 Optionally, use OpenMP to parallelize the counting.
@@ -393,7 +393,7 @@ As a gene may have multiple mRNA, we will simply use the maximum of all their ex
 
 Your final assignment is to output the RPKM value for genes with a read counter ``> 0``.
 To compute the exon length of the gene (maximal exon length of all mRNA) use an :dox:`AnnotationTreeIterator AnnotationTree Iterator` and iterate over all mRNA (children of the gene) and all exons (children of mRNA).
-For the number of total mapped reads simply use the number of alignments in the :dox:`FragmentStore#alignedReadStore alignedReadStore`.
+For the number of total mapped reads simply use the number of alignments in the :dox:`FragmentStore::alignedReadStore alignedReadStore`.
 Output the gene names and their RPKM values separated by tabs as follows:
 
 .. code-block:: console
