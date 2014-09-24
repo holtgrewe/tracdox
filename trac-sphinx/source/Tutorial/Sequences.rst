@@ -143,7 +143,7 @@ In the last step the capacity is implicitly changed.
    readList[1] = "AAGATGTCGC";
    appendValue(readList, "TATGCATGAT");
 
-Using the function :dox:`SequenceConcept#length length`, we can now get the length of our strings, e.g.:
+Using the function :dox:`ContainerConcept#length length`, we can now get the length of our strings, e.g.:
 
 .. code-block:: cpp
 
@@ -161,7 +161,7 @@ To empty a :dox:`String`, the function :dox:`SequenceConcept#clear clear` resets
 
    clear(readList);
 
-SeqAn offers a range of other functions for the work with the :dox:`String` class, e.g. :dox:`AssignableConcept#assign assign`, :dox:`RandomAccessContainerConcept#assignValue assignValue`, :dox:`RandomAccessContainerConcept#value value`, :dox:`ContainerConcept#getValue getValue`, :dox:`ContainerConcept#empty empty`, etc.
+SeqAn offers a range of other functions for the work with the :dox:`String` class, e.g. :dox:`AssignableConcept#assign assign`, :dox:`RandomAccessContainerConcept#assignValue assignValue`, :dox:`RandomAccessContainerConcept#value value`, :dox:`IteratorAssociatedTypesConcept#getValue getValue`, :dox:`ContainerConcept#empty empty`, etc.
 The full list of functions you can find in the documentation :dox:`String`.
 
 Assignment 1

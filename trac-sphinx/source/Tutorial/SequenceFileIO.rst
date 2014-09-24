@@ -120,7 +120,7 @@ Using a double-pass record reader almost only makes sense if read a whole file i
 The file is read twice.
 In the first pass, the total length of ids and sequence characters is determined.
 When reading sequences into :dox:`StringSet StringSets`, the exact number of elements can be reserved.
-Even more, when using :dox:`ConcatDirectStringSets Concat-Direct StringSet`, no superflous memory has to be allocated at all.
+Even more, when using :dox:`ConcatDirectStringSet Concat-Direct StringSet`, no superflous memory has to be allocated at all.
 The string sets are then filled in the second pass.
 
 Using double-pass I/O also only makes sense for document reading when used in conjunction with :dox:`MMapString MMap Strings`.
@@ -210,7 +210,7 @@ Writing Sequence Files
 
 Similar to reading, sequence files can be written record-by-record or as a whole.
 
-For record-wise writing, we use the function :dox:`RecordReader#writeRecord writeRecord`.
+For record-wise writing, we use the function :dox:`StreamConcept#writeRecord writeRecord`.
 This function expects as parameters, the :dox:`StreamConcept` to write to, the data to write, followed by the format tag.
 The following example writes an identifier and a sequence :dox:`StringSet` record-by-record to stdout.
 
@@ -260,7 +260,7 @@ Assignment 5
             +
             IIIIIIIIIIII
 
-For writing out whole string sets at once, we use the function :dox:`RecordReader#write write`.
+For writing out whole string sets at once, we use the function :dox:`StreamConcept#write2 write`.
 The transition from record-wise writing to writing whole string sets is of similar simplicity as for reading:
 
 .. warning::

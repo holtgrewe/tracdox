@@ -31,7 +31,7 @@ The classical approach would be to make a copy of the one string, where all elem
 With modifiers, e.g. a :dox:`ModifiedString`, you can create the reverse in :math:`\mathcal{O}(1)` extra memory without copying the original string.
 This can be handy if the original sequence is large.
 
-Modifiers implement a certain concept (e.g. :dox:`Container`, :dox:`RandomAccessIteratorConcept Iterator`, ...) or class interface (:dox:`String`, ...) and thus can be used as such.
+Modifiers implement a certain concept (e.g. :dox:`ContainerConcept`, :dox:`RandomAccessIteratorConcept Iterator`, ...) or class interface (:dox:`String`, ...) and thus can be used as such.
 The mirror modifier is already part of SeqAn and implements the class interface of :dox:`String` and can be used in every algorithm that works on strings.
 
 The Modified String
@@ -40,19 +40,19 @@ The Modified String
 The :dox:`ModifiedString ModidiedString` is a modifier that implements the :dox:`String` interface and thus can be used like a :dox:`String`.
 It has two template parameters.
 The first one specifies a sequence type (e.g. :dox:`String`, :dox:`Segment`, ...) and the second one specifies the modifiers behavior.
-That can be :dox:`ModReverse` for mirroring a string left to right or :dox:`ModView` for applying a function to every single character (like 'C'->'G', 'A'->'T', ...).
+That can be :dox:`ModReverseString` for mirroring a string left to right or :dox:`ModViewModifiedString` for applying a function to every single character (like 'C'->'G', 'A'->'T', ...).
 
 ModReverse
 ^^^^^^^^^^
 
-We begin with the specialization :dox:`ModReverse` from the example above.
+We begin with the specialization :dox:`ModReverseString` from the example above.
 Now we have a given string:
 
 .. includefrags:: core/demos/tutorial/modifiers/modifier_modreverse.cpp
    :fragment: main
 
 and want to get the reverse.
-So we need a :dox:`ModifiedString` specialized with ``String<char>`` and :dox:`ModReverse`.
+So we need a :dox:`ModifiedString` specialized with ``String<char>`` and :dox:`ModReverseString`.
 We create the modifier and link it with ``myString``:
 
 .. includefrags:: core/demos/tutorial/modifiers/modifier_modreverse.cpp
@@ -81,7 +81,7 @@ To verify that we didn't copy ``myString``, we replace an infix of the original 
 ModView
 ^^^^^^^
 
-Another specialization of the :dox:`ModifiedString` is the :dox:`ModView` modifier.
+Another specialization of the :dox:`ModifiedString` is the :dox:`ModViewModifiedString` modifier.
 Assume we need all characters of ``myString`` to be in upper case without copying ``myString``.
 In SeqAn you first create a functor (a STL unary function) which converts a character to its upper-case character.
 
@@ -115,7 +115,7 @@ The result is:
     A MAN, A PLAN, A CANAL-PANAMA
 
 The upper-case functor and some other predefined functors are part of SeqAn (in ``seqan/modifier/modifier_functors.h``) already.
-The following functors can be used as an argument of :dox:`ModView`:
+The following functors can be used as an argument of :dox:`ModViewModifiedString`:
 
 ``FunctorUpcase<TValue>``
   Converts each character of type ``TValue`` to its upper-case character
@@ -153,7 +153,7 @@ Assignment 1
      Extend the code example as follows:
 
      #. Write a functor which converts all 'C' nucleotides to 'T' nucleotides.
-     #. Define a :dox:`ModifiedString` with the specialization :dox:`ModView` using this functor.
+     #. Define a :dox:`ModifiedString` with the specialization :dox:`ModViewModifiedString` using this functor.
      #. Now you can modify both sequences to compare them, treating all 'Cs' as 'Ts'.
         Print the results.
 
@@ -209,7 +209,7 @@ Nested Modifiers
 ~~~~~~~~~~~~~~~~
 
 As modifiers implement a certain concept and depend on classes of this concept, two modifiers can be chained to create a new modifier.
-We have seen how the :dox:`ModifiedString` specialized with :dox:`ModReverse` and :dox:`ModView` can be used.
+We have seen how the :dox:`ModifiedString` specialized with :dox:`ModReverseString` and :dox:`ModViewModifiedString` can be used.
 Now we want to combine them to create a modifier for the reverse complement of a :dox:`DnaString` We begin with the original string:
 
 .. code-block:: cpp
