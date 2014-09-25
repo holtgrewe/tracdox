@@ -1,4 +1,4 @@
-.. sidbar:: ToC
+.. sidebar:: ToC
 
    .. contents::
 
