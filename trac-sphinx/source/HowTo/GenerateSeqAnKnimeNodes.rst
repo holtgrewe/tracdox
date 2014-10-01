@@ -235,8 +235,6 @@ The following picture illustrates the process.
 Anatomy of a Plugin Directory
 -----------------------------
 
-.. TODO the workflow_plugin_dir.zip is not here any more and was not in trac, either :(
-
 You can download a ZIP archive of the resulting project :download:`from the attached file workflow_plugin_dir.zip <workflow_plugin_dir.zip>`.
 We will ignore the contents of ``icons``, ``DESCRIPTION``, ``LICENSE``, and ``COPYRIGHT`` here.
 You can see all relevant details by inspecting the ZIP archive.
