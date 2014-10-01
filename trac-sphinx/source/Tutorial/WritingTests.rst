@@ -259,7 +259,7 @@ Assertions
 ~~~~~~~~~~
 
 You can make assertions on the called functions using the ``SEQAN_ASSERT*`` macros, e.g. :dox:`AssertMacros#SEQAN_ASSERT SEQAN_ASSERT`, :dox:`AssertMacros#SEQAN_ASSERT_EQ SEQAN_ASSERT_EQ`. 
-For each assertion macro, there is one macro that has to be passed a message and optionally parameters, e.g. :dox:`AssertMacros#SEQAN_ASSERT_MSG SEQAN_ASSERT_MSG`, :dox:`AssertMacros#SEQAN_ASSERT_EQ_MSG SEQAN_ASSERT_EQ_MSG`.
+For each assertion macro, there is one macro that has to be passed a message and optionally parameters, e.g. :dox:`AssertMacros#SEQAN_ASSERT SEQAN_ASSERT_MSG`, :dox:`AssertMacros#SEQAN_ASSERT_EQ SEQAN_ASSERT_EQ_MSG`.
 
 Assertions can also be used in your library and application code. 
 When compiled in ``Debug`` mode, the assertions are enabled. 

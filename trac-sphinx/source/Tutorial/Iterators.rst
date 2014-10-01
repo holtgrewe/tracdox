@@ -46,7 +46,7 @@ The construction of an iterator in SeqAn, e.g. for a :dox:`DnaString Dna String`
 
    The default iterator implementation is :dox:`ContainerIteratorTags#Standard Standard`.
    Rooted iterators offer some convenience for the user.
-   They offer additional functions like :dox:`ContainerConcept#container container` for determining the container on which the iterator works, and they simplify the interface for other functions like :dox:`RootedIteratorConcept#atEnd atEnd`.
+   They offer additional functions like :dox:`RootedIteratorConcept#container container` for determining the container on which the iterator works, and they simplify the interface for other functions like :dox:`RootedIteratorConcept#atEnd atEnd`.
    Moreover, rooted iterators may change the container’s length or capacity, which makes it possible to implement a more intuitive variant of a remove algorithm.
 
    While rooted iterators can usually be converted into standard iterators, it is not always possible to convert standard iterators back into rooted iterators, since standard iterators may lack the information about the container they work on.
@@ -108,7 +108,7 @@ Instead of comparing the two iterators ``it`` and ``itEnd``, we could also use t
    :fragment: standard-iterators
 
 Next we will use :dox:`RootedIteratorConcept Rooted Iterators`.
-Since :dox:`RootedIteratorConcept Rooted Iterators` know their container, the functions :dox:`RootedIteratorConcept#goBegin goBegin` and :dox:`RootedIteratorConcept#atEnd atEnd` do not need to get the container as an argument.
+Since :dox:`RootedIteratorConcept Rooted Iterators` know their container, the functions :dox:`RootedRandomAccessIteratorConcept#goBegin goBegin` and :dox:`RootedIteratorConcept#atEnd atEnd` do not need to get the container as an argument.
 The following example prints for each element of the :dox:`Dna5String Dna5 String` ``genome`` its complement:
 
 .. includefrags:: core/demos/tutorial/iterators/sequence_iterator_demo.cpp

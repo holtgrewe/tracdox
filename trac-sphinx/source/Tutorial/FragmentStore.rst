@@ -82,14 +82,14 @@ The following figure shows which tables represent the multiple read alignment:
    ***Figure 2:*** Stores used to represent a multiple read alignment
 
 
-The main table is the :dox:`FragmentStore#alignedReadStore alignedReadStore` which stores :dox:`AlignedReadStoreElement AlignedReadStoreElements`.
+The main table is the :dox:`FragmentStore::alignedReadStore alignedReadStore` which stores :dox:`AlignedReadStoreElement AlignedReadStoreElements`.
 Each entry is an alignment of a read (``readId``) and a contig (``contigId``).
 Introduced gaps are stored as a string of gap anchors in the ``gaps`` member of the alignedReadStore entry and the contigStore entry.
 The begin and end positions of the alignment are given by the ``beginPos`` and ``endPos`` members which are 0-based positions on the forward strand in gap space, i.e. positions in the gapped contig sequence.
 If the read is aligned to the reverse strand it holds ``endPos < beginPos``.
 However, the gaps are always related to the forward strand.
-Additional information, e.g. the number of errors, an alignment score or additional alignment tags, are stored in the tables :dox:`FragmentStore#alignQualityStore alignQualityStore` and :dox:`FragmentStore#alignedReadTagStore alignedReadTagStore` at position ``id``, where ``id`` is a unique id of the :dox:`AlignedReadStoreElement`.
-Paired-end or mate pair alignments are represented by two entries in the :dox:`FragmentStore#alignedReadStore alignedReadStore` that have the same ``pairMatchId`` value (unequal to ``INVALID_ID``).
+Additional information, e.g. the number of errors, an alignment score or additional alignment tags, are stored in the tables :dox:`FragmentStore::alignQualityStore alignQualityStore` and :dox:`FragmentStore::alignedReadTagStore alignedReadTagStore` at position ``id``, where ``id`` is a unique id of the :dox:`AlignedReadStoreElement`.
+Paired-end or mate pair alignments are represented by two entries in the :dox:`FragmentStore::alignedReadStore alignedReadStore` that have the same ``pairMatchId`` value (unequal to ``INVALID_ID``).
 For orphaned read alignments holds ``pairMatchId == INVALID_ID``.
 
 ::
@@ -100,7 +100,7 @@ For orphaned read alignments holds ``pairMatchId == INVALID_ID``.
      read1   ACACGGT        [2-9[
      read2     ACGGTT-G     [4-12[
 
-The :dox:`FragmentStore#alignedReadStore alignedReadStore` is the only store where the id (alignId in the figure) of an element is not implicitly given by its position.
+The :dox:`FragmentStore::alignedReadStore alignedReadStore` is the only store where the id (alignId in the figure) of an element is not implicitly given by its position.
 The reason for this is that it is necessary in many cases to rearrange the elements of the alignedReadStore, e.g. increasingly by (contigId,beginPos), by readId or pairMatchId.
 This can be done by :dox:`sortAlignedReads`.
 If it is necessary to address an element by its id, the elements must be sorted by id first.
@@ -184,7 +184,7 @@ This can be done by the following typedefs:
 .. includefrags:: core/demos/tutorial/store/store_access_aligned_reads.cpp
    :fragment: typedefs
 
-Now we want to extract and output the alignments from the :dox:`FragmentStore#alignedReadStore alignedReadStore` at position 140,144,...,156.
+Now we want to extract and output the alignments from the :dox:`FragmentStore::alignedReadStore alignedReadStore` at position 140,144,...,156.
 First we store a reference of the alignedRead in ar as we need to access it multiple times.
 The read sequence is neither stored in the readStore or alignedReadStore as many short sequences can more efficiently be stored in a separate :dox:`StringSet` like the readSeqStore.
 We copy the read sequence into a local variable (defined outside the loop to save allocations/deallocations) as we need to compute the reverse-complement for reads that align to the reverse strand.
@@ -311,7 +311,7 @@ A new iterator can be created with :dox:`ContainerConcept#begin begin` given a r
 
 It starts at the root node and can be moved to adjacent tree nodes with the functions :dox:`AnnotationTreeIterator#goDown goDown`, :dox:`AnnotationTreeIterator#goUp goUp`, and :dox:`AnnotationTreeIterator#goRight goRight`.
 These functions return a boolean value that indicates whether the iterator could be moved.
-The functions :dox:`AnnotationTreeIterator#isLeaf isLeaf`, :dox:`AnnotationTreeIterator#isRoot isRoot`, :dox:`AnnotationTreeIterator#isLastLastChild isLastChild` return the same boolean without moving the iterator.
+The functions :dox:`AnnotationTreeIterator#isLeaf isLeaf`, :dox:`AnnotationTreeIterator#isRoot isRoot`, :dox:`AnnotationTreeIterator#isLastChild isLastChild` return the same boolean without moving the iterator.
 With :dox:`AnnotationTreeIterator#goRoot goRoot` or :dox:`AnnotationTreeIterator#goTo goTo` it can be moved to the root node or an arbitrary node given its annotationId.
 If the iterator should not be moved but a new iterator at an adjacent nodes is required, the functions :dox:`AnnotationTreeIterator#nodeDown nodeDown`, :dox:`AnnotationTreeIterator#nodeUp nodeUp`, :dox:`AnnotationTreeIterator#nodeRight nodeRight` can be used.
 
@@ -371,7 +371,7 @@ The function internally uses :dox:`FragmentStore#appendRead appendRead` or :dox:
 
 Contigs can be loaded with the function :dox:`FragmentStore#loadContigs loadContigs`.
 The function loads all contigs given in a single file or multiple files given a single file name or a :dox:`StringSet` of file names.
-The function has an additional boolean parameter ``loadSeqs`` to load immediately load the contig sequence or if ``false`` load the sequence later with :dox:`loadContig` to save memory, given the corresponding ``contigId``.
+The function has an additional boolean parameter ``loadSeqs`` to load immediately load the contig sequence or if ``false`` load the sequence later with :dox:`FragmentStore#loadContig loadContig` to save memory, given the corresponding ``contigId``.
 If the contig is accessed by multiple instances/threads the functions :dox:`FragmentStore#lockContig lockContig` and :dox:`FragmentStore#unlockContig unlockContig` can be used to ensure that the contig is loaded and release it after use.
 The function :dox:`FragmentStore#unlockAndFreeContig unlockAndFreeContig` can be used to clear the contig sequence and save memory if the contig is not locked by any instance.
 
@@ -435,65 +435,65 @@ The Fragment Store consists of the following tables:
 Read Stores
 """""""""""
 
-+--------------------------------------------------+-----------------------------+--------------------------------------------------------------+
-| Store                                            | Description                 | Details                                                      |
-+==================================================+=============================+==============================================================+
-| :dox:`FragmentStore#readStore readStore`         | Reads                       | String mapping from ``readId`` to ``matePairId``             |
-+--------------------------------------------------+-----------------------------+--------------------------------------------------------------+
-| :dox:`FragmentStore#readSeqStore readSeqStore`   | Read sequences              | String mapping from ``readId`` to ``readSeq``                |
-+--------------------------------------------------+-----------------------------+--------------------------------------------------------------+
-| :dox:`FragmentStore#matePairStore matePairStore` | Mate-pairs / pairs of reads | String mapping from ``matePairId`` to ``<readId[2], libId>`` |
-+--------------------------------------------------+-----------------------------+--------------------------------------------------------------+
-| :dox:`FragmentStore#libraryStore libraryStore`   | Mate-pair libraries         | String mapping from ``libId`` to ``<mean, std>``             |
-+--------------------------------------------------+-----------------------------+--------------------------------------------------------------+
++---------------------------------------------------+-----------------------------+--------------------------------------------------------------+
+| Store                                             | Description                 | Details                                                      |
++===================================================+=============================+==============================================================+
+| :dox:`FragmentStore::readStore readStore`         | Reads                       | String mapping from ``readId`` to ``matePairId``             |
++---------------------------------------------------+-----------------------------+--------------------------------------------------------------+
+| :dox:`FragmentStore::readSeqStore readSeqStore`   | Read sequences              | String mapping from ``readId`` to ``readSeq``                |
++---------------------------------------------------+-----------------------------+--------------------------------------------------------------+
+| :dox:`FragmentStore::matePairStore matePairStore` | Mate-pairs / pairs of reads | String mapping from ``matePairId`` to ``<readId[2], libId>`` |
++---------------------------------------------------+-----------------------------+--------------------------------------------------------------+
+| :dox:`FragmentStore::libraryStore libraryStore`   | Mate-pair libraries         | String mapping from ``libId`` to ``<mean, std>``             |
++---------------------------------------------------+-----------------------------+--------------------------------------------------------------+
 
 
 Contig Stores
 """""""""""""
 
-+------------------------------------------------------+--------------------------------------------------+---------------------------------------------------------------------------------+
-| Store                                                | Description                                      | Details                                                                         |
-+======================================================+==================================================+=================================================================================+
-| :dox:`FragmentStore#contigStore contigStore`         | Contig sequences with gaps                       | String that maps from ``contigId`` to ``<contigSeq, contigGaps, contigFileId>`` |
-+------------------------------------------------------+--------------------------------------------------+---------------------------------------------------------------------------------+
-| :dox:`FragmentStore#contigFileStore contigFileStore` | Stores information how to load contigs on-demand | String that maps from ``contigFileId`` to ``<fileName, firstContigId>``         |
-+------------------------------------------------------+--------------------------------------------------+---------------------------------------------------------------------------------+
++-------------------------------------------------------+--------------------------------------------------+---------------------------------------------------------------------------------+
+| Store                                                 | Description                                      | Details                                                                         |
++=======================================================+==================================================+=================================================================================+
+| :dox:`FragmentStore::contigStore contigStore`         | Contig sequences with gaps                       | String that maps from ``contigId`` to ``<contigSeq, contigGaps, contigFileId>`` |
++-------------------------------------------------------+--------------------------------------------------+---------------------------------------------------------------------------------+
+| :dox:`FragmentStore::contigFileStore contigFileStore` | Stores information how to load contigs on-demand | String that maps from ``contigFileId`` to ``<fileName, firstContigId>``         |
++-------------------------------------------------------+--------------------------------------------------+---------------------------------------------------------------------------------+
 
 Read Alignment Stores
 """""""""""""""""""""
 
-+--------------------------------------------------------------+-----------------------------------------+-----------------------------------------------------------------------------------------+
-| Store                                                        | Description                             | Details                                                                                 |
-+==============================================================+=========================================+=========================================================================================+
-| :dox:`FragmentStore#alignedReadStore alignedReadStore`       | Alignments of reads against contigs     | String that stores ``<alignId, readId, contigId, pairMatchId, beginPos, endPos, gaps>`` |
-+--------------------------------------------------------------+-----------------------------------------+-----------------------------------------------------------------------------------------+
-| :dox:`FragmentStore#alignedReadTagStore alignedReadTagStore` | Additional alignment tags (used in SAM) | String that maps from ``alignId`` to ``alignTag``                                       |
-+--------------------------------------------------------------+-----------------------------------------+-----------------------------------------------------------------------------------------+
-| :dox:`FragmentStore#alignQualityStore alignQualityStore`     | Mapping quality of read alignments      | String that maps from ``alignId`` to ``<pairScore, score, errors>``                     |
-+--------------------------------------------------------------+-----------------------------------------+-----------------------------------------------------------------------------------------+
++---------------------------------------------------------------+-----------------------------------------+-----------------------------------------------------------------------------------------+
+| Store                                                         | Description                             | Details                                                                                 |
++===============================================================+=========================================+=========================================================================================+
+| :dox:`FragmentStore::alignedReadStore alignedReadStore`       | Alignments of reads against contigs     | String that stores ``<alignId, readId, contigId, pairMatchId, beginPos, endPos, gaps>`` |
++---------------------------------------------------------------+-----------------------------------------+-----------------------------------------------------------------------------------------+
+| :dox:`FragmentStore::alignedReadTagStore alignedReadTagStore` | Additional alignment tags (used in SAM) | String that maps from ``alignId`` to ``alignTag``                                       |
++---------------------------------------------------------------+-----------------------------------------+-----------------------------------------------------------------------------------------+
+| :dox:`FragmentStore::alignQualityStore alignQualityStore`     | Mapping quality of read alignments      | String that maps from ``alignId`` to ``<pairScore, score, errors>``                     |
++---------------------------------------------------------------+-----------------------------------------+-----------------------------------------------------------------------------------------+
 
 
 Annotation Stores
 """""""""""""""""
 
-+------------------------------------------------------+-------------------------------+----------------------------------------------------------------------------------------------------------------------------+
-| Store                                                | Description                   | Details                                                                                                                    |
-+======================================================+===============================+============================================================================================================================+
-| :dox:`FragmentStore#annotationStore annotationStore` | Annotations of contig regions | String that maps from ``annoId`` to ``<contigId, typeId, beginPos, endPos, parentId, lastChildId, nextSiblingId, values>`` |
-+------------------------------------------------------+-------------------------------+----------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------+-------------------------------+----------------------------------------------------------------------------------------------------------------------------+
+| Store                                                 | Description                   | Details                                                                                                                    |
++=======================================================+===============================+============================================================================================================================+
+| :dox:`FragmentStore::annotationStore annotationStore` | Annotations of contig regions | String that maps from ``annoId`` to ``<contigId, typeId, beginPos, endPos, parentId, lastChildId, nextSiblingId, values>`` |
++-------------------------------------------------------+-------------------------------+----------------------------------------------------------------------------------------------------------------------------+
 
 
 Name Stores
 """""""""""
 
-+--------------------------------------------------------------+-------------------------------+------------------------------------------------------+
-| :dox:`FragmentStore#annotationNameStore annotationNameStore` | Annotation names              | String that maps from ``annoId`` to ``annoName``     |
-+==============================================================+===============================+======================================================+
-| :dox:`FragmentStore#readNameStore readNameStore`             | Read identifiers (Fasta ID)   | String that maps from ``readId`` to ``readName``     |
-+--------------------------------------------------------------+-------------------------------+------------------------------------------------------+
-| :dox:`FragmentStore#contigNameStore contigNameStore`         | Contig identifiers (Fasta ID) | String that maps from ``contigId`` to ``contigName`` |
-+--------------------------------------------------------------+-------------------------------+------------------------------------------------------+
-| :dox:`FragmentStore#matePairNameStore matePairNameStore`     | Mate-pair identifiers         | String that maps from ``contigId`` to ``contigName`` |
-+--------------------------------------------------------------+-------------------------------+------------------------------------------------------+
-| :dox:`FragmentStore#libraryNameStore libraryNameStore`       | Mate-pair library identifiers | String that maps from ``libId`` to ``libName``       |
-+--------------------------------------------------------------+-------------------------------+------------------------------------------------------+
++---------------------------------------------------------------+-------------------------------+------------------------------------------------------+
+| :dox:`FragmentStore::annotationNameStore annotationNameStore` | Annotation names              | String that maps from ``annoId`` to ``annoName``     |
++===============================================================+===============================+======================================================+
+| :dox:`FragmentStore::readNameStore readNameStore`             | Read identifiers (Fasta ID)   | String that maps from ``readId`` to ``readName``     |
++---------------------------------------------------------------+-------------------------------+------------------------------------------------------+
+| :dox:`FragmentStore::contigNameStore contigNameStore`         | Contig identifiers (Fasta ID) | String that maps from ``contigId`` to ``contigName`` |
++---------------------------------------------------------------+-------------------------------+------------------------------------------------------+
+| :dox:`FragmentStore::matePairNameStore matePairNameStore`     | Mate-pair identifiers         | String that maps from ``contigId`` to ``contigName`` |
++---------------------------------------------------------------+-------------------------------+------------------------------------------------------+
+| :dox:`FragmentStore::libraryNameStore libraryNameStore`       | Mate-pair library identifiers | String that maps from ``libId`` to ``libName``       |
++---------------------------------------------------------------+-------------------------------+------------------------------------------------------+

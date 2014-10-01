@@ -76,7 +76,7 @@ Program output:
 
 Currently the following exact online algorithms for searching a single sequence are implemented in SeqAn:
 
-:dox:`SimplePatter Simple`
+:dox:`SimplePattern Simple`
   Brute force algorithm
 
 :dox:`HorspoolPattern Horspool`

@@ -33,14 +33,14 @@ The second part will then deal with the DFS.
 Top-Down Iteration
 ~~~~~~~~~~~~~~~~~~
 
-For index based pattern search or algorithms traversing only the upper parts of the suffix tree the :dox:`TopDownIterator#TopDown Iterator` or :dox:`TopDownHistoryIterator#TopDown History Iterator` is the best solution.
-Both provide the functions :dox:`VSTreeIterator#goDown goDown` and :dox:`VSTreeIterator#goRight goRight` to go down to the first child node or go to the next sibling.
-The :dox:`TopDownHistoryIterator#TopDown History Iterator` additionally provides :dox:`TopDownHistoryIterator#goUp goUp` to go back to the parent node.
+For index based pattern search or algorithms traversing only the upper parts of the suffix tree the :dox:`TopDownIterator TopDown Iterator` or :dox:`TopDownHistoryIterator TopDown History Iterator` is the best solution.
+Both provide the functions :dox:`TopDownIterator#goDown goDown` and :dox:`TopDownIterator#goRight goRight` to go down to the first child node or go to the next sibling.
+The :dox:`TopDownHistoryIterator TopDown History Iterator` additionally provides :dox:`TopDownHistoryIterator#goUp goUp` to go back to the parent node.
 The child nodes in :dox:`IndexEsa IndexEsa` indices are lexicographically sorted from first to last.
 For :dox:`IndexWotd` and :dox:`IndexDfi` indices this holds for all children except the first.
 
-In the next example we want to use the :dox:`TopDownIterator#TopDown Iterator` to efficiently search a text for exact matches of a pattern.
-We therefore want to use :dox:`VSTreeIterator#goDown goDown` which has an overload to go down an edge beginning with a specific character.
+In the next example we want to use the :dox:`TopDownIterator TopDown Iterator` to efficiently search a text for exact matches of a pattern.
+We therefore want to use :dox:`TopDownIterator#goDown goDown` which has an overload to go down an edge beginning with a specific character.
 
 .. important::
 
@@ -54,13 +54,13 @@ First we create an index of the text ``"How much wood would a woodchuck chuck?"`
 .. includefrags:: core/demos/tutorial/index/index_search.cpp
    :fragment: initialization
 
-Afterwards we create the :dox:`TopDownIterator#TopDown Iterator` using the metafunction Iterator, which expects two arguments, the type of the container to be iterated and a specialization tag (see the VSTree Iterator hierarchy and the :dox:`tutorial-iterators` Tutorial for more details).
+Afterwards we create the :dox:`TopDownIterator TopDown Iterator` using the metafunction Iterator, which expects two arguments, the type of the container to be iterated and a specialization tag (see the VSTree Iterator hierarchy and the :ref:`tutorial-iterators` Tutorial for more details).
 
 .. includefrags:: core/demos/tutorial/index/index_search.cpp
    :fragment: iterator
 
 The main search can then be implemented using the functions :dox:`VSTreeIterator#repLength repLength` and :dox:`VSTreeIterator#representative representative`.
-Since :dox:`VSTreeIterator#goDown goDown` might cover more than one character it is necessary to compare parts of the pattern against the representative of the iterator.
+Since :dox:`TopDownIterator#goDown goDown` might cover more than one character it is necessary to compare parts of the pattern against the representative of the iterator.
 The search can now be implemented as follows.
 The algorithm descends the suffix tree along edges beginning with the corresponding pattern character.
 In each step the ``unseen`` edge characters have to be verified.
@@ -84,7 +84,7 @@ Program output:
    9
    22
 
-Alternatively, we could have used :dox:`VSTreeIterator#goDown goDown` to go down the path of a pattern instead single characters:
+Alternatively, we could have used :dox:`TopDownIterator#goDown goDown` to go down the path of a pattern instead single characters:
 
 .. includefrags:: core/demos/tutorial/index/index_search2.cpp
    :fragment: output
@@ -129,10 +129,10 @@ Assignment 2
 	:width: 300px
 
      At each node print the text of the edges from the root to the node.
-     You may only use the functions :dox:`VSTreeIterator#goDown goDown`, :dox:`VSTreeIterator#goRight goRight`, :dox:`TopDownHistoryIterator#goUp goUp` and :dox:`VSTreeIterator#goRoot goRoot`, :dox:`VSTreeIterator#isRoot isRoot` and :dox:`VSTreeIterator#representative representative` which returns the string that represents the node the iterator points to.
+     You may only use the functions :dox:`TopDownIterator#goDown goDown`, :dox:`TopDownIterator#goRight goRight`, :dox:`TopDownHistoryIterator#goUp goUp` and :dox:`VSTreeIterator#goRoot goRoot`, :dox:`VSTreeIterator#isRoot isRoot` and :dox:`VSTreeIterator#representative representative` which returns the string that represents the node the iterator points to.
 
    Hint
-     * Use a :dox:`TopDownHistoryIterator#TopDown History Iterator`.
+     * Use a :dox:`TopDownHistoryIterator TopDown History Iterator`.
      * The code skeleton could look like this:
 
        .. code-block:: cpp
@@ -225,8 +225,10 @@ In order to do so, we create the string "abracadabra" and an index specialized w
 .. includefrags:: core/demos/tutorial/index/index_preorder.cpp
    :fragment: includes
 
-The :dox:`Iterator` metafunction expects two arguments, the type of the container to be iterated and a specialization tag, as described earlier.
-In this example we chose a :dox:`TopDownHistoryIterator#TopDown History Iterator` whose signature in the second template argument is ``TopDown< ParentLinks<Preorder> >``.
+.. TODO Iterator metafunction not documented for Index.
+
+The :dox:`Index#Iterator` metafunction expects two arguments, the type of the container to be iterated and a specialization tag, as described earlier.
+In this example we chose a :dox:`TopDownHistoryIterator TopDown History Iterator` whose signature in the second template argument is ``TopDown< ParentLinks<Preorder> >``.
 
 .. includefrags:: core/demos/tutorial/index/index_preorder.cpp
    :fragment: initialization
@@ -256,13 +258,13 @@ Program output:
 
    There are currently 2 iterators in SeqAn supporting a DFS search:
 
-   +-------------------------+----------+-----------+
-   | Iterator                | Preorder | Postorder |
-   +=========================+==========+===========+
-   | :dox:`BottomUpIterator` | no       | yes       |
-   +-------------------------+----------+-----------+
-   | :dox:`HistoryIterator`  | yes      | yes       |
-   +-------------------------+----------+-----------+
+   +--------------------------------+----------+-----------+
+   | Iterator                       | Preorder | Postorder |
+   +================================+==========+===========+
+   | :dox:`BottomUpIterator`        | no       | yes       |
+   +--------------------------------+----------+-----------+
+   | :dox:`TopDownHistoryIterator`  | yes      | yes       |
+   +--------------------------------+----------+-----------+
 
 
    If solely a postorder traversal is needed the :dox:`BottomUpIterator BottomUp Iterator` should be preferred as it is more memory efficient.
@@ -287,21 +289,21 @@ Assignment 4
      Review
 
    Objective
-     Write a program that constructs an index of the :dox:`VSTreeIterator#StringSet StringSet` "tobeornottobe", "thebeeonthecomb", "beingjohnmalkovich" and outputs the strings corresponding to suffix tree nodes in postorder DFS.
+     Write a program that constructs an index of the :dox:`StringSet` "tobeornottobe", "thebeeonthecomb", "beingjohnmalkovich" and outputs the strings corresponding to suffix tree nodes in postorder DFS.
 
    Solution
      .. container:: foldable
 
-	First we have to create a :dox:`Class.StringSet` of :dox:`Shortcut.CharString` (shortcut for ``String<char>``) and append the 3 strings to it.
-	This could also be done by using :dox:`Function.resize` and :dox:`Function.assignValue`.
+	First we have to create a :dox:`StringSet` of :dox:`CharString` (shortcut for ``String<char>``) and append the 3 strings to it.
+	This could also be done by using :dox:`SequenceConcept#resize resize` and then assigning the members with ``operator[]``.
 	The first template argument of the index class has to be adapted and is now a StringSet.
 
 	.. includefrags:: core/demos/tutorial/index/index_assignment1.cpp
 	   :fragment: initialization
 
 	To switch to postorder DFS we have two change the specialization tag of ``ParentLinks`` from ``Preorder`` to ``Postorder``.
-	Please note that the :dox:`Spec.TopDown Iterator` always starts in the root node, which is the last postorder DFS node.
-	Therefore, the iterator has to be set explicitly to the first DFS node via :dox:`Function.goBegin`.
+	Please note that the :dox:`TopDownHistoryIterator` always starts in the root node, which is the last postorder DFS node.
+	Therefore, the iterator has to be set explicitly to the first DFS node via :dox:`VSTreeIterator#goBegin`.
 
 	.. includefrags:: core/demos/tutorial/index/index_assignment1.cpp
 	   :fragment: iteration1
@@ -436,7 +438,7 @@ There are various functions to access the node the iterator points at (some we h
 :dox:`VSTreeIterator#isLeaf isLeaf`
   tests if the current node is a tree leaf
 
-:dox:`VSTreeIterator#parentEdgeLabel parentEdgeLabel`
+:dox:`TopDownIterator#parentEdgeLabel parentEdgeLabel`
   returns the substring that represents the edge from the current node to its parent (only TopDownHistory Iterator)
 
 .. TODO: Dave has to integrate the figure here

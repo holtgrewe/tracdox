@@ -244,7 +244,7 @@ or
    open(index, fileName);
 
 If you have built your q-gram index with variable shapes (i.e. :dox:`SimpleShape` :dox:`GenericShape`), you have to keep in mind that q or the shape is not stored or loaded.
-This must be done manually directly before or after loading with :dox:`SimpleShape#resize` oder :dox:`GenericShape#stringToShape`.
+This must be done manually directly before or after loading with :dox:`Shape#resize resize` oder :dox:`Shape#stringToShape stringToShape`.
 
 A newly instantiated index is initially empty.
 If you assign a text to be indexed, solely the text fibre is set.

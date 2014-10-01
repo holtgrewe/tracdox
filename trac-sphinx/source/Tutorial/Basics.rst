@@ -48,20 +48,20 @@ Iterators
 ~~~~~~~~~
 
 An iterator is an object that is used to browse through the values of a container.
-The metafunction :dox:`Iterator` can be used to determine an appropriate iterator type given a container. 
+The metafunction :dox:`ContainerConcept#Iterator Iterator` can be used to determine an appropriate iterator type given a container. 
 Some containers offer several kinds of iterators, which can be selected by an optional argument of Iterator. 
 For example, the tag :dox:`ContainerIteratorTags#Standard Standard` can be used to get an iterator type that resembles the C++ standard random access iterator.
 The more elaborated :dox:`RootedIteratorConcept Rooted\ Iterator`, i.e., an iterator that knows its container, can be selected by specifying the :dox:`ContainerIteratorTags#Rooted Rooted` tag.
 
-Rooted iterators offer some convenience for the user: They offer additional functions like :dox:`container` for determining the container on which the iterator works, and they simplify the interface for other functions like :dox:`atEnd`.
+Rooted iterators offer some convenience for the user: They offer additional functions like :dox:`RootedIteratorConcept#container container` for determining the container on which the iterator works, and they simplify the interface for other functions like :dox:`RootedIteratorConcept#atEnd atEnd`.
 Moreover, rooted iterators may change the container’s length or capacity, which makes it possible to implement a more intuitive variant of a remove algorithm.
 
 While rooted iterators can usually be converted into standard iterators, it is not always possible to convert standard iterators back into rooted iterators, since standard iterators may lack the information about the container they work on.
-Therefore, many functions that return iterators like :dox:`begin` or :dox:`end` return rooted iterators instead of standard iterators; this way, they can be used to set both rooted and standard iterator variables.
+Therefore, many functions that return iterators like :dox:`ContainerConcept#begin begin` or :dox:`ContainerConcept#end end` return rooted iterators instead of standard iterators; this way, they can be used to set both rooted and standard iterator variables.
 Alternatively it is possible to specify the returned iterator type explicitly by passing the iterator kind as a tag argument.
 
 The following code piece shows examples for creating Iterators for :dox:`ContainerConcept Containers`. 
-If no iterator kind is specified, the metafunction :dox:`ContainerConcept#Iterator Iterator` assumes :dox:`ContainerIteratorTags#Standard Standard` and the function :dox:`begin` assumes :dox:`ContainerIteratorTags#Rooted Rooted`.
+If no iterator kind is specified, the metafunction :dox:`ContainerConcept#Iterator Iterator` assumes :dox:`ContainerIteratorTags#Standard Standard` and the function :dox:`ContainerConcept#begin begin` assumes :dox:`ContainerIteratorTags#Rooted Rooted`.
 Both ``it1`` and ``it2`` are standard iterators, whereas ``it3`` and ``it4`` are rooted iterators.
 
 .. code-block:: cpp

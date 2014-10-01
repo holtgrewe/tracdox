@@ -246,8 +246,8 @@ Note that we use the :dox:`CigarElement` class to store entries in the CIGAR str
 
 The static members ``INVALID_POS``, ``INVALID_REFID``, and ``INVALID_LEN`` store sentinel values for marking positions, reference sequence ids, and lengths as invalid or N/A.
 
-An important related type is the enum :dox:`BamAlignmentRecord#BamFlags BamFlags` that provides constants for bit operations on the ``flag`` field.
-The functions :dox:`BamAlignmentRecord#hasFlagAllProper hasFlagAllProper`, :dox:`BamAlignmentRecord#ahasFlagDuplicate hasFlagDuplicate`, :dox:`BamAlignmentRecord#hasFlagFirst hasFlagFirst`, :dox:`BamAlignmentRecord#hasFlagLast hasFlagLast`, :dox:`BamAlignmentRecord#hasFlagMultiple hasFlagMultiple`, :dox:`BamAlignmentRecord#hasFlagNextRC hasFlagNextRC`, :dox:`BamAlignmentRecord#hasFlagNextUnmapped hasFlagNextUnmapped`, :dox:`BamAlignmentRecord#hasFlagQCNoPass hasFlagQCNoPass`, :dox:`BamAlignmentRecord#hasFlagRC hasFlagRC`, :dox:`BamAlignmentRecord#hasFlagSecondary hasFlagSecondary`, :dox:`BamAlignmentRecord#hasFlagUnmapped hasFlagUnmapped`, and :dox:`BamAlignmentRecord#hasFlagSupplementary hasFlagSupplementary` allow for easy reading of flags.
+An important related type is the enum :dox:`BamFlags` that provides constants for bit operations on the ``flag`` field.
+The functions :dox:`BamAlignmentRecord#hasFlagAllProper hasFlagAllProper`, :dox:`BamAlignmentRecord#hasFlagDuplicate hasFlagDuplicate`, :dox:`BamAlignmentRecord#hasFlagFirst hasFlagFirst`, :dox:`BamAlignmentRecord#hasFlagLast hasFlagLast`, :dox:`BamAlignmentRecord#hasFlagMultiple hasFlagMultiple`, :dox:`BamAlignmentRecord#hasFlagNextRC hasFlagNextRC`, :dox:`BamAlignmentRecord#hasFlagNextUnmapped hasFlagNextUnmapped`, :dox:`BamAlignmentRecord#hasFlagQCNoPass hasFlagQCNoPass`, :dox:`BamAlignmentRecord#hasFlagRC hasFlagRC`, :dox:`BamAlignmentRecord#hasFlagSecondary hasFlagSecondary`, :dox:`BamAlignmentRecord#hasFlagUnmapped hasFlagUnmapped`, and :dox:`BamAlignmentRecord#hasFlagSupplementary hasFlagSupplementary` allow for easy reading of flags.
 
 For example, the following loop sums up the length of the sequences that did not align:
 

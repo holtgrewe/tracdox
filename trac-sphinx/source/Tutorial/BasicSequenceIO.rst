@@ -379,7 +379,7 @@ Since the suffixes ``.gz`` and ``.bz2`` are ignored, ``.fa.gz``, ``.fa.bz2``, ..
 
 File type detection from standard input is currently limited to either gzip-compressed or plain-text data.
 
-Note that you can also use additional parameters in the :dox:`SequenceStream#SequenceStream SequenceStream constructor` to force a certain file type and file format when writing.
+Note that you can also use additional parameters in the :dox:`SequenceStream::SequenceStream SequenceStream constructor` to force a certain file type and file format when writing.
 You can also force a certain file type and format when reading but this is only helpful in the few instances where the automatic detection fails.
 
 This means that all the examples and your solutions to the assignments from above **already have compression support built-in**, if the compression libraries are available.

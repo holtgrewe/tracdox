@@ -288,8 +288,8 @@ Assignment 4
 So this is already the fundamental part of our program.
 What's left to do is to write the result into a SAM file.
 In order to do so, we make use of the :dox:`FragmentStore`.
-Everything we need to do is to fill the :dox:`FragmentStore#alignedReadStore alignedReadStore` which is a member of the :dox:`FragmentStore`.
-This is very easy, because we only need to append a new value of type :dox:`AlignedReadStoreElement#AlignedReadStoreElement AlignedReadStoreElement` specifying the match id, the pattern id, the id of the contig, as well as the begin and end position of the match in the reference.
+Everything we need to do is to fill the :dox:`FragmentStore::alignedReadStore alignedReadStore` which is a member of the :dox:`FragmentStore`.
+This is very easy, because we only need to append a new value of type :dox:`AlignedReadStoreElement::AlignedReadStoreElement AlignedReadStoreElement` specifying the match id, the pattern id, the id of the contig, as well as the begin and end position of the match in the reference.
 
 An ``addMatchToStore`` function could look like this:
 

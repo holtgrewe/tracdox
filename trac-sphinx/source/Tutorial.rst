@@ -65,9 +65,6 @@ Tutorial
    Tutorial/LexicalCasting
    Tutorial/Parsing
 
-   Tutorial/MotifFinding
-   Tutorial/MotifFindingAssignment
-
    Tutorial/FragmentStore
    Tutorial/SimpleRnaSeq
    Tutorial/SimpleReadMapping
@@ -242,11 +239,6 @@ Read the following tutorials to learn how to write your own I/O routines.
 :ref:`tutorial-parsing`
   In this part of the tutorial, you will be introduced to the parsing and tokenizing functionality using the RecordReader class.
   You will get the necessary information to write your own file parsers.
-
-.. rubric:: :rubric-heading2:`Motif Finding`
-
-:ref:`tutorial-motif-finding`
-  This section of the tutorial introduces you to the algorithms in SeqAn for motif finding.
 
 .. rubric:: :rubric-heading1:`Advanced Tutorials`
 

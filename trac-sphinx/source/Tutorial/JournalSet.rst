@@ -136,7 +136,7 @@ Journaled Set
 The :dox:`JournaledSet` is a specialization of the :dox:`StringSet` which can be used exactly as such but also provides some additional functions optimized to work with :dox:`JournaledString JournaledStrings`.
 The general interface is equal to the interface of the StringSet.
 But it also provides some interfaces specialized for the use of Journaled Strings.
-One of these interfaces is the :dox:`JournaledString#join join` function which journales a contained Journaled String to the previously set global reference.
+One of these interfaces is the :dox:`JournaledSet#join join` function which journales a contained Journaled String to the previously set global reference.
 The following code snippet demonstrates the usage of the Journal Set and how to join a sequence to the previously set reference sequence.
 
 As usual we include the necessary headers.
@@ -158,7 +158,7 @@ For this purpose you can use the function :dox:`JournaledSet#createGlobalReferen
    :fragment: init
 
 Just adding sequences to the Journal Set does not automatically journal them to the global reference sequence of the set.
-One can explicitly trigger this process using the function :dox:`JournaledString#join join`.
+One can explicitly trigger this process using the function :dox:`JournaledSet#join join`.
 This function takes as parameters the Journal Set and the position of the contained Journaled String which is to be journaled to the reference sequence.
 Thus, the programmer is free in the decision which sequence has to be journaled and which not.
 Furthermore, we can use the :dox:`JoinConfig` object to specify the method that shall be used for the journaling process.

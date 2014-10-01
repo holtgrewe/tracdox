@@ -50,7 +50,7 @@ Each shape evaluates a gapped or ungapped sequence of q characters to a hash val
 For example, the shape ``1101`` represents a 3-gram with one gap of length 1.
 This shape overlayed with the :dox:`Dna` text ``"GATTACA"`` at the third position corresponds to ``"TT-C"``.
 The function :dox:`Shape#hash hash` converts this 3-gram into :math:`61 = (\mathbf{3} \cdot 4 + \mathbf{3}) \cdot 4 + 1`.
-4 is the alphabet size in this example (see :dox:`ValueSize`).
+4 is the alphabet size in this example (see :dox:`FiniteOrderedAlphabetConcept#ValueSize ValueSize`).
 
 With :dox:`Shape#hash hash`and :dox:`Shape#hash hashNext`, we can compute the hash values of arbitrary / adjacent q-grams and a loop that outputs the hash values of all overlapping ungapped 3-grams could look as follows:
 
@@ -66,7 +66,7 @@ As a remedy, the :dox:`Shape#hashInit hashInit` function can be used first and t
 .. includefrags:: core/demos/tutorial/index/index_qgram_hash.cpp
    :fragment: hash_loop2
 
-The q-gram index offers different functions to search or count occurrences of q-grams in an indexed text, see :dox:`Index#getOccurrences getOccurrences`, :dox:`Index#countOccurrences countOccurrences`.
+The q-gram index offers different functions to search or count occurrences of q-grams in an indexed text, see :dox:`IndexQGram#getOccurrences getOccurrences`, :dox:`IndexQGram#countOccurrences countOccurrences`.
 A q-gram index over a :dox:`StringSet` stores occurrence positions in the same way as the ESA index and in the same fibre (FibreSA).
 If only the number of q-grams per sequence are needed the QGramCounts and QGramCountsDir fibres can be used.
 They store pairs ``(seqNo, count)``, ``count``>0, for each q-gram that occurs ``counts`` times in sequence number ``seqNo``.
@@ -91,7 +91,7 @@ The string can be given to the index constructor.
    :fragment: initialization
 
 To get all occurrences of a q-gram, we first have to hash it with a shape of the same type as the index shape (we can even use the index shape returned by :dox:`IndexQGram#indexShape indexShape`).
-The hash value returned by :dox:`Shape#hash hash` or :dox:`Shape#hashNext hashNext` is also stored in the shape and is used by the function :dox:`Index#getOccurrences getOccurrences` to retrieve all occurrences of our 3-gram.
+The hash value returned by :dox:`Shape#hash hash` or :dox:`Shape#hashNext hashNext` is also stored in the shape and is used by the function :dox:`IndexQGram#getOccurrences getOccurrences` to retrieve all occurrences of our 3-gram.
 
 .. includefrags:: core/demos/tutorial/index/index_qgram.cpp
    :fragment: output
@@ -119,7 +119,7 @@ Assignment 1
 
 	Before we can create a :dox:`DnaString` index of "CATGATTACATA", we have to choose an appropriate :dox:`Shape`.
 	Because our shape ``1101`` is known at compile-time and contains only one gap we could choose :dox:`OneGappedShape`, :dox:`GappedShape`, or :dox:`GenericShape` (see the commented-out code).
-	Although the :dox:`GenericShape` could be used for every possible shape, it is a good idea to choose a :dox:`Shape` with restrictions as its :dox:`Hash#hash` functions are more efficient in general.
+	Although the :dox:`GenericShape` could be used for every possible shape, it is a good idea to choose a :dox:`Shape` with restrictions as its :dox:`Shape#hash` functions are more efficient in general.
 
 	.. includefrags:: core/demos/tutorial/index/index_assignment5.cpp
 	   :fragment: initialization
@@ -127,7 +127,7 @@ Assignment 1
 	Please note that the :dox:`Shape` object that corresponds to the :dox:`IndexQGram` index is empty initially and has to be set by :dox:`Shape#stringToShape` or :dox:`Shape#resize`.
 	This initialization is not necessary for :dox:`Shape` that are defined at compile-time, i.e. :dox:`UngappedShape` and :dox:`GappedShape`.
 	To search for "AT-A" we first have to hash it with the index shape or any other :dox:`Shape` with the same bitmap.
-	The we can use :dox:`getOccurrences` to output all matches.
+	The we can use :dox:`IndexQGram#getOccurrences` to output all matches.
 
 	.. includefrags:: core/demos/tutorial/index/index_assignment5.cpp
           :fragment: output
@@ -189,7 +189,7 @@ Assignment 2
 	.. includefrags:: core/demos/tutorial/index/index_assignment6.cpp
 	   :fragment: matrix_calculation
 
-	Please note that the :dox:`OpenAddressingTags OpenAddressing` index directories are smaller than the :dox:`IndexQGram` index directories.
+	Please note that the :dox:`OpenAddressingQGramIndex open addressing` q-gram index directories are smaller than the :dox:`IndexQGram` index directories.
 
 	Program output:
 

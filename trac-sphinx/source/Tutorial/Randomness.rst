@@ -73,7 +73,7 @@ The output of this fragment is:
 
 Also note that you can initialize the :dox:`LogNormalPdf Log-Normal Pdf` either with mean and standard deviation of the log-normal distribution or the underlying normal distribution.
 By default, you initialize it with the mean and standard deviation (mu and sigma) of the underlying normal distribution.
-Use the tags :dox:`LognormalConstruction#MuSigma MuSigma` and :dox:`LognormalConstruction#MeanStdDev MeanStdDev` in the constructor to select a mode.
+Use the tags :dox:`LognormalConstructionTags#MuSigma MuSigma` and :dox:`LognormalConstructionTags#MeanStdDev MeanStdDev` in the constructor to select a mode.
 
 .. includefrags:: core/demos/tutorial/random/random_examples.cpp
    :fragment: random-number-generation-log-normal

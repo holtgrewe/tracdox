@@ -31,7 +31,7 @@ AnnotationStore as Part of the FragmentStore
 
 This section will give you a short introduction to data structures relevant for working with annotations.
 
-In SeqAn, annotations are stored in the so-called :dox:`FragmentStore:;annotationStore annotationStore`, which is part of the :dox:`FragmentStore`.
+In SeqAn, annotations are stored in the so-called :dox:`FragmentStore::annotationStore annotationStore`, which is part of the :dox:`FragmentStore`.
 The annotationStore can only be used together with the FragmentStore, because the latter stores additional information, e.g. the contig names or sequences.
 The FragmentStore is a data structure specifically designed for read mapping, genome assembly or gene annotation.
 

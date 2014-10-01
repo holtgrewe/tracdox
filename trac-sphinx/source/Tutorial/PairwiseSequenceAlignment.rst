@@ -315,7 +315,6 @@ First the necessary includes and typedefs:
 
 In addition to the previous examined examples we tell the globalAlignment function to use the desired Hirschberg algorithm by explicitly passing the tag ``Hirschberg`` as last parameter.
 The resulting alignment and score are then printed.
-For an overview of available alignment algorithms, see :dox:`PairwiseAlignmentAlgorithms Pairwise Alignment Algorithms`.
 
 .. includefrags:: core/demos/tutorial/alignments/alignment_global_specialised.cpp
    :fragment: alignment
