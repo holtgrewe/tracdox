@@ -61,7 +61,7 @@ In this section you will learn how to iterate over a container using the basic f
 An iterator always points to one value of the container.
 The function :dox:`RandomAccessContainerConcept#value value`, which is equivalent to the ``operator*``, can be used to access this value by reference.
 In contrast :dox:`RandomAccessContainerConcept#getValue getValue` return a copy of the value.
-Functions like seqan:Function.goNext or seqan:Function.goPrevious, which are equivalent to ``operator++`` and ``operator--`` respectively, can be used to move the iterator to other values within the container.
+Functions like :dox:`InputIteratorConcept#goNext goNext` or :dox:`BidirectionalIteratorConcept#goPrevious goPrevious`, which are equivalent to ``operator++`` and ``operator--`` respectively, can be used to move the iterator to other values within the container.
 
 The functions :dox:`ContainerConcept#begin begin` and :dox:`ContainerConcept#end end`, applied to a container, return iterators to the begin and to the end of the container.
 Note that similar to C++ standard library iterators, the iterator returned by :dox:`ContainerConcept#end end` does not point to the last value of the container but to the position behind the last one.
@@ -114,8 +114,8 @@ The following example prints for each element of the :dox:`Dna5String Dna5 Strin
 .. includefrags:: core/demos/tutorial/iterators/sequence_iterator_demo.cpp
    :fragment: rooted-iterators
 
-Some iterators support iteration in reverse order with seqan:Function.goPrevious as you can see in the next example.
-Note that seqan:Function.goPrevious is called before the value of ``it2`` is accessed.
+Some iterators support iteration in reverse order with :dox:`BidirectionalIteratorConcept#goPrevious goPrevious` as you can see in the next example.
+Note that :dox:`BidirectionalIteratorConcept#goPrevious goPrevious` is called before the value of ``it2`` is accessed.
 Remember that the end position of a container is always the position behind the last item in the container.
 
 .. includefrags:: core/demos/tutorial/iterators/sequence_iterator_demo.cpp

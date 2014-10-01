@@ -84,23 +84,24 @@ Example:
 
     #cpp
     /*!
-    *@class Align
-    *@brief Store a tabular alignment.
+     * @class Align
+     * @brief Store a tabular alignment.
      *
-    *@signature template <typename TSource, typename TSpec>
-    *class Align;
-    *@tparam TSource The type of the underlying sequence.
-    *@tparam TSpec   Tag for selecting the specialization of the Align class.
+     * @signature template <typename TSource, typename TSpec>
+     *            class Align;
      *
-    *The <tt>Align</tt> class provides a tabular alignment of sequences with the
-    *same type.  The sequences are given with <tt>TSource</tt>.  An <tt>Align</tt>
-    *object will use a <a href="seqan:Gaps">Gaps</a> object for each sequence.
-    *The specialization of the <a href="seqan:Gaps">Gaps</a> object can be selected
-    *using the <tt>TSpec</tt> template parameter.
+     * @tparam TSource The type of the underlying sequence.
+     * @tparam TSpec   Tag for selecting the specialization of the Align class.
      *
-    *@see Gaps
-    *@see globalAlignment
-    */
+     * The <tt>Align</tt> class provides a tabular alignment of sequences with the
+     * same type.  The sequences are given with <tt>TSource</tt>.  An <tt>Align</tt>
+     * object will use a <a href="seqan:Gaps">Gaps</a> object for each sequence.
+     * The specialization of the <a href="seqan:Gaps">Gaps</a> object can be selected
+     * using the <tt>TSpec</tt> template parameter.
+     *
+     * @see Gaps
+     * @see globalAlignment
+     */
 
 Images are included using ``<img src="${PATH}">`` where ``${PATH}`` is
 relative to the source image directory.

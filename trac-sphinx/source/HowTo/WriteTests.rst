@@ -72,7 +72,7 @@ Test Macros
 ~~~~~~~~~~~
 
 Inside your tests, you can use the ``SEQAN_ASSERT*`` and ``SEQAN_ASSERT_*_MSG`` macros to check for assertions.
-Other useful macros are seqan:Macro.SEQAN_PATH_TO_ROOT and seqan:Macro.SEQAN_TEMP_FILENAME.
+Other useful macros are :dox:`SEQAN_PATH_TO_ROOT` and :dox:`SEQAN_TEMP_FILENAME`.
 
 The macros themselves are documented in the dox:``SeqAn API documentation AssertMacros``.
 

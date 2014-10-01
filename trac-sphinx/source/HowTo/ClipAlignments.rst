@@ -8,7 +8,7 @@
 How To: Compute Positions In Clipped Alignments
 ===============================================
 
-This page describes how to compute view and source positions in an unclipped and clipped seqan:class.Align object.
+This page describes how to compute view and source positions in an unclipped and clipped :dox:`Align`.
 
 Position Computation Overview
 -----------------------------
@@ -20,9 +20,9 @@ The following picture and list show the easiest transformations between the coor
 .. figure:: gaps_transformations.png
    :align: center
 
-#. Translate between view (gapped clipped) position and source (ungaped unclipped) position using the functions seqan:Function.toSourcePosition and seqan:Function.toViewPosition.
-#. Translate between clipped and unclipped gapped position by adding/subtracting seqan:Function.clippedBeginPosition of the gaps object.
-#. Translate between clipped ungapped and unclipped ungapped position by adding/subtracing seqan:Function.beginPosition of the gaps object.
+#. Translate between view (gapped clipped) position and source (ungaped unclipped) position using the functions :dox:`Gaps#toSourcePosition toSourcePosition` and :dox:`Gaps#toViewPosition toViewPosition`.
+#. Translate between clipped and unclipped gapped position by adding/subtracting :dox:`Gaps#clippedBeginPosition clippedBeginPosition` of the gaps object.
+#. Translate between clipped ungapped and unclipped ungapped position by adding/subtracting :dox:`Gaps#beginPosition beginPosition` of the gaps object.
 
 All other transformations are most easily done following one of the paths from the picture above.
 

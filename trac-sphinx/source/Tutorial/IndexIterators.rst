@@ -400,7 +400,7 @@ Assignment 5
 	Its constructor expects the index and optionally a minimum MUM length as a second parameter.
 	The set of all MUMs can be represented by a subset of suffix tree nodes.
 	The iterator will halt in every node that is a MUM of the minimum length.
-	The corresponding match is the node's seqan:Function.representative.
+	The corresponding match is the node's :dox:`VSTreeIterator#representative`.
 
 	.. includefrags:: core/demos/tutorial/index/index_assignment2.cpp
 	   :fragment: iteration
@@ -455,8 +455,8 @@ Property Maps
 Some algorithms require to store auxiliary information (e.g. weights, scores) to the nodes of a suffix tree.
 To attain this goal SeqAn provides so-called property maps, simple Strings of a property type.
 Before storing a property value, these strings must first be resized with :dox:`Index#resizeVertexMap resizeVertexMap`.
-The property value can then be assigned or retrieved via seqan:Function.assignProperty or seqan:Function.getProperty, seqan:Function.property.
-It is recommended to call :dox:`Index#resizeVertexMap resizeVertexMap` prior to every call of seqan:Function.assignProperty to ensure that the property map has sufficient size.
+The property value can then be assigned or retrieved via :dox:`VSTreeIterator#assignProperty assignProperty` :dox:`VSTreeIterator#getProperty getProperty`, or `:dox:VSTreeIterator#property property`.
+It is recommended to call :dox:`Index#resizeVertexMap resizeVertexMap` prior to every call of :dox:`VSTreeIterator#assignProperty assignProperty` to ensure that the property map has sufficient size.
 The following example iterates over all nodes in preorder dfs and recursively assigns the node depth to each node.
 First we create a :dox:`String` of ``int`` to store the node depth for each suffix tree node.
 
@@ -465,8 +465,8 @@ First we create a :dox:`String` of ``int`` to store the node depth for each suff
 
 The main loop iterates over all nodes in preorder DFS, i.e. parents are visited prior children.
 The node depth for the root node is 0 and for all other nodes it is the parent node depth increased by 1.
-The functions seqan:Function.assignProperty, seqan:Function.getProperty and seqan:Function.property must be called with a seqan:Metafunction.VertexDescriptor.
-The vertex descriptor of the iterator node is returned by seqan:Function.value and the descriptor of the parent node is returned by seqan:Function.nodeUp.
+The functions :dox:`VSTreeIterator#assignProperty assignProperty`, :dox:`VSTreeIterator#getProperty getProperty` and :dox:`VSTreeIterator#property property` must be called with a :dox:`Index#VertexDescriptor VertexDescriptor`.
+The vertex descriptor of the iterator node is returned by :dox:`VSTreeIterator#value value` and the descriptor of the parent node is returned by :dox:`VSTreeIterator#nodeUp nodeUp`.
 
 .. includefrags:: core/demos/tutorial/index/index_property_maps.cpp
    :fragment: iteration

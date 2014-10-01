@@ -129,7 +129,7 @@ Note that such an implementation would have to rely on `virtual functions <http:
 However, as we will see in the section OOP vs. Template Subclassing, **this comes at a high performance cost, being in conflict with efficiency**.
 For a sequence library, we could implement functions that map values from an alphabet to an ordinal value between ``0`` and ``S - 1`` where ``S`` is the number of elements in the alphabet.
 
-Generic programming offers one way out: C++ templates allow to define template classes, e.g. the STL's ``std::vector<T>`` or SeqAn's [seqan:Class.String seqan::String].
+Generic programming offers one way out: C++ templates allow to define template classes, e.g. the STL's ``std::vector<T>`` or SeqAn's :dox:`String`.
 Here, instead of creating a string class around an array of ``char`` values (or objects), we can leave the type of the array's elements open.
 We can then introduce different types, e.g. ``Dna`` or ``Dna5`` for 4- and 5-character DNA alphabets.
 

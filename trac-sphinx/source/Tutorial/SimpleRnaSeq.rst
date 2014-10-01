@@ -329,7 +329,7 @@ Assignment 4
      Implement the function ``countReadsPerGene`` that counts for each gene the number of overlapping reads.
      Therefore determine for each :dox:`AlignedReadStoreElement` begin and end positions (on forward strand) of the alignment and increment the ``readsPerGene`` counter for each overlapping gene.
      
-     **Optional:** Use OpenMP to parallelize the function, see seqan:Macro.SEQAN_OMP_PRAGMA.
+     **Optional:** Use OpenMP to parallelize the function, see :dox:`SEQAN_OMP_PRAGMA`.
 
      .. container:: foldable
 

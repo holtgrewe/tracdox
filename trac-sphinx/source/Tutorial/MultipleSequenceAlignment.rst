@@ -81,19 +81,19 @@ Assignment 1
      * ``FPKKPLTPYFRFFMEKRAKYAKLHPEMSNLDLTKILSKKYKELPEKKKMKYIQDFQREKQEFERNLARFREDHPDLIQNAKK``
      * ``HIKKPLNAFMLYMKEMRANVVAESTLKESAAINQILGRRWHALSREEQAKYYELARKERQLHMQLYPGWSARDNYGKKKKRKREK``
 
-     using a seqan:class.Align object and the [seqan:"Spec.Score Matrix" Blossum80]  score matrix.
+     using a :dox:`Align` object and the :dox:`Blosum80` score matrix.
 
      Repeat the above example using the Align data structure and the Blosum80 scoring matrix.
 
    Solution
      .. container:: foldable
 
-        After the usual includes, the seqan:Class.Align object `align` is initialized and the four sequences are appended as rows.
+        After the usual includes, the :dox:`Align` object `align` is initialized and the four sequences are appended as rows.
 
         .. includefrags:: core/demos/tutorial/alignments/alignment_msa_assignment1.cpp
            :fragment: main
 
-        Now the MSA is computed, using the seqan:Spec.Blosum80 matrix for scoring.
+        Now the MSA is computed, using the :dox:`Blosum80` matrix for scoring.
 
         .. includefrags:: core/demos/tutorial/alignments/alignment_msa_assignment1.cpp
            :fragment: alignment
