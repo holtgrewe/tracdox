@@ -160,58 +160,58 @@ Assignment 2
    Hint
      A common q-gram that occurs :math:`a` times in one and :math:`b` times in the other sequence counts for :math:`\min(a,b)`.
 
-   Solution ::
+   Solution
      .. container:: foldable
 
-	For generating random numbers we use the :dox:`MersenneTwisterRng` which is a specialization of the random number generator class :dox:`Rng`.
-	The random numbers returned by :dox:`Rng#pickRandomNumber pickRandomNumber` are arbitrary ``unsigned int`` values which we downscale to values between 0 and 3 and convert into :dox:`Dna` characters.
-	The 3 generated strings are of random length and appended to a :dox:`StringSet`.
-	The main algorithmus is encapsulated in a template function ``qgramCounting`` to easily switch between the two :dox:`IndexQGram` specializations.
+        For generating random numbers we use the :dox:`MersenneTwisterRng` which is a specialization of the random number generator class :dox:`Rng`.
+        The random numbers returned by :dox:`Rng#pickRandomNumber pickRandomNumber` are arbitrary ``unsigned int`` values which we downscale to values between 0 and 3 and convert into :dox:`Dna` characters.
+        The 3 generated strings are of random length and appended to a :dox:`StringSet`.
+        The main algorithmus is encapsulated in a template function ``qgramCounting`` to easily switch between the two :dox:`IndexQGram` specializations.
 
-	.. includefrags:: core/demos/tutorial/index/index_assignment6.cpp
+        .. includefrags:: core/demos/tutorial/index/index_assignment6.cpp
            :fragment: initialization
 
-	The main function expects the :dox:`StringSet` and the :dox:`Index` specialization as a tag.
-	First, we define lots of types we need to iterate and access the fibres directly.
-	We then notify the index about the fibres we require.
-	For storing the common q-grams we use a 2-dimensional :dox:`Matrix` object whose lengths have to be set with ```setLength``` for each dimension.
-	The matrix is initialized with zeros by :dox:`Matrix#resize `.
+        The main function expects the :dox:`StringSet` and the :dox:`Index` specialization as a tag.
+        First, we define lots of types we need to iterate and access the fibres directly.
+        We then notify the index about the fibres we require.
+        For storing the common q-grams we use a 2-dimensional :dox:`Matrix` object whose lengths have to be set with ``setLength`` for each dimension.
+        The matrix is initialized with zeros by :dox:`Matrix#resize`.
 
-	.. includefrags:: core/demos/tutorial/index/index_assignment6.cpp
-	   :fragment: matrix_init
+        .. includefrags:: core/demos/tutorial/index/index_assignment6.cpp
+           :fragment: matrix_init
 
-	The main part of the function iterates over the CountsDir fibre.
-	Each entry in this directory represents a q-gram bucket, a contiguous interval in the Counts fibre storing for every sequence the q-gram occurs in the number of occurrences in pairs (seqNo,count).
-	The interval begin of each bucket is stored in the directory and the interval end is the begin of the next bucket.
-	So the inner loops iterate over all non-empty buckets and two pairs (seqNo1,count1) and (seqNo2,count2) indicate that seqNo1 and seqNo2 have a common q-gram.
-	At the end the matrix can simply be output by shifting it to the ``cout`` stream.
+        The main part of the function iterates over the CountsDir fibre.
+        Each entry in this directory represents a q-gram bucket, a contiguous interval in the Counts fibre storing for every sequence the q-gram occurs in the number of occurrences in pairs (seqNo,count).
+        The interval begin of each bucket is stored in the directory and the interval end is the begin of the next bucket.
+        So the inner loops iterate over all non-empty buckets and two pairs (seqNo1,count1) and (seqNo2,count2) indicate that seqNo1 and seqNo2 have a common q-gram.
+        At the end the matrix can simply be output by shifting it to the ``cout`` stream.
 
-	.. includefrags:: core/demos/tutorial/index/index_assignment6.cpp
-	   :fragment: matrix_calculation
+        .. includefrags:: core/demos/tutorial/index/index_assignment6.cpp
+           :fragment: matrix_calculation
 
-	Please note that the :dox:`OpenAddressingQGramIndex open addressing` q-gram index directories are smaller than the :dox:`IndexQGram` index directories.
+        Please note that the :dox:`OpenAddressingQGramIndex open addressing` q-gram index directories are smaller than the :dox:`IndexQGram` index directories.
 
-	Program output:
+        Program output:
 
-	.. code-block:: console
+        .. code-block:: console
 
-	   >Seq0
-	   TCATTTTCTCGATGAAAGCGTTGACCCCACATATCGTTAGTACTCTTGTACCCT
-	   >Seq1
-	   TGATTGTGTAGAAACCGAACTACGGTACCTCCTGTTGGTAGTCACGATAGATTATAAAAGTATGTTCCCACCCTATCGACGAGACTGGCA
-	   >Seq2
-	   CCTAGGTGTTTGCGGTGTTGGTACGTGCG
+           >Seq0
+           TCATTTTCTCGATGAAAGCGTTGACCCCACATATCGTTAGTACTCTTGTACCCT
+           >Seq1
+           TGATTGTGTAGAAACCGAACTACGGTACCTCCTGTTGGTAGTCACGATAGATTATAAAAGTATGTTCCCACCCTATCGACGAGACTGGCA
+           >Seq2
+           CCTAGGTGTTTGCGGTGTTGGTACGTGCG
 
-	   Length of the CountsDir fibre: 1025
+           Length of the CountsDir fibre: 1025
 
-	   Common 5-mers for Seq_i, Seq_j
-	   50	4	0
-	   0	86	5
-	   0	0	25
+           Common 5-mers for Seq_i, Seq_j
+           50	4	0
+           0	86	5
+           0	0	25
 
-	   Length of the CountsDir fibre: 259
+           Length of the CountsDir fibre: 259
 
-	   Common 5-mers for Seq_i, Seq_j
-	   50	4	0
-	   0	86	5
-	   0	0	25
+           Common 5-mers for Seq_i, Seq_j
+           50	4	0
+           0	86	5
+           0	0	25
