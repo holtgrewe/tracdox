@@ -122,14 +122,16 @@ Assignment 2
      Review
 
    Objective
-     Write a little program that traverses the nodes of the suffix tree of ``"tobeornottobe"`` in the order shown here:
+     Write a program that traverses the nodes of the suffix tree of ``"tobeornottobe"`` in the order shown here:
 
      .. image:: streePreorder.png
 	:align: center
 	:width: 300px
 
      At each node print the text of the edges from the root to the node.
-     You may only use the functions :dox:`TopDownIterator#goDown goDown`, :dox:`TopDownIterator#goRight goRight`, :dox:`TopDownHistoryIterator#goUp goUp` and :dox:`VSTreeIterator#goRoot goRoot`, :dox:`VSTreeIterator#isRoot isRoot` and :dox:`VSTreeIterator#representative representative` which returns the string that represents the node the iterator points to.
+     You may only use the functions :dox:`TopDownIterator#goDown goDown`, :dox:`TopDownIterator#goRight goRight`, 
+     :dox:`TopDownHistoryIterator#goUp goUp` and :dox:`VSTreeIterator#isRoot isRoot` to navigate and 
+     :dox:`VSTreeIterator#representative representative` which returns the string that represents the node the iterator points to.
 
    Hint
      * Use a :dox:`TopDownHistoryIterator TopDown History Iterator`.
@@ -158,7 +160,20 @@ Assignment 2
    Solution
      .. container:: foldable
 
-        .. includefrags:: core/demos/tutorial/index/iterator_solution2.cpp
+         One iteration step of a preorder DFS can be described as follows:
+
+            - if possible, go down one node
+            - if not:
+
+                - if possible, go to the next sibling
+                - if not:
+
+                    - go up until it is possible to go to a next sibling
+                    - stop the whole iteration after reaching the root node
+    
+         Thus, the DFS walk can be implemented in the following way:
+    
+            .. includefrags:: core/demos/tutorial/index/iterator_solution2.cpp
 
 Assignment 3
 """"""""""""
