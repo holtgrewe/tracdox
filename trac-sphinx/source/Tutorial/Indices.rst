@@ -36,7 +36,7 @@ You can find the following indices in SeqAn.
 :dox:`IndexQGram`
   Q-gram index
 :dox:`PizzaChiliIndex`
-  An adapter for the `Pizza & Chili <http://pizzachili.dcc.uchile.cl/>`__ index API
+  An adapter for the `Pizza & Chili <http://pizzachili.dcc.uchile.cl/>`_ index API
 :dox:`FMIndex`
   :cite:`Ferragina2001`
 

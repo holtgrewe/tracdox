@@ -51,7 +51,7 @@ The type of the contained value is specified by the first template argument, e.g
    String<int>   myNumbers;  // A string of integers.
 
 Any type that provides a default constructor, a copy constructor and an assignment operator can be used as the alphabet / contained type of a :dox:`String`.
-This includes the C++ `POD types <http://www.parashift.com/c++-faq-lite/intrinsic-types.html#faq-26.7>`__, e.g. ``char``, ``int``, ``double`` etc., but you can use more complex types, e.g.:dox:`String Strings`, too.
+This includes the C++ `POD types <http://www.parashift.com/c++-faq-lite/intrinsic-types.html#faq-26.7>`_, e.g. ``char``, ``int``, ``double`` etc., but you can use more complex types, e.g.:dox:`String Strings`, too.
 
 .. code-block:: cpp
 

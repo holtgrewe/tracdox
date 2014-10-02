@@ -27,7 +27,7 @@ Types
 ~~~~~
 
 Any type that provides a default constructor, a copy constructor and an assignment operator can be used as the alphabet / contained type of a :dox:`String` (see also the tutorial :ref:`tutorial-sequences`).
-This includes the C++ `POD types <http://www.parashift.com/c++-faq-lite/intrinsic-types.html#faq-26.7>`__, e.g. ``char``, ``int``, ``double`` etc.
+This includes the C++ `POD types <http://www.parashift.com/c++-faq-lite/intrinsic-types.html#faq-26.7>`_, e.g. ``char``, ``int``, ``double`` etc.
 In addition you can use more complex types like :dox:`String` as the contained type of strings, e.g. ``String<String<char> >``.
 
 SeqAn also provides the following types that are useful in bioinformatics.
@@ -110,7 +110,7 @@ See each specialization's documentation for the ordering of the alphabet's value
 
     The return value of the :dox:`FiniteOrderedAlphabetConcept#ordValue ordValue` function is determined by the metafunction :dox:`FiniteOrderedAlphabetConcept#ValueSize ValueSize`.
     :dox:`FiniteOrderedAlphabetConcept#ValueSize ValueSize` returns the type which uses the least amount of memory while being able to represent all possible values.
-    E.g. :dox:`FiniteOrderedAlphabetConcept#ValueSize ValueSize` of :dox:`Dna` returns an ``__uint8`` which is able to represent 256 different characters.
+    E.g. :dox:`FiniteOrderedAlphabetConcept#ValueSize ValueSize` of :dox:`Dna` returns an ``_uint8`` which is able to represent 256 different characters.
     However, note that ``std::cout`` has no visible symbol for printing all values on the screen, hence a cast to ``unsigned`` might be necessary.
 
 Assignment 1

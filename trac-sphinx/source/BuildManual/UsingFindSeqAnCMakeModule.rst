@@ -11,12 +11,12 @@ Using the FindSeqAn CMake Module
 Overview
 ~~~~~~~~
 
-`CMake <http://cmake.org/>`__ is a cross-platform build system generator.
+`CMake <http://cmake.org/>`_ is a cross-platform build system generator.
 That is, you describe the different executables and binaries and their dependencies ``CMakeLists.txt`` files.
 Then, CMake generates build systems from this, for example in the form of Makefiles or Visual Studio projects.
 
 This article will not describe how to use CMake in general but only how to use SeqAn easily from within CMake projects.
-In CMake projects, one uses `modules to find libraries <http://www.vtk.org/Wiki/CMake:How_To_Find_Libraries>`__ such as SeqAn.
+In CMake projects, one uses `modules to find libraries <http://www.vtk.org/Wiki/CMake:How_To_Find_Libraries>`_ such as SeqAn.
 SeqAn ships with such a module in ``util/cmake/FindSeqAn.cmake``.
 
 This article describes how to use this module.

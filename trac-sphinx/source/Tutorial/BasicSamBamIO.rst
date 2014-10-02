@@ -286,7 +286,7 @@ This class gives a unified in-memory representation for SAM and BAM files.
 The class has two members: ``records`` and ``sequenceInfos``.
 We will focus on ``sequenceInfos`` here.
 ``sequenceInfos`` is a :dox:`String` of :dox:`Pair` objects.
-The first entry of the pair is a :dox:`CharString` with the sequence name and the second entry is a ``__int32`` with the sequence length.
+The first entry of the pair is a :dox:`CharString` with the sequence name and the second entry is a ``_int32`` with the sequence length.
 Note that the ``@SQ`` header lines in the header and the ``sequenceInfos`` fields are not kept in sync automatically.
 
 The following example program prints the sequences and lengths from a BAM file.

@@ -349,4 +349,4 @@ Currently there are no indices directly supporting an approximate search.
 But nevertheless, there are approximate search filters available that can be used to filter out regions of the ``haystack`` that do not contain an approximate match, see :dox:`SwiftFinder` and :dox:`SwiftPattern`.
 The regions found by these filters potentially contain a match and must be verified afterwards.
 :dox:`Finder#beginPosition beginPosition`, :dox:`Finder#endPosition endPosition` and :dox:`Finder#infix infix` can be used to return the boundaries or sequence of such a potential match.
-For more details on using filters, see the `SWIFT howto <HowTo/FilterSimilarSequences>`__.
+For more details on using filters, see the article :ref:`how-to-filter-similar-sequences`.

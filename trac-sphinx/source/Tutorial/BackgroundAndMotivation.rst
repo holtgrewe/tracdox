@@ -124,8 +124,8 @@ Thus, simply using a ``std::string`` would come at high costs to efficiency.
 
 Given that in the last 10-15 years, Java and C# have gained popularity, one could think about an object oriented solution: strings could simply be arrays of ``Character`` objects.
 Using polymorphism (e.g. overwriting of functions in subclasses), one could then write generic and reuseable algorithms.
-For example, the Java 2 platform defines the `sort function <http://docs.oracle.com/javase/1.4.2/docs/api/java/util/Collections.html#sort(java.util.List)>`__ for all objects implementing a ``Comparable`` interface.
-Note that such an implementation would have to rely on `virtual functions <http://en.wikipedia.org/wiki/Virtual_function>`__ of some sort.
+For example, the Java 2 platform defines the sort function for all objects implementing a ``Comparable`` interface.
+Note that such an implementation would have to rely on `virtual functions <http://en.wikipedia.org/wiki/Virtual_function>`_ of some sort.
 However, as we will see in the section OOP vs. Template Subclassing, **this comes at a high performance cost, being in conflict with efficiency**.
 For a sequence library, we could implement functions that map values from an alphabet to an ordinal value between ``0`` and ``S - 1`` where ``S`` is the number of elements in the alphabet.
 
@@ -138,7 +138,7 @@ Thus, the compiler does not have to use virtual function tables and other "crutc
 When written appropriately, such algorithms can also work on different string implementations! Also, when defining our own alphabet types, we can directly influence how their abstractions (and APIs) work.
 
 Thus, C++ allows us to implement (1) a generic and reuseable library with (2) high level abstractions (and thus ease of use) that still allows the compiler to employ aggressive optimization and thus achieves (3) efficiency.
-With the words of the C++ inventor `Bjarne Stroustrup <http://www.artima.com/intv/abstreffi.html>`__:
+With the words of the C++ inventor `Bjarne Stroustrup <http://www.artima.com/intv/abstreffi.html>`_:
 
    A high level of abstraction is good, not just in C++, but in general.
    We want to deal with problems at the level we are thinking about those problems.
@@ -148,11 +148,11 @@ With the words of the C++ inventor `Bjarne Stroustrup <http://www.artima.com/int
 OOP vs. Generic Programming
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In SeqAn, we use a technique called `template subclassing <tutorial-template-subclassing>`__ which is based on generic programming.
-This technique provides `polymorphism <http://en.wikipedia.org/wiki/Polymorphism_in_object-oriented_programming>`__ into C++ programs at **compile time** using templates.
+In SeqAn, we use a technique called `template subclassing <tutorial-template-subclassing>`_ which is based on generic programming.
+This technique provides `polymorphism <http://en.wikipedia.org/wiki/Polymorphism_in_object-oriented_programming>`_ into C++ programs at **compile time** using templates.
 Such static polymorphism is different from **runtime polymorphism** which is supported in C++ using subclassing and virtual functions.
 It comes at the cost of some additional typing but has the advantage that the compiler can inline all function calls and thus achieve better performance.
-An example will be given in `the section "From OOP to SeqAn" in the First Steps Tutorial <tutorial-first-steps-in-seqan>`__.
+An example will be given in `the section "From OOP to SeqAn" in the First Steps Tutorial <tutorial-first-steps-in-seqan>`_.
 
 The important point is that in contrast to runtime polymorphism such static polymorphism allows the compiler to inline functions.
 

@@ -136,9 +136,9 @@ Now, the packages of the GKN classes and your plugin show up in the left ``Packa
     Synchronizing ``ant`` build result with Eclipse.
 
     Since the code generation happens outside of Eclipse, there are often problems caused by Eclipse not recognizing updates in generated ''.java'' files.
-    After each call to ``ant``, you should clean all built files in all projects by selecting the menu entries [[MenuTrace(Project,Clean...)]], selecting [[MenuTrace(Clean all projects)]], and then clicking [[MenuTrace(OK)]].
+    After each call to ``ant``, you should clean all built files in all projects by selecting the menu entries ``Project > Clean...``, selecting ``Clean all projects``, and then clicking ``OK``.
 
-    Then, select all projects in the [[MenuTrace(Package Explorer)]], right-click and select [[MenuTrace(Refresh)]].
+    Then, select all projects in the ``Package Explorer``, right-click and select ``Refresh``.
 
 .. tip::
 

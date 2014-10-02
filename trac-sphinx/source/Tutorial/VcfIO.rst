@@ -45,7 +45,7 @@ VCF File Structure
 ------------------
 
 This section gives a very brief overview of the VCF file structure.
-For more details, see the `VCF format specification (v4.1) <http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41>`__.
+For more details, see the `VCF format specification (v4.1) <http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41>`_.
 
 The following is an example of a VCF file:
 

@@ -11,7 +11,7 @@ style guide is the key to being able to understand and change code
 written by others easily.
 
 (The style guide partially follows the `Google C++ Code Style
-Guide <http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml>`__.)
+Guide <http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml>`_.)
 
 C++ Features
 ~~~~~~~~~~~~
@@ -197,11 +197,9 @@ Code Quality
 Const-Correctness
 ^^^^^^^^^^^^^^^^^
 
-Write const correct code. Read the
-[http://www.parashift.com/c\ ++-faq-lite/const-correctness.html C++ FAQ
-const correctness article] for more information. Besides other things,
-this allows to use temporary objects without copying in functions that
-do not need to change their arguments.
+Write const correct code.
+Read the `C++ FAQ const correctness article <http://www.parashift.com/c ++-faq-lite/const-correctness.html>`_ for more information.
+Besides other things, this allows to use temporary objects without copying in functions that do not need to change their arguments.
 
 Compiler Warnings
 ^^^^^^^^^^^^^^^^^

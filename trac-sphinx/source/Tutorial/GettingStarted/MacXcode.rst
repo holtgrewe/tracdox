@@ -10,13 +10,13 @@ Getting Started With SeqAn On Mac OS X Using Xcode
 
 This article describes how to get started with SeqAn on Mac OS X using XCode.
 
-We assume that you want to use `MacPorts <http://www.macports.org/>`__ for installing some dependencies (MacPorts is a package management system that easily allows you to install Unix software on OS X).
+We assume that you want to use `MacPorts <http://www.macports.org/>`_ for installing some dependencies (MacPorts is a package management system that easily allows you to install Unix software on OS X).
 Of course, if you want to use a different way for installing the dependencies (e.g. using Homebrew) then you are free to do so.
 
 Prerequisites
 ~~~~~~~~~~~~~
 
-First, you have to install the Apple `Xcode via Apple Developer <https://developer.apple.com/downloads/index.action>`__ or preferably `Xcode via the Mac App Store <http://itunes.apple.com/de/app/xcode/id497799835?mt=12>`__.
+First, you have to install the Apple `Xcode via Apple Developer <https://developer.apple.com/downloads/index.action>`_ or preferably `Xcode via the Mac App Store <http://itunes.apple.com/de/app/xcode/id497799835?mt=12>`_.
 
 After having done so you also need to install the **Command Line Tools**.
 Open Xcode, go to ``Xcode > Preferences...`` or simply press ``⌘`` to open the preferences. Switch to the ``Downloads`` tab.
@@ -58,7 +58,7 @@ This will configure ``xcode-select`` properly and make it work with SeqAn.
 
        export PATH=/usr/usr/bin:$PATH
 
-After installing the Xcode SDK, please install MacPorts following `these instructions <http://www.macports.org/install.php>`__.
+After installing the Xcode SDK, please install MacPorts following `these instructions <http://www.macports.org/install.php>`_.
 To check that the MacPorts install was successful, enter the following on your shell.
 If the ``port`` program is found then you can go on.
 

@@ -38,7 +38,7 @@ The program prints the data as ``${key} -> ${value}`` to stdout.
 .. includefrags:: extras/demos/tutorial/parsing/example1.cpp
 
 As you can see, using the :dox:`RecordReader` is straightforward.
-First, we construct the :dox:`RecordReader` to wrap ``std::cin`` as also described in the `I/O Overview <Tutorial/InputOutputOverview>`_ tutorial.
+First, we construct the :dox:`RecordReader` to wrap ``std::cin`` as also described in the :ref:`tutorial-input-output-overview` tutorial.
 
 Each iteration of the loop loads one record/line from standard input and writes out the record.
 We use ``atEnd()`` to check whether we are at the end of the file and loop.

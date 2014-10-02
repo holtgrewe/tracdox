@@ -23,9 +23,11 @@ Prerequisites ::
 Virtual String Tree Iterator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. TODO create and link to suffix tree definition
+
 The search procedure of :dox:`IndexEsa`, :dox:`IndexWotd IndexWotd`, :dox:`IndexDfi` and :dox:`FMIndex` are suffix array based.
 This can be utilized in form of a common iterator interface.
-This common interface is the Virtual String Tree Iterator (:dox:`VSTreeIterator VSTree Iterator`) in SeqAn, which lets you access the :dox:`IndexEsa`, :dox:`IndexWotd` and :dox:`IndexDfi IndexDfi` as if using a suffix tree (`suffix tree definition <Tutorial/Indices/SuffixTree>`__) and the :dox:`FMIndex FMIndex` as if using a prefix trie.
+This common interface is the Virtual String Tree Iterator (:dox:`VSTreeIterator VSTree Iterator`) in SeqAn, which lets you access the :dox:`IndexEsa`, :dox:`IndexWotd` and :dox:`IndexDfi IndexDfi` as if using a suffix tree (suffix tree definition) and the :dox:`FMIndex FMIndex` as if using a prefix trie.
 
 In the first part of this tutorial we will concentrate on the :dox:`TopDownIterator TopDown Iterator` which is one of the two index iterator specializations (besides the :dox:`BottomUpIterator BottomUp Iterator`).
 The second part will then deal with the DFS.
@@ -445,8 +447,10 @@ There are various functions to access the node the iterator points at (some we h
 
 .. important::
 
+   .. TODO link to suffix tree definition
+
    There is a difference between the functions isLeaf and isRightTerminal.
-   In a relaxed suffix tree (see `definition <Tutorial/Indices/SuffixTree>`__) a leaf is always a suffix, but not vice versa, as there can be internal nodes a suffix ends in.
+   In a relaxed suffix tree (see definition) a leaf is always a suffix, but not vice versa, as there can be internal nodes a suffix ends in.
    For them isLeaf returns false and isRightTerminal returns true.
 
 Property Maps

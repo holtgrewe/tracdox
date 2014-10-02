@@ -44,8 +44,7 @@ directly tagged, e.g. as ``/tags/masai-0.6.0`` for the app Masai in
 version 0.6.0.
 
 Note that tags are final and a new tag has to be created if any code is
-to be changed. See the article `Branching, Tagging,
-Releases <WhitePapers/BranchingTaggingReleases>`__ for details.
+to be changed.
 
 User Perspective
 ~~~~~~~~~~~~~~~~
@@ -89,7 +88,7 @@ then install it, for example to ``~/local/razers3``:
     razers3 # make install
 
 The user could install a released version of the RazerS 3 program by
-using the URL http://svn.seqan.de/seqan/tags/razers3-3.2.0, for example.
+using the URL ``http://svn.seqan.de/seqan/tags/razers3-3.2.0``, for example.
 
 After executing this, the user will find the following structure in
 ``~/local/razers3``, including the example files and documentation.
@@ -220,7 +219,7 @@ Packaging Library Releases
 Packaging the library and documentation is quite simple. Note that we
 have to build the documentation using ``make docs`` before calling
 ``make package`` because of a `bug in
-CMake <http://public.kitware.com/Bug/view.php?id=8438>`__ that prevents
+CMake <http://public.kitware.com/Bug/view.php?id=8438>`_ that prevents
 us from doing it automatically.
 
 The version is automatically detected from the constants in the
@@ -395,8 +394,7 @@ applications.
 Creating Sandboxes
 ^^^^^^^^^^^^^^^^^^
 
-Creating sandboxes is easy with the ``util/skel.py`` script (also see
-`How To: Use the Code Generator <HowTo/UseTheCodeGenerator>`__).
+Creating sandboxes is easy with the ``util/skel.py`` script (also see :ref:`how-to-use-the-code-generator`).
 
 ::
 
@@ -409,46 +407,38 @@ files.
 Creating Apps
 ^^^^^^^^^^^^^
 
-Simply use the ``util/skel.py`` script (also see `How To: Use the Code
-Generator <HowTo/UseTheCodeGenerator>`__).
+Simply use the ``util/skel.py`` script (also see :ref:`how-to-use-the-code-generator`).
 
 ::
 
     #ShellBox
     seqan-trunk # ./util/bin/skel.py app my_app sandbox/my_sandbox
 
-This will generate a ``CMakeLists.txt`` file in
-``sandbox/my_sandbox/apps/my_app``. Since you will have to adjust the
-file to your project, let us have a look at the file in detail. You can
-look up details in the `CMake
-documentation <http://www.cmake.org/cmake/help/v2.8.8/cmake.htm>`__ in
-case that some CMake functions are not clear to you.
+This will generate a ``CMakeLists.txt`` file in ``sandbox/my_sandbox/apps/my_app``.
+Since you will have to adjust the file to your project, let us have a look at the file in detail.
+You can look up details in the `CMake documentation <http://www.cmake.org/cmake/help/v2.8.8/cmake.html>`_ in case that some CMake functions are not clear to you.
 
-The file starts out with a header describing where the file lives and
-what it is for. This is useful when having many CMakeLists.txt files
-open and you want to quickly identifyin the file in the current window.
+The file starts out with a header describing where the file lives and what it is for.
+This is useful when having many ``CMakeLists.txt`` files open and you want to quickly identifyin the file in the current window.
 
-::
+.. code-block:: cpp
 
-    #sh
-    # ===========================================================================
-    #                  SeqAn - The Library for Sequence Analysis
-    # ===========================================================================
-    # File: /sandbox/my_sandbox/apps/my_app/CMakeLists.txt
-    #
-    # CMakeLists.txt file for my_app.
-    # ===========================================================================
+   # ===========================================================================
+   #                  SeqAn - The Library for Sequence Analysis
+   # ===========================================================================
+   # File: /sandbox/my_sandbox/apps/my_app/CMakeLists.txt
+   #
+   # CMakeLists.txt file for my_app.
+   # ===========================================================================
 
-    cmake_minimum_required (VERSION 2.8.2)
-    project (sandbox_my_sandbox_apps_my_app)
-    message (STATUS "Configuring sandbox/my_sandbox/apps/my_app")
+   cmake_minimum_required (VERSION 2.8.2)
+   project (sandbox_my_sandbox_apps_my_app)
+   message (STATUS "Configuring sandbox/my_sandbox/apps/my_app")
 
-Then comes the section that searches for the app's dependencies. By
-default, the app only depends on the package SeqAn. By setting the
-variable ``SEQAN_FIND_DEPENDENCIES``, we can configure which
-dependencies the call to ``find_package (SeqAn REQUIRED)`` will try to
-find. See the `documentatio of
-FindSeqAn.cmake <WhitePapers/FindSeqAnCMake>`__ for more details.
+Then comes the section that searches for the app's dependencies.
+By default, the app only depends on the package SeqAn.
+By setting the variable ``SEQAN_FIND_DEPENDENCIES``, we can configure which dependencies the call to ``find_package (SeqAn REQUIRED)`` will try to find.
+See the :ref:`build-manual-using-the-find-seqan-cmake-module` for more details.
 
 ::
 
@@ -544,11 +534,8 @@ of the given ``install()`` calls. Install documentation to
     #install (FILES example/example.txt
     #         DESTINATION ${SEQAN_PREFIX_SHARE_DOC}/example)
 
-Then, we can use the macro ``seqan_add_app_test()`` from the SeqAn build
-system to register app tests. If you want to add an app test for your
-program then simply uncomment the ``seqan_add_app_test()`` call and
-follow the instructions in `How To: Write App
-Tests <HowTo/WriteAppTests>`__ to write such an app test.
+Then, we can use the macro ``seqan_add_app_test()`` from the SeqAn build system to register app tests.
+If you want to add an app test for your program then simply uncomment the ``seqan_add_app_test()`` call and follow the instructions in :ref:`how-to-write-app-tests`_ to write such an app tests.
 
 ::
 
@@ -616,7 +603,7 @@ are only slightly different:
 
 -  There are packages available that provide the ``svn.exe`` command
    line client or users might use the GUI client
-   `TortoiseSVN <http://tortoisesvn.net/>`__.
+   `TortoiseSVN <http://tortoisesvn.net/>`_.
 -  The ``mkdir`` command differs slightly (the ``-p`` parameter can be
    omitted).
 -  Instead of using the backslash ``\`` two split one command over two
@@ -630,10 +617,7 @@ users can simply open the generated Visual Studio ``*.sln`` solution
 files and then use Visual Studio for building the applications. When
 packaging, users can use the ``msbuild`` command as described below.
 
-As an example, we adapt the description of creating an application
-release for Masai on Windows. The next steps are typed into the Command
-Prompt (`MenuTrace[Start,All Programs,Accessories,Command
-Prompt) <MenuTrace[Start,All Programs,Accessories,Command Prompt)>`__.
+As an example, we adapt the description of creating an application release for Masai on Windows.The next steps are typed into the Command Prompt (``Start > All Programs > Accessories > Command``).
 
 ::
 
@@ -649,16 +633,11 @@ backslashes instead of forward slashes for paths. You can then open the
 generated ``seqan.sln`` file in ``C:\masai-0.6.1-build`` with Visual
 studio and build the packages from there.
 
-Alternatively, ``msbuild`` can be used. This program is only available
-when using the Visual Studio Command Prompt. For Visual Studio 2010, you
-can start it through the start menu as follows:
-`MenuTrace(Start,Programs,Microsoft Visual Studio 2010,Visual Studio
-Tools,Visual Studio Command Prompt
-(2010)) <MenuTrace(Start,Programs,Microsoft Visual Studio 2010,Visual Studio Tools,Visual Studio Command Prompt (2010))>`__.
-For other Visual Studio versions, the path is similar. If you want 64
-bit builds then you have to start `MenuTrace(Visual Studio x64 Win64
-Command Prompt
-(2010)) <MenuTrace(Visual Studio x64 Win64 Command Prompt (2010))>`__.
+Alternatively, ``msbuild`` can be used. This program is only available when using the Visual Studio Command Prompt.
+For Visual Studio 2010, you can start it through the start menu as follows:
+``Start > Programs > Microsoft Visual Studio 2010 > Visual Studio Tools > Visual Studio Command Prompt 2010``.
+For other Visual Studio versions, the path is similar.
+If you want 64 bit builds then you have to start ``Visual Studio x86 Win64 Command Prompt (2010)``.
 
 ::
 
