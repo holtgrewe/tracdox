@@ -535,7 +535,7 @@ of the given ``install()`` calls. Install documentation to
     #         DESTINATION ${SEQAN_PREFIX_SHARE_DOC}/example)
 
 Then, we can use the macro ``seqan_add_app_test()`` from the SeqAn build system to register app tests.
-If you want to add an app test for your program then simply uncomment the ``seqan_add_app_test()`` call and follow the instructions in :ref:`how-to-write-app-tests`_ to write such an app tests.
+If you want to add an app test for your program then simply uncomment the ``seqan_add_app_test()`` call and follow the instructions in :ref:`how-to-write-app-tests` to write such an app tests.
 
 ::
 

@@ -32,7 +32,7 @@ Replace ``seqan_dev`` by your actual user name in the steps below.
 
 .. warning::
 
-    When installing CMake and Python, make sure to let the installers add the paths to the <tt>cmake.exe</tt> and <tt>python.exe</tt> binaries to your <tt>PATH</tt> environment variable.
+    When installing CMake and Python, make sure to let the installers add the paths to the ``cmake.exe`` and ``python.exe`` binaries to your ``PATH`` environment variable.
 
 Install
 ~~~~~~~
