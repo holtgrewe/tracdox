@@ -149,10 +149,10 @@ The Journal Set is a specialization of the :dox:`OwnerStringSet Owner` concept o
    :fragment: main
 
 In the subsequent steps we want to set a reference sequence to the Journal Set and add some sequences to it.
-We can set the reference sequence by using the function :dox:`JournaledSet#setGlobalReference setGlobalReference`.
+We can set the reference sequence by using the function :dox:`JournaledSet#setHost setHost`.
 This function stores only a pointer to the given sequence.
 In some cases it might be necessary to copy the reference sequence instead.
-For this purpose you can use the function :dox:`JournaledSet#createGlobalReference createGlobalReference`.
+For this purpose you can use the function :dox:`JournaledSet#createHost createHost`.
 
 .. includefrags:: extras/demos/tutorial/data_journaling/example_join.cpp
    :fragment: init
