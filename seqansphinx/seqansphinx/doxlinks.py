@@ -62,7 +62,7 @@ def loadDoxJson(app):
     # "None".
     json_path = env.config.doxlinks_dox_json
     if not json_path:
-        app.warning('No doxlinks_dox_json given.')
+        app.warn('No doxlinks_dox_json given.')
         env.known_dox_names = None
         return
     # Build set of known names from dox.
@@ -83,7 +83,7 @@ def loadDoxJson(app):
                 for subentry in record['subentries']:
                     known_dox_names.add(subentry['name'])
     else:
-        app.warning('Could not read json file %s' % json_path)
+        app.warn('Could not read json file %s' % json_path)
     env.known_dox_names = known_dox_names
 
 

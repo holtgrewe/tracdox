@@ -260,11 +260,10 @@ Assignment 2
 
         .. includefrags:: extras/demos/tutorial/gff_io/solution2.cpp
 
+        The output is
+
         .. code-block:: console
 
-           The output is
-
-           <pre>#ShellBox
            RECORDS ON CONTIGS
            ctg123  23
 

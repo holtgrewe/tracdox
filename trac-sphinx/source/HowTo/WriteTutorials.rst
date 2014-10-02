@@ -261,25 +261,23 @@ Tutorial Template
     Tutorial Template
     -----------------
 
-    [[TOC]]
+    Learning Objective
+      Describe the learning objective in your own words.
+      **Example:**
+      You will be able to write a tutorial that meets our quality standards.
 
-     Learning Objective
-       Describe the learning objective in your own words.
-       **Example:**
-       You will be able to write a tutorial that meets our quality standards.
+    Difficulty
+      [Very basic, Basic, Average, Advanced, Very advanced]
+      **Example:**
+      Basic
 
-     Difficulty
-       [Very basic, Basic, Average, Advanced, Very advanced]
-       **Example:**
-       Basic
-
-     Duration
+    Duration
       In average how much time will a user spend on absolving this tutorial?
       If you expect more than 90 minutes please **split your tutorial up** into multiple ones.
       **Example:**
       1 h
 
-     Prerequisites
+    Prerequisites
       A list of absolved tutorials and other requirements you expect your reader to fulfill.
       **Example:** :ref:`tutorial-first-steps-in-seqan`, :ref:`tutorial-pattern-matching`, English language
 

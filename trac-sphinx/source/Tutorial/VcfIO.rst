@@ -168,7 +168,6 @@ You can see the output of the program below when called with the input file from
 
 ::
 
-    #ShellBox
     ##fileformat=VCFv4.1
     ##fileDate=20090805
     ##source=myImputationProgramV3.1

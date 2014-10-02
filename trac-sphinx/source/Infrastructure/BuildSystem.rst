@@ -20,7 +20,7 @@ Directory Layout
 
 The CMake files live in *projects/library/cmake*:
 
-::
+.. code-block:: console
 
     $ cd projects/library/cmake
     $ tree

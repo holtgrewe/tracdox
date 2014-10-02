@@ -35,25 +35,23 @@ Each top level tag creates a documentation entry. For example, the
 following defines a class ``Klass`` with two global interface functions
 ``f1`` and ``f2`` for this class:
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@class Klass
-    *@fn Klass#f1
-    *@fn Klass#f2
-    */
+     * @class Klass
+     * @fn Klass#f1
+     * @fn Klass#f2
+     */
 
 Member functions are given using ``::``, the same as in the C++
 language:
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@class Klass
-    *@fn Klass::memberFunc
-    */
+     * @class Klass
+     * @fn Klass::memberFunc
+     */
 
 Global interface functions are global functions that belong to the
 interface of a type. Similar, interface metafunctions are metafunctions
@@ -61,14 +59,13 @@ that belong to the interface of a type. Their fully qualified name for
 dox consists of the type name, followed by a hash ``#`` and the
 function/metafunction name:
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@class Klass
-    *@fn Klass#interfaceFunc
-    *@mfn Klass#InterfaceMetaFunc
-    */
+     * @class Klass
+     * @fn Klass#interfaceFunc
+     * @mfn Klass#InterfaceMetaFunc
+     */
 
 Below the top-level tags, come the second-level tags. The first kind of
 second-level tags defines properties of an entry. Important such
@@ -80,9 +77,8 @@ can use HTML tags for formatting the documentation.
 
 Example:
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
      * @class Align
      * @brief Store a tabular alignment.
@@ -135,13 +131,12 @@ metafunctions that adapt a type outside the SeqAn library to a concept
 in the SeqAn library. For example, the STL ``std::string`` class can be
 adapted to the interface of the ``SequenceConcept`` concept.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@adaption StdStringToSequenceConcept std::string to Sequence concept
-    *@brief The <tt>std::string</tt> class is adapted to the Sequence concept.
-    */
+     * @adaption StdStringToSequenceConcept std::string to Sequence concept
+     * @brief The <tt>std::string</tt> class is adapted to the Sequence concept.
+     */
 
 @aka
 ^^^^
@@ -154,15 +149,14 @@ Assign an alias name for a function, metafunction, class, concept, or
 enum. The list of aliases will be printed for each code entry. Also, the
 aliases will be incorporated into search results.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@class InfixSegment
-    *@brief Represents a part of a string.
+     * @class InfixSegment
+     * @brief Represents a part of a string.
      *
-    *@aka substring
-    */
+     * @aka substring
+     */
 
     template <typename TSequence>
     class InfixSegment<TSequence, Infix>;
@@ -177,14 +171,13 @@ Second-level tag.
 Defines the brief description of the top-level entry it belongs to. You
 can use HTML in the description.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn f
-    *@brief A minimal function.
-    *@signature void f();
-    */
+     * @fn f
+     * @brief A minimal function.
+     * @signature void f();
+     */
 
     void f();
 
@@ -197,20 +190,18 @@ Top-level tag.
 
 Define a class with the given name ``ClassName`` and an optional label.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@class AllocString Alloc String
-    *@extends String
-    *@brief Implementation of the String class using dynamically allocated
-    *array.
+     * @class AllocString Alloc String
+     * @extends String
+     * @brief Implementation of the String class using dynamically allocated array.
      *
-    *@signature template <typename TAlphabet, typename TSpec>
-    *class String<TAlphabet, Alloc<TSpec> >;
-    *@tparam TAlphabet Type of the alphabet (the string's value).
-    *@tparam TSpec     Tag for the further specialization.
-    */
+     * @signature template <typename TAlphabet, typename TSpec>
+     * class String<TAlphabet, Alloc<TSpec> >;
+     * @tparam TAlphabet Type of the alphabet (the string's value).
+     * @tparam TSpec     Tag for the further specialization.
+     */
 
     template <typename TAlphabet, typename TSpec>
     class String<TAlphabet, Alloc<TSpec> >
@@ -229,22 +220,21 @@ Provides the means to display code blocks in the documentation. The
 extension ``.ext`` is used for identifying the type (use ``.cpp`` for
 C++ code) and selecting the appropriate highlighting.
 
-::
+.. code-block:: cpp
 
-    #cpp
-    /**
-    *@fn f
-    *@brief Minimal function.
-    *@signature void f();
+    /*!
+     * @fn f
+     * @brief Minimal function.
+     * @signature void f();
      *
-    *@code{.cpp}
-    *int main()
-    *{
-    *f();  // Call function.
-    *return 0;
-    *}
-    *@endcode
-    */
+     * @code{.cpp}
+     * int main()
+     * {
+     *     f();  // Call function.
+     *     return 0;
+     * }
+     * @endcode
+     */
 
     void f();
 
@@ -265,7 +255,7 @@ Note that you can use the extension value ``.console`` to see console output.
     * @code{.console}
     * This is some output of the program.
     * @endcode
-    */
+     */
 
 @concept
 ^^^^^^^^
@@ -282,15 +272,14 @@ A concept is the C++ equivalent to interfaces known in other classes.
 C++ provides no real way for concepts so at the moment they are a formal
 construct used in the documentation.
 
-::
+.. code-block:: cpp
 
-    #cpp
-    /**
-    *@concept SequenceConcept Sequence
-    *@signature concept SequenceConcept;
-    *@extends ContainerConcept
-    *@brief Concept for sequence types.
-    */
+    /*!
+     * @concept SequenceConcept Sequence
+     * @signature concept SequenceConcept;
+     * @extends ContainerConcept
+     * @brief Concept for sequence types.
+     */
 
 @defgroup
 ^^^^^^^^^
@@ -307,31 +296,30 @@ You can put types and functions into a group similar to making global
 interface functions and metafunctions part of the interface of a class
 or concept.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@defgroup FastxIO FASTA/FASTQ I/O
-    *@brief Functionality for FASTA and FASTQ I/O.
+     * @defgroup FastxIO FASTA/FASTQ I/O
+     * @brief Functionality for FASTA and FASTQ I/O.
      *
-    *@fn FastxIO#readRecord
-    *@brief Read one record from FASTA/FASTQ files.
+     * @fn FastxIO#readRecord
+     * @brief Read one record from FASTA/FASTQ files.
      *
-    *@fn FastxIO#writeRecord
-    *@brief Write one record to FASTA/FASTQ files.
+     * @fn FastxIO#writeRecord
+     * @brief Write one record to FASTA/FASTQ files.
      *
-    *@fn FastxIO#readBatch
-    *@brief Read multiple records from FASTA/FASTQ file, limit to a given count.
+     * @fn FastxIO#readBatch
+     * @brief Read multiple records from FASTA/FASTQ file, limit to a given count.
      *
-    *@fn FastxIO#writeBatch
-    *@brief Write multiple records to FASTA/FASTQ file, limit to a given count.
+     * @fn FastxIO#writeBatch
+     * @brief Write multiple records to FASTA/FASTQ file, limit to a given count.
      *
-    *@fn FastxIO#readAll
-    *@brief Read all records from a FASTA/FASTQ file.
+     * @fn FastxIO#readAll
+     * @brief Read all records from a FASTA/FASTQ file.
      *
-    *@fn FastxIO#writeAll
-    *@brief Write all records to a FASTA/FASTQ file.
-    */
+     * @fn FastxIO#writeAll
+     * @brief Write all records to a FASTA/FASTQ file.
+     */
 
 @deprecated
 ^^^^^^^^^^^
@@ -344,14 +332,13 @@ Mark a given function, metafunction, class, concept, or enum as
 deprecated. A deprecation message will be generated in the API
 documentation.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn f
-    *@deprecated Use @link g @endlink instead.
-    *@brief Minimal function.
-    */
+     * @fn f
+     * @deprecated Use @link g @endlink instead.
+     * @brief Minimal function.
+     */
 
     void f();
 
@@ -364,19 +351,18 @@ Top-level entry.
 
 Documentation for an enum with given name and optional label.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@enum MyEnum
-    *@brief An enum.
+     * @enum MyEnum
+     * @brief An enum.
      *
-    *@val MyEnum VALUE1
-    *@brief VALUE1 value of enum MyEnum.
+     * @val MyEnum VALUE1
+     * @brief VALUE1 value of enum MyEnum.
      *
-    *@val MyEnum VALUE2
-    *@brief VALUE2 value of enum MyEnum.
-    */
+     * @val MyEnum VALUE2
+     * @brief VALUE2 value of enum MyEnum.
+     */
 
     enum MyEnum
     {
@@ -392,20 +378,19 @@ Documentation for an enum with given name and optional label.
 Gives a parent class for a given class or a parent concept for a given
 concept.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@concept OneConcept
+     * @concept OneConcept
      *
-    *@concept TwoConcept
-    *@extends OneConept
+     * @concept TwoConcept
+     * @extends OneConept
      *
-    *@class MyClass
+     * @class MyClass
      *
-    *@class OtherClass
-    *@extends MyClass
-    */
+     * @class OtherClass
+     * @extends MyClass
+     */
 
 @fn
 ^^^
@@ -417,13 +402,12 @@ Top-level entry.
 Document a function (global, global interface, or member) with given
 name and label. The type of the function is given by its name.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn globalAlignment
-    *@brief Pairwise, DP-based global alignment.
-    */
+     * @fn globalAlignment
+     * @brief Pairwise, DP-based global alignment.
+     */
 
 @headerfile
 ^^^^^^^^^^^
@@ -436,14 +420,13 @@ Give the required ``#include`` path for a code entry.
 
 **Note:** Use angular brackets as below for SeqAn includes.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn f
-    *@brief A minimal function.
-    *@headerfile <seqan/module.h>
-    */
+     * @fn f
+     * @brief A minimal function.
+     * @headerfile <seqan/module.h>
+     */
 
 @implements
 ^^^^^^^^^^^
@@ -454,15 +437,14 @@ Second-level entry.
 
 Marks a class to implement a given concept.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@concept MyConcept
+     * @concept MyConcept
      *
-    *@class ClassName
-    *@implements MyConcept
-    */
+     * @class ClassName
+     * @implements MyConcept
+     */
 
 @include
 ^^^^^^^^
@@ -474,16 +456,15 @@ Second-level entry.
 Include a C++ source file as an example. See [#snippet @snippet] for
 including fragments.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn f
-    *@brief Minimal function.
+     * @fn f
+     * @brief Minimal function.
      *
-    *The following example shows the usage of the function.
-    *@include core/demos/use_f.cpp
-    */
+     * The following example shows the usage of the function.
+     * @include core/demos/use_f.cpp
+     */
 
 @internal
 ^^^^^^^^^
@@ -496,14 +477,13 @@ Mark a given function, metafunction, class, concept, or enum as
 internal. You can also provide a comment that is ignored/not used in the
 output.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn f
-    *@internal
-    *@brief Minimal function.
-    */
+     * @fn f
+     * @internal
+     * @brief Minimal function.
+     */
 
     void f();
 
@@ -522,15 +502,14 @@ property to the documented top-level entry. Use ``@link`` to link to
 entries within the documentation and the HTML ``<a>`` tag to link to
 external resources.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn f
-    *@brief Minimal function.
+     * @fn f
+     * @brief Minimal function.
      *
-    *The function is mostly useful with the @link String string class@endlink.
-    */
+     * The function is mostly useful with the @link String string class@endlink.
+     */
 
 @macro
 ^^^^^^
@@ -541,18 +520,17 @@ Top-level tag.
 
 Document a macro.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@macro MY_MACRO
-    *@brief Multiply two values.
+     * @macro MY_MACRO
+     * @brief Multiply two values.
      *
-    *@signature #define MY_MACRO(i, j) ...
-    *@param i A value for i.
-    *@param j A value for j.
-    *@return The product of i and j: (i * j)
-    */
+     * @signature #define MY_MACRO(i, j) ...
+     * @param i A value for i.
+     * @param j A value for j.
+     * @return The product of i and j: (i * j)
+     */
 
     #define MY_MACRO(i, j) (i * j)
 
@@ -565,17 +543,16 @@ Top-level tag.
 
 Document a metafunction.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@mfn Identity
-    *@brief Identity function for types.
+     * @mfn Identity
+     * @brief Identity function for types.
      *
-    *@signature Identity<T>::Type
-    *@tparam T The type to pass in.
-    *@returns The type T.
-    */
+     * @signature Identity<T>::Type
+     * @tparam T The type to pass in.
+     * @returns The type T.
+     */
 
     template <typename T>
     struct Identity
@@ -593,14 +570,13 @@ Second-level entry.
 Add an informative note to a function, metafunction, class, concept,
 enum, or group.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn f
-    *@note Very useful if used together with @link g @endlink.
-    *@brief Minimal function.
-    */
+     * @fn f
+     * @note Very useful if used together with @link g @endlink.
+     * @brief Minimal function.
+     */
 
     void f();
 
@@ -613,19 +589,21 @@ Top-level entry.
 
 Create a documentation page.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@page SomePage Page Title
+     * @page SomePage Page Title
      *
-    *A very simple page
+     * A very simple page
      *
-    *@section Section
-    *A section!
-    *@subsection Subsection
-    *A subsection!
-    */
+     * @section Section
+     *
+     * A section!
+     *
+     * @subsection Subsection
+     *
+     * A subsection!
+     */
 
 @param
 ^^^^^^
@@ -637,17 +615,16 @@ Second-level entry.
 Document a value (and non-type) parameter from a function or member
 function.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn square
-    *@brief Compute the square of an <tt>int</tt> value.
+     * @fn square
+     * @brief Compute the square of an <tt>int</tt> value.
      *
-    *@signature int square(x);
-    *@param x The value to compute square of (type <tt>int</tt>).
-    *@return int The square of <tt>x</tt>.
-    */
+     * @signature int square(x);
+     * @param x The value to compute square of (type <tt>int</tt>).
+     * @return int The square of <tt>x</tt>.
+     */
 
     int square(int x);
 
@@ -664,18 +641,17 @@ When documenting functions and the result type is the result of a
 metafunction then use a ``TXyz`` return type in ``@return`` and document
 ``TXyz`` in the text of ``@return`` as follows:
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn lengthSquare
-    *@brief Compute the square of the length of a container.
+     * @fn lengthSquare
+     * @brief Compute the square of the length of a container.
      *
-    *@signature TSize square(c);
+     * @signature TSize square(c);
      *
-    *@param c The container to compute the squared length of.
-    *@return TSize squared length of <tt>c</tt>.  <tt>TSize</tt> is the size type of <tt>c</tt>.
-    */
+     * @param c The container to compute the squared length of.
+     * @return TSize squared length of <tt>c</tt>.  <tt>TSize</tt> is the size type of <tt>c</tt>.
+     */
 
     template <typename TContainer>
     typename Size<TContainer>::Type lengthSquare(TContainer const & c);
@@ -687,18 +663,17 @@ metafunction then use a ``TXyz`` return type in ``@return`` and document
 
 Add note on a function or macro throwing ane xception.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn myFunction
-    *@brief Writes things to a file.
-    *@signature void myFunction(char const * filename);
+     * @fn myFunction
+     * @brief Writes things to a file.
+     * @signature void myFunction(char const * filename);
      *
-    *@param[in] filename File to write to.
+     * @param[in] filename File to write to.
      *
-    *@throw std::runtime_error If something goes wrong.
-    */
+     * @throw std::runtime_error If something goes wrong.
+     */
     void myFunction(char const * filename);
 
 @section
@@ -721,51 +696,21 @@ Second-level entry.
 
 Add "see also" link to a documentation entry.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn g
-    *@brief A simple function.
-    *@see f
-    */
-
-@signature
-^^^^^^^^^^
-
-**Signature** ``@signature <signature text>``
-
-Second-level entry.
-
-Document the signature of an entry.
-
-See the example for [#param @param].
-
-@snippet
-^^^^^^^^
-
-**Signature** ``@snippet path/to/file.h <Snippet Name``
-
-Second-level entry.
-
-Include a part of a file. An example for a comment including a snippet.
-
-::
-
-    #cpp
-    /*!
-    *@fn f
-    *@brief A simple function.
+     * @fn f
+     * @brief A simple function.
      *
-    *Here is a snippet:
-    *@snippet core/demos/use_f.cpp Simple Function
-    */
+     * Here is a snippet:
+     *
+     * @snippet core/demos/use_f.cpp Simple Function
+     */
 
 And here is the file with the snippet.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /* Some code */
 
     int main(int argc, char const ** argv)
@@ -787,15 +732,14 @@ Top-level entry.
 Document a tag. Mostly, you would group tags in a group using [#defgroup
 @defgroup].
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@defgroup MyTagGroup My Tag Group
+     * @defgroup MyTagGroup My Tag Group
      *
-    *@tag MyTagGroup#TagName
-    *@tag MyTagGroup#MyOtherTagName
-    */
+     * @tag MyTagGroup#TagName
+     * @tag MyTagGroup#MyOtherTagName
+     */
 
 @tparam
 ^^^^^^^
@@ -806,16 +750,15 @@ Second-level entry.
 
 Document a template parameter of a metafunction or class template.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@mfn MetaFunc
-    *@signature MetaFunc<T1, T2>::Type
+     * @mfn MetaFunc
+     * @signature MetaFunc<T1, T2>::Type
      *
-    *@tparam T1 First type.
-    *@tparam T2 Second type.
-    */
+     * @tparam T1 First type.
+     * @tparam T2 Second type.
+     */
 
 @typedef
 ^^^^^^^^
@@ -826,15 +769,14 @@ Top-level entry.
 
 Document a typedef.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@typedef CharString
-    *@brief An AllocString of character.
+     * @typedef CharString
+     * @brief An AllocString of character.
      *
-    *@signature typedef String<char, Alloc<> > CharString;
-    */
+     * @signature typedef String<char, Alloc<> > CharString;
+     */
 
 @var
 ^^^^
@@ -843,14 +785,13 @@ Document a typedef.
 
 Top-level entry. Document a global variable or member variable.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@class MyClass
+     * @class MyClass
      *
-    *@var int MyClass::iVar
-    */
+     * @var int MyClass::iVar
+     */
 
     class MyClass
     {
@@ -858,24 +799,27 @@ Top-level entry. Document a global variable or member variable.
         int iVar;
     };
 
-    ==== @val ====
+@val
+^^^^
 
-    '''Signature''' <tt>@val EnumType EnumValueName</tt>
+**Signature** ``@val EnumType EnumValueName``
 
-    Top-level entry.
-    Document an enum value.
+Top-level entry.
+Document an enum value.
+
+.. code-block:: cpp
 
     /*!
-    *@enum EnumName
-    *@brief My enum.
-    *@signature enum EnumName;
+     * @enum EnumName
+     * @brief My enum.
+     * @signature enum EnumName;
      *
-    *@val EnumName::VALUE1;
-    *@brief The first enum value.
+     * @val EnumName::VALUE1;
+     * @brief The first enum value.
      *
-    *@val EnumName::VALUE2;
-    *@brief The second enum value.
-    */
+     * @val EnumName::VALUE2;
+     * @brief The second enum value.
+     */
 
     enum MyEnum
     {
@@ -890,17 +834,15 @@ Top-level entry. Document a global variable or member variable.
 
 Second-level entry.
 
-Add a warning to a function, metafunction, class, concept, enum, or
-group.
+Add a warning to a function, metafunction, class, concept, enum, or group.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn f
-    *@note Using this function can lead to memory leaks.  Try to use @link g @endlink instead.
-    *@brief Minimal function.
-    */
+     * @fn f
+     * @note Using this function can lead to memory leaks.  Try to use @link g @endlink instead.
+     * @brief Minimal function.
+     */
 
     void f();
 
@@ -921,17 +863,16 @@ of a container, *increasing or decreasing* its size.
 The documentation of such functions should contain a clarifying text and
 a link to the other function.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn Sequence#reserve
+     * @fn Sequence#reserve
      *
-    *Can be used to increase the <b>capacity</b> of a sequence.
+     * Can be used to increase the <b>capacity</b> of a sequence.
      *
-    *Note that you can only modify the capacity of the sequence.  If you want to modify the
-    *<b>length</b> of the sequence then you have to use @link Sequence#resize @endlink.
-    */
+     * Note that you can only modify the capacity of the sequence.  If you want to modify the
+     * <b>length</b> of the sequence then you have to use @link Sequence#resize @endlink.
+     */
 
 Documentation Location
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -943,30 +884,29 @@ functions in front of the member functions. For another example, if you
 have to define multiple signatures for a global interface function or
 metafunctions, put the documentation before the first function.
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@class Klass
-    *@brief A class.
-    */
+     * @class Klass
+     * @brief A class.
+     */
     class Klass
     {
     public:
         /*!
-    ***@var int Klass::x
-    ***@brief The internal value.
-    ***/
+         * @var int Klass::x
+         * @brief The internal value.
+         */
         int x;
 
         /*!
-    ***@fn Klass::Klass
-    ***@brief The constructor.
+         * @fn Klass::Klass
+         * @brief The constructor.
          *
-    ***@signature Klass::Klass()
-    ***@signature Klass::Klass(i)
-    ***@param i The initial value for the member <tt>x</tt> (type <tt>int</tt>).
-    ***/
+         * @signature Klass::Klass()
+         * @signature Klass::Klass(i)
+         * @param i The initial value for the member <tt>x</tt> (type <tt>int</tt>).
+         */
         Klass() : x(0)
         {}
 
@@ -974,10 +914,10 @@ metafunctions, put the documentation before the first function.
         {}
 
         /*!
-    ***@fn Klass::f
-    ***@brief Increment member <tt>x</tt>
-    ***@signature void Klass::f()
-    ***/
+         * @fn Klass::f
+         * @brief Increment member <tt>x</tt>
+         * @signature void Klass::f()
+         */
         void f()
         {
             ++x;
@@ -997,14 +937,10 @@ HTML Subset
 You can use inline HTML to format your description and also for creating
 links.
 
--  Links into the documentation can be generated using ``<a>`` if the
-   scheme in ``href`` is ``seqan:``:
-
-``  ``\ ``<a href="seqan:AllocString">the alloc string</a>.``
-
--  Use ``<i>`` for italic/emphasized text.
--  Use ``<b>`` for bold text.
--  Use ``<tt>`` for typewriter text.
+*  Links into the documentation can be generated using ``<a>`` if the scheme in ``href`` is ``seqan:``: ``<a href="seqan:AllocString">the alloc string</a>.``
+*  Use ``<i>`` for italic/emphasized text.
+*  Use ``<b>`` for bold text.
+*  Use ``<tt>`` for typewriter text.
 
 Tag Ordering
 ^^^^^^^^^^^^
@@ -1025,11 +961,8 @@ should appear in the order below.
 #. ``@tparam``
 #. ``@return``
 #. ``@headerfile``
-#. The documentation body with the following tags in any order (as fit
-   for the documentation text) and possibly interleaved with text:
-
-``   ``\ ``@code``\ ``, ``\ ``@snippet``\ ``, ``\ ``@include``\ ``, ``\ ``@section``\ ``, ``\ ``@subsection``\ ``.``
-
+#. The documentation body with the following tags in any order (as fit for the documentation text) and possibly interleaved with text:
+   ``@code``, ``@snippet``, ``@include``, ``@section``, ``@subsection``.
 #. ``@see``
 #. ``@aka``
 
@@ -1042,116 +975,101 @@ Use the pseudo keyword ``concept`` in the ``@signature``.
 
 Use the following template:
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@concept MyConcept
-    *@brief The concept title.
+     * @concept MyConcept
+     * @brief The concept title.
      *
-    *@signature concept MyConcept;
+     * @signature concept MyConcept;
      *
-    *The concept description possibly using include, snippet, and <b><i>formatting</i></b> etc.
-    */
+     * The concept description possibly using include, snippet, and <b><i>formatting</i></b> etc.
+     */
 
 Documenting Classes
 ^^^^^^^^^^^^^^^^^^^
 
 Use the following template:
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@class AllocString Alloc String
-    *@brief A string storing its elements on dynamically heap-allocated arrays.
+     * @class AllocString Alloc String
+     * @brief A string storing its elements on dynamically heap-allocated arrays.
      *
-    *@signature template <typename TAlphabet, typename TSpec>
-    *class AllocString<TAlphabet, Alloc<TSpec> >;
-    *@tparam TAlphabet The alphabet/value type to use.
-    *@tparam TSpec    The tag to use for further specialization.
+     * @signature template <typename TAlphabet, typename TSpec>
+     * class AllocString<TAlphabet, Alloc<TSpec> >;
+     * @tparam TAlphabet The alphabet/value type to use.
+     * @tparam TSpec    The tag to use for further specialization.
      *
-    *The class description possibly using include, snippet, and <b><i>formatting</i></b> etc.
-    */
+     * The class description possibly using include, snippet, and <b><i>formatting</i></b> etc.
+     */
 
 Documenting Functions
 ^^^^^^^^^^^^^^^^^^^^^
 
 Use the following template:
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@fn globalAlignment
-    *@brief Global DP-based pairwise alignment.
+     * @fn globalAlignment
+     * @brief Global DP-based pairwise alignment.
      *
-    *@signature TScore globalAlignment(align, scoringScheme);
-    *@signature TScore globalAlignment(align, scoringScheme, lowerBand, upperBand);
-    *@param align Align object to store the result in. Must have length 2 and be filled with sequences.
-    *@param scoringScheme Score object to use for scoring.
-    *@param lowerBand The lower band of the alignment (<tt>int</tt>).
-    *@param upperBAnd The upper band of the alignment (<tt>int</tt>).
-    *@return TScore The alignment score of type <tt>Value<TScore>::Type</tt> where <tt>TScore</tt> is the type of <tt>scoringScheme</tt>.
+     * @signature TScore globalAlignment(align, scoringScheme);
+     * @signature TScore globalAlignment(align, scoringScheme, lowerBand, upperBand);
+     * @param align Align object to store the result in. Must have length 2 and be filled with sequences.
+     * @param scoringScheme Score object to use for scoring.
+     * @param lowerBand The lower band of the alignment (<tt>int</tt>).
+     * @param upperBAnd The upper band of the alignment (<tt>int</tt>).
+     * @return TScore The alignment score of type <tt>Value<TScore>::Type</tt> where <tt>TScore</tt> is the type of <tt>scoringScheme</tt>.
      *
-    *The function description possibly using include, snippet, and <b><i>formatting</i></b> etc.
-    */
+     * The function description possibly using include, snippet, and <b><i>formatting</i></b> etc.
+     */
 
 Documenting Metafunctions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the following template:
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@mfn Size
-    *@brief Return size type of another type.
+     * @mfn Size
+     * @brief Return size type of another type.
      *
-    *@signature Size<T>::Type
-    *@tparam T The type to query for its size type.
-    *@return TSize The size type to use for T.
+     * @signature Size<T>::Type
+     * @tparam T The type to query for its size type.
+     * @return TSize The size type to use for T.
      *
-    *The class description possibly using include, snippet, and <b><i>formatting</i></b> etc.
-    */
+     * The class description possibly using include, snippet, and <b><i>formatting</i></b> etc.
+     */
 
 Documenting Enums
 ^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: cpp
 
-    #cpp
     /*!
-    *@enum EnumName
-    *@brief My enum.
-    *@signature enum EnumName;
+     * @enum EnumName
+     * @brief My enum.
+     * @signature enum EnumName;
      *
-    *@var EnumName::VALUE
-    *@summary The enum's first value.
+     * @var EnumName::VALUE
+     * @summary The enum's first value.
      *
-    *@var EnumName::VALUE2
-    *@summary The enum's second value.
-    */
+     * @var EnumName::VALUE2
+     * @summary The enum's second value.
+     */
 
 Difference to Doxygen
 ~~~~~~~~~~~~~~~~~~~~~
 
 If you already know Doxygen, the following major difference apply.
 
--  The documentation is more independent of the actual code.
-
-| ``  Doxygen creates a documentation entry for all functions that are present in the code and allows the additional documentation, e.g. using ``\ ``@fn``\ `` for adding functions.``
-| ``  With the SeqAn dox system, you have to explicitely use a top level tag for adding documentationitems.``
-
--  Documentation entries are not identified by their signature but by
-   their name.
--  We allow the definition of interface functions and metafunctions
-   (e.g. ``@fn Klass#func`` and ``@mfn Klass#Func``) in addition to
-   member functions (``@fn Klass::func``).
--  We do not allow tags with backslashes but consistently use at signs
-   (``@``).
-
-.. raw:: mediawiki
-
-   {{TracNotice|{{PAGENAME}}}}
+* The documentation is more independent of the actual code.
+  Doxygen creates a documentation entry for all functions that are present in the code and allows the additional documentation, e.g. using ``@fn`` for adding functions.
+  With the SeqAn dox system, you have to explicitely use a top level tag for adding documentationitems.
+* Documentation entries are not identified by their signature but by their name.
+* We allow the definition of interface functions and metafunctions (e.g. ``@fn Klass#func`` and ``@mfn Klass#Func``) in addition to member functions (``@fn Klass::func``).
+* We do not allow tags with backslashes but consistently use at signs (``@``).
