@@ -5,6 +5,6 @@ SeqAn Style Guides
 
 .. toctree::
    :glob:
-   :maxdepth: 2
+   :maxdepth: 1
 
    StyleGuide/*

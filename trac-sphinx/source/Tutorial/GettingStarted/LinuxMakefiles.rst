@@ -17,14 +17,14 @@ It should be very simple for you to tailor these instructions to your requiremen
 Prerequisites
 ~~~~~~~~~~~~~
 
-Use the following command line to install the required dependencies: the `Subversion <http://subversion.apache.org/>`__ client, the `GNU C++ compiler <http://gcc.gnu.org/>`__, `CMake <http://cmake.org>`__ for the build system and the `Python <http://python.org>`_ script interpreter for running helper scripts.
+Use the following command line to install the required dependencies: the `Subversion <http://subversion.apache.org/>`_ client, the `GNU C++ compiler <http://gcc.gnu.org/>`_, `CMake <http://cmake.org>`_ for the build system and the `Python <http://python.org>`_ script interpreter for running helper scripts.
 
 .. code-block:: console
 
     ~ # sudo apt-get install subversion g++ cmake python
 
 The following command line installs optional dependencies:
-developer versions of `zlib <http://zlib.org>`__ and `libbzip2 <http://bzip.org>`__ (for compressed I/O support) and the `Boost <http://boost.org>`__ library (required by a few apps).
+developer versions of `zlib <http://zlib.org>`_ and `libbzip2 <http://bzip.org>`_ (for compressed I/O support) and the `Boost <http://boost.org>`_ library (required by a few apps).
 
 .. code-block:: console
 

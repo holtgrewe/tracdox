@@ -222,7 +222,7 @@ Record Readers
 --------------
 
 The :dox:`RecordReader` class is a wrapper around file-like objects, such as Streams.
-However, as you will learn in the `File I/O <Tutorial/FileIO>`__ tutorial, it also provides a generalized interface for memory mapped files that are accessed as :dox:`MMapString MMap String` objects.
+However, as you will learn in the :ref:`tutorial-file-io` tutorial, it also provides a generalized interface for memory mapped files that are accessed as :dox:`MMapString MMap String` objects.
 Depending on the actual specialization, [:dox:`RecordReader` RecordReaders] also add a buffer which allows to re-read the first several thousand characters of a file which is very useful for automatic file type detection.
 
 When using the :dox:`RecordReader` class in the Lower-Level I/O layer, you only have to know how to create a :dox:`RecordReader` for reading.

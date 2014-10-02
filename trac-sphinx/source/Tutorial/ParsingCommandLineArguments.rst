@@ -1430,7 +1430,6 @@ Simply call the new program with the ``--help`` option.
 
 .. code-block:: console
 
-   #ShellBox
    # modify_string --help
    modify_string - String Modifier
    ===============================

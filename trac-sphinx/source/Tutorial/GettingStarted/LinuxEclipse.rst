@@ -17,13 +17,13 @@ It should be very simple for you to tailor these instructions to your requiremen
 Prerequisites
 ~~~~~~~~~~~~~
 
-Use the following command line to install the required dependencies: the `Subversion <http://subversion.apache.org/>`__ client, the `GNU C++ compiler <http://gcc.gnu.org/>`__, `CMake <http://cmake.org>`__ for the build system, the `Python <http://python.org>`__ script interpreter for running helper scripts, and `Eclipse <http://www.eclipse.org>`__ with the `CDT plugin <http://www.eclipse.org/cdt/>`__ for C++ development.
+Use the following command line to install the required dependencies: the `Subversion <http://subversion.apache.org/>`_ client, the `GNU C++ compiler <http://gcc.gnu.org/>`_, `CMake <http://cmake.org>`_ for the build system, the `Python <http://python.org>`_ script interpreter for running helper scripts, and `Eclipse <http://www.eclipse.org>`_ with the `CDT plugin <http://www.eclipse.org/cdt/>`_ for C++ development.
 
 .. code-block:: console
 
     ~ # sudo apt-get install subversion g++ cmake python eclipse-cdt
 
-The following command line installs optional dependencies: developer versions of `zlib <http://zlib.org>`__ and `libbzip2 <http://bzip.org>`__ (for compressed I/O support) and the `Boost <http://boost.org>`__ library (required by a few apps).
+The following command line installs optional dependencies: developer versions of `zlib <http://zlib.org>`_ and `libbzip2 <http://bzip.org>`_ (for compressed I/O support) and the `Boost <http://boost.org>`_ library (required by a few apps).
 
 .. code-block:: console
 

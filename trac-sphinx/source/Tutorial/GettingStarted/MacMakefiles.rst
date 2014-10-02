@@ -10,19 +10,19 @@ Getting Started With SeqAn On Mac Os X Using Makefiles
 
 This tutorials explains how to get started with SeqAn on Mac Os X using Makefiles.
 
-We assume that you want to use `MacPorts <http://www.macports.org/>`__ for installing some dependencies (MacPorts is a package management system that easily allows you to install Unix software on Os X).
+We assume that you want to use `MacPorts <http://www.macports.org/>`_ for installing some dependencies (MacPorts is a package management system that easily allows you to install Unix software on Os X).
 Of course, if you want to use a different way for installing the dependencies (e.g. using Homebrew) then you are free to do so.
 
 Prerequisites
 ~~~~~~~~~~~~~
 
-First, you have to install the Apple `Xcode SDK <https://developer.apple.com/downloads/index.action>`__ (Apple ID needed).
+First, you have to install the Apple `Xcode SDK <https://developer.apple.com/downloads/index.action>`_ (Apple ID needed).
 
 .. warning::
 
     Please choose Xcode SDK version 4.2 or lower, because the current version has some compatibility problems with the SeqAn build system.
 
-After installing the Xcode SDK, please install MacPorts following `these instructions <http://www.macports.org/install.php>`__.
+After installing the Xcode SDK, please install MacPorts following `these instructions <http://www.macports.org/install.php>`_.
 To check that the MacPorts install was successful, enter the following on your shell.
 If the ``port`` program is found then you can go on.
 
@@ -30,7 +30,7 @@ If the ``port`` program is found then you can go on.
 
     # port info
 
-Next, install `CMake <http://cmake.org>`__ and `Subversion <http://subversion.apache.org/>`__ using the ``port`` command.
+Next, install `CMake <http://cmake.org>`_ and `Subversion <http://subversion.apache.org/>`_ using the ``port`` command.
 
 .. code-block:: console
 

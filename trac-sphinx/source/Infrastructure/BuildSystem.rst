@@ -8,10 +8,10 @@
 The CMake-Based Build System
 ----------------------------
 
-We use `CMake <http://www.cmake.org>`__ for building the SeqAn demos, applications and tests.
+We use `CMake <http://www.cmake.org>`_ for building the SeqAn demos, applications and tests.
 This wiki page explains our usage of CMake, the variables we define and how to extend the build scripts for new demos, apps etc.
-`CMake's documentation (v2.8) <http://www.cmake.org/cmake/help/cmake-2-8-docs.html>`__ supplements this document.
-The `documentation of CTest (v2.8) <http://www.cmake.org/cmake/help/ctest-2-8-docs.html>`__ could also be of interest.
+`CMake's documentation (v2.8) <http://www.cmake.org/cmake/help/cmake-2-8-docs.html>`_ supplements this document.
+The `documentation of CTest (v2.8) <http://www.cmake.org/cmake/help/ctest-2-8-docs.html>`_ could also be of interest.
 
 .. todo:: Document usage of "dummy targets" for IDE project file generation.
 
@@ -20,7 +20,7 @@ Directory Layout
 
 The CMake files live in *projects/library/cmake*:
 
-::
+.. code-block:: console
 
     $ cd projects/library/cmake
     $ tree
@@ -49,7 +49,7 @@ External Dependencies
 ~~~~~~~~~~~~~~~~~~~~~
 
 SeqAn is a C++ header library and thus does not need to build itself.
-However, some applications have dependencies on external libraries, such as `Boost <http://www.boost.org>`__ or `Threading Building Blocks <http://www.threadingbuildingblocks.org/>`__.
+However, some applications have dependencies on external libraries, such as `Boost <http://www.boost.org>`_ or `Threading Building Blocks <http://www.threadingbuildingblocks.org/>`_.
 
 The policy is to install these external dependencies on your system and let CMake find them.
 
@@ -70,4 +70,4 @@ Multiple Build Types
 ~~~~~~~~~~~~~~~~~~~~
 
 You can call CMake in different directories to be able to build Debug, Release etc. binaries without having to re-cmake.
-The process is described `here in the CMake wiki <http://www.vtk.org/Wiki/CMake_FAQ#How_can_I_build_multiple_modes_without_switching_.3F>`__.
+The process is described `here in the CMake wiki <http://www.vtk.org/Wiki/CMake_FAQ#How_can_I_build_multiple_modes_without_switching_.3F>`_.

@@ -76,7 +76,7 @@ We tell the program that it has to use the ``seqan`` namespace and write the ``m
 
 A good programming practice is to define all types that shall be used by the function at the beginning of the function body.
 In our case, we define a ``TSequence`` type for our input sequences and an :dox:`Align` object (``TAlign``) type to store the alignment.
-For more information on the Align datastructure, please read the tutorial `Alignment Representation <Tutorial/AlignmentRepresentation>`__.
+For more information on the Align datastructure, please read the tutorial :ref:`tutorial-alignment-representation`.
 
 .. includefrags:: core/demos/tutorial/alignments/alignment_global_standard.cpp
    :fragment: main

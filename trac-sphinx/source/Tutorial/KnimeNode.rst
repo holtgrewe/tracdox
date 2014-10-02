@@ -39,15 +39,13 @@ Create a useful KNIME workflow
 
 In the second part of the tutorial you are asked to modify the app you imported into KNIME such that it becomes a quality control tool.
 
-.. TODO: Move reads.fastq and ref.fasta file somewhere or make them smaller.
-
 .. container:: assignment
 
    Type
      Transfer
 
    Objective
-     Create a simple read mapping workflow in KNIME using 'razers3' and map the ``reads.fastq`` to ``ref.fasta``.
+     Create a simple read mapping workflow in KNIME using 'razers3' and map the reads in `reads.fastq <http://ftp.seqan.de/manual_files/seqan-1.4/reads.fastq>`_ to `ref.fasta <http://ftp.seqan.de/manual_files/seqan-1.4/ref.fasta>`_.
      Configure the node to use a ``percent-identity`` value of 99 and the output format could be 'razers'.
      The third to last and second to last column show the matching position in the reference (begin and end respectively).
      The last one represents the number of matching characters in percent.

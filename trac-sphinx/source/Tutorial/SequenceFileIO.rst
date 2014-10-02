@@ -24,7 +24,7 @@ This tutorial explains how to read using the :dox:`RecordReader` class and the :
 Currently, SeqAn supports reading sequences (and qualities where it applies) in FASTA, FASTQ, EMBL and GenBank format.
 
 This tutorial does not explain how to use the :dox:`SequenceStream` class.
-This class is covered in the `Basic Sequence I/O tutorial <Tutorial/BasicSequenceIO>`__.
+This class is covered in the :ref:`tutorial-basic-sequence-io` tutorial.
 
 Reading Sequence Files
 ----------------------

@@ -1,17 +1,17 @@
+.. sidebar:: ToC
+
+   .. contents::
+
+
 .. _style-guide-cpp:
 
 SeqAn C++ Code Style
 --------------------
 
-TOC()
+The aim of this style guide is to enforce a certain level of canonicality on all SeqAn code.
+Besides good comments, having a common style guide is the key to being able to understand and change code written by others easily.
 
-The aim of this style guide is to enforce a certain level of
-canonicality on all SeqAn code. Besides good comments, having a common
-style guide is the key to being able to understand and change code
-written by others easily.
-
-(The style guide partially follows the `Google C++ Code Style
-Guide <http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml>`__.)
+(The style guide partially follows the `Google C++ Code Style Guide <http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml>`_.)
 
 C++ Features
 ~~~~~~~~~~~~
@@ -19,101 +19,84 @@ C++ Features
 Reference Arguments
 ^^^^^^^^^^^^^^^^^^^
 
-We prefer reference arguments over pointer arguments. Use ``const``
-where possible.
+We prefer reference arguments over pointer arguments.
+Use ``const`` where possible.
 
-+-------------+
-| , !) ====   |
-+=============+
-+-------------+
+Use C-Style Logical Operators
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+Use ``&&``, ``||``, and ``!`` instead of ``and``, ``or``, and ``not``.
 
-    #FoldOut
-    {|
-    !</tt>, and <tt>!</tt> instead of <tt>and</tt>, <tt>or</tt>, and <tt>not</tt>.
-    |}
+.. container:: foldable
 
-    ----
-    While available from C++98, MSVC does not support them out of the box, a special header <tt><iso646.h></tt> has to be included.
+    While available from C++98, MSVC does not support them out of the box, a special header ``<iso646.h>`` has to be included.
     Also, they are unfamiliar to most C++ programmers and nothing in SeqAn is using them.
 
 Default Arguments
 ^^^^^^^^^^^^^^^^^
 
-::
+Default arguments to global functions are problematic with generated forwards.
+They can be replaced with function overloading, so do not use them.
 
-    #FoldOut
-    Default arguments to global functions are problematic with generated forwards.
-    They can be replaced with function overloading, so do not use them.
-    ----
+.. container:: foldable
+
     You can replace default arguments with function overloading as follows.
     Do not do this.
 
-    <pre>
-    #cpp
-    inline double f(int x, double y = 1.0)
-    {
-        // ...
-    }
+    .. code-block:: cpp
+
+        inline double f(int x, double y = 1.0)
+        {
+            // ...
+        }
 
 Do this instead.
 
-::
+.. container:: foldable
 
-    #cpp
-    inline double f(int x, double y)
-    {
-        // ...
-    }
+    .. code-block:: cpp
 
-    inline double f(int x)
-    {
-        return f(x, 1.0);
-    }
+        inline double f(int x, double y)
+        {
+            // ...
+        }
 
-.. raw:: html
-
-   </pre>
+        inline double f(int x)
+        {
+            return f(x, 1.0);
+        }
 
 Exceptions
 ^^^^^^^^^^
 
-::
+Currently, the SeqAn code does not use any exceptions and is not exception safe.
+Do not use any exceptions yourself, instead use return codes.
 
-    #FoldOut
-    Currently, the SeqAn code does not use any exceptions and is not exception safe.
-    Do not use any exceptions yourself, instead use return codes.
-    ----
-    The following is an example where two chars are read using <tt><cstdio></tt> I/O.
-    We use a return code of <tt>0</tt> to indicate no errors.
+.. container:: foldable
 
-    <pre>
-    #cpp
-    int readSome(char & c, FILE * fp)
-    {
-        int res = fgetc(fp);
-        if (res < 0)
-            return res;
-        res = fgetc(fp);
-        if (res < 0)
-            return res;
-        c = res;
-        return 0;
-    }
+    The following is an example where two chars are read using ``<cstdio>`` I/O.
+    We use a return code of ``0`` to indicate no errors.
 
-.. raw:: html
+    .. code-block:: cpp
 
-   </pre>
+        int readSome(char & c, FILE * fp)
+        {
+            int res = fgetc(fp);
+            if (res < 0)
+                return res;
+            res = fgetc(fp);
+            if (res < 0)
+                return res;
+            c = res;
+            return 0;
+        }
 
 Virtual Member Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Do not use virtual member functions: Since we mostly use template
-subclassing instead of C++ built-in subclassing, there rarely is the
-need for member functions. In the case where there are member functions,
-they should not be ``virtual`` since this is slow when used in tight
-loops.
+Do not use virtual member functions.
+Since we mostly use template subclassing instead of C++ built-in subclassing, there rarely is the need for member functions.
+In the case where there are member functions, they should not be ``virtual`` since this is slow when used in tight loops.
 
 ``static_cast<>``
 ^^^^^^^^^^^^^^^^^
@@ -123,73 +106,61 @@ Prefer ``static_cast<>`` over C-style casts.
 ``const_cast<>``
 ^^^^^^^^^^^^^^^^
 
-::
+Use const-casts only to make an object const, do not remove consts.
+Rather, use the ``mutable`` keyword on selected members.
+``const_cast<>`` is allowed for interfacing with external (C) APIs where the ``const`` keyword is missing but which do not modify the variable.
 
-    #FoldOut
-    Use const-casts only to make an object const, do not remove consts.SANDBOX_ARG_PARSE
-    Rather, use the <tt>mutable</tt> keyword on selected members.
-    <tt>const_cast<></tt> is allowed for interfacing with external (C) APIs where the <tt>const</tt> keyword is missing but which do not modify the variable.
-    ----
-    The following is an example where <tt>const_cast<></tt> is OK:
+.. container:: foldable
 
-    <pre>
-    #cpp
-    template <typename T>
-    bool isXyz(T const & x)
-    {
-        return x._member == 0;
-    }
+    The following is an example where ``const_cast<>`` is OK:
 
-    template <typename T>
-    bool isXyz(T & x)
-    {
-        return const_cast<T const &>(x)._member == 0;
-    }
+    .. code-block:: cpp
 
-.. raw:: html
+        template <typename T>
+        bool isXyz(T const & x)
+        {
+            return x._member == 0;
+        }
 
-   </pre>
+        template <typename T>
+        bool isXyz(T & x)
+        {
+            return const_cast<T const &>(x)._member == 0;
+        }
 
 ``reinterpret_cast<>``
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Only use ``reinterpret_cast<>`` when you absolutely have to and you know
-what you are doing! Sometimes, it is useful for very low-level code but
-mostly it indicates a design flaw.
+Only use ``reinterpret_cast<>`` when you absolutely have to and you know what you are doing!
+Sometimes, it is useful for very low-level code but mostly it indicates a design flaw.
 
 pre/post increment/decrement
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+Prefer the "pre" variants for decrement and increment, especially in loops.
+Their advantage is that no copy of an object has to be made.
 
-    #FoldOut
-    Prefer the "pre" variants for decrement and increment, especially in loops.
-    Their advantage is that no copy of an object has to be made.
-    ----
+.. container:: foldable
+
     Good:
 
-    <pre>
-    #cpp
-    typedef Iterator<TContainer>::Type TIterator;
-    for (TIterator it = begin(container); atEnd(it); ++it)
-    {
-        // do work
-    }
+    .. code-block:: cpp
 
-Bad:
+        typedef Iterator<TContainer>::Type TIterator;
+        for (TIterator it = begin(container); atEnd(it); ++it)
+        {
+            // do work
+        }
 
-::
+    Bad:
 
-    #cpp
-    typedef Iterator<TContainer>::Type TIterator;
-    for (TIterator it = begin(container); atEnd(it); it++)
-    {
-        // do work
-    }
+    .. code-block:: cpp
 
-.. raw:: html
-
-   </pre>
+        typedef Iterator<TContainer>::Type TIterator;
+        for (TIterator it = begin(container); atEnd(it); it++)
+        {
+            // do work
+        }
 
 Code Quality
 ~~~~~~~~~~~~
@@ -197,38 +168,30 @@ Code Quality
 Const-Correctness
 ^^^^^^^^^^^^^^^^^
 
-Write const correct code. Read the
-[http://www.parashift.com/c\ ++-faq-lite/const-correctness.html C++ FAQ
-const correctness article] for more information. Besides other things,
-this allows to use temporary objects without copying in functions that
-do not need to change their arguments.
+Write const correct code.
+Read the `C++ FAQ const correctness article <http://www.parashift.com/c ++-faq-lite/const-correctness.html>`_ for more information.
+Besides other things, this allows to use temporary objects without copying in functions that do not need to change their arguments.
 
 Compiler Warnings
 ^^^^^^^^^^^^^^^^^
 
-::
+All code in the ''core'' and ''extras'' repository must compile without any warnings using the flags generated by the CMake system.
 
-    #FoldOut
-    All code in the ''core'' and ''extras'' repository must compile without any warnings using the flags generated by the CMake system.
-    ----
+.. container:: foldable
+
     Currently, the GCC flags are:
 
-    <pre>
-    -W -Wall -Wstrict-aliasing -pedantic -Wno-long-long -Wno-variadic-macros
-
-.. raw:: html
-
-   </pre>
+    ::
+        -W -Wall -Wstrict-aliasing -pedantic -Wno-long-long -Wno-variadic-macros
 
 Style Conformance
 ^^^^^^^^^^^^^^^^^
 
-Follow this code style whenever possible. However, prefer consistency
-over conformance.
+Follow this code style whenever possible.
+However, prefer consistency over conformance.
 
-If you are editing code that is non-conforming consider whether you
-could/should adapt the whole file to the new style. If this is not
-feasible, prefer consistency over conformance.
+If you are editing code that is non-conforming consider whether you could/should adapt the whole file to the new style.
+If this is not feasible, prefer consistency over conformance.
 
 Semantics
 ~~~~~~~~~
@@ -236,27 +199,22 @@ Semantics
 Parameter Ordering
 ^^^^^^^^^^^^^^^^^^
 
-::
+The general parameter order should be (1) output, (2) non-const input (e.g. file handles), (3) input, (4) tags.
+Within these groups, the order should be from mandatory to optional.
 
-    #FoldOut
-    The general parameter order should be (1) output, (2) non-const input (e.g. file handles), (3) input, (4) tags.
-    Within these groups, the order should be from mandatory to optional.
-    ----
-    In SeqAn, we read functions <tt>f(out1, out2, out3, ..., in1, in2, in3, ...)</tt> as <tt>(out1, out2, out3, ...) <- f(in1, in2, in3, ...)</tt>.
+.. container:: foldable
 
-    E.g. <tt>assign()</tt>:
+    In SeqAn, we read functions ``f(out1, out2, out3, ..., in1, in2, in3, ...)`` as ``(out1, out2, out3, ...) <- f(in1, in2, in3, ...)``.
 
-    <pre>
-    #cpp
-    template <typename T>
-    void f(T & out, T const & in)
-    {
-        out = in;
-    }
+    E.g. ``assign()``:
 
-.. raw:: html
+    .. code-block:: cpp
 
-   </pre>
+        template <typename T>
+        void f(T & out, T const & in)
+        {
+            out = in;
+        }
 
 Scoping, Helper Code
 ~~~~~~~~~~~~~~~~~~~~
@@ -264,34 +222,29 @@ Scoping, Helper Code
 Global Variables
 ^^^^^^^^^^^^^^^^
 
-Do not use global variables. They introduce hard-to find bugs and
-require the introduction of a link-time library.
+Do not use global variables.
+They introduce hard-to find bugs and require the introduction of a link-time library.
 
 Tags In Function Arguments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+Tags in function arguments should always be const.
 
-    #FoldOut
-    Tags in function arguments should always be const.
-    ----
-    <pre>
-    #cpp
-    // somewhere in your code:
+.. container:: foldable
 
-    struct Move_;
-    typedef Tag<Move_> Move;
+    .. code-block:: cpp
 
-    // then, later:
+        // somewhere in your code:
 
-    void appendValue(TContainer, Move const &)
-    {
-        // ...
-    }
+        struct Move_;
+        typedef Tag<Move_> Move;
 
-.. raw:: html
+        // then, later:
 
-   </pre>
+        void appendValue(TContainer, Move const &)
+        {
+            // ...
+        }
 
 Structs and Classes
 ~~~~~~~~~~~~~~~~~~~
@@ -299,84 +252,67 @@ Structs and Classes
 Visibility Specifiers
 ^^^^^^^^^^^^^^^^^^^^^
 
-::
+Visibility specifiers should go on the same indentation level as the ``class`` keyword.
 
-    #FoldOut
-    Visibility specifiers should go on the same indentation level as the <tt>class</tt> keyword.
-    ----
+.. container:: foldable
+
     Example:
 
-    <pre>
-    #cpp
-    class MyStruct
-    {
-    public:
-    protected:
-    private:
-    };
+    .. code-block:: cpp
 
-.. raw:: html
-
-   </pre>
+        class MyStruct
+        {
+        public:
+        protected:
+        private:
+        };
 
 Tag Definitions
 ^^^^^^^^^^^^^^^
 
-::
+Tags that are possibly also used in other modules must not have additional parameters and be defined using the ``Tag<>`` template.
+Tags that have parameters must only be used within the module they are defined in and have non-generic names.
 
-    #FoldOut
-    Tags that are possibly also used in other modules must not have additional parameters and be defined using the <tt>Tag<></tt> template.
-    Tags that have parameters must only be used within the module they are defined in and have non-generic names.
-    ----
-    Tags defined with the <tt>Tag<></tt> template and a typedef can be defined multiply.
+.. container:: foldable
+
+    Tags defined with the ``Tag<>`` template and a typedef can be defined multiply.
     These definitions must have the following pattern:
 
-    <pre>
-    #cpp
-    struct TagName_;
-    typedef Tag<TagName_> TagName;
+    .. code-block:: cpp
 
-This way, there can be multiple definitions of the same tag since the
-struct ``TagName_`` is only declared but not defined and there can be
-duplicate typedefs.
+        struct TagName_;
+        typedef Tag<TagName_> TagName;
 
-For tags (also those used for specialization) that have template
-parameters, the case is different. Here, we cannot wrap them inside the
-``Tag<>`` template with a typedef since it still depends on parameters.
-Also we want to be able to instantiate tags so we can pass them as
-function arguments. Thus, we have to add a struct body and thus define
-the struct. There cannot be multiple identical definitions in C++. Thus,
-each tag with parameters must have a unique name throughout SeqAn.
-Possibly too generic names should be avoided. E.g. ``Chained`` should be
-reserved as the name for a global tag but ``ChainedFile<>`` can be used
-as a specialization tag in a file-related module.
+    This way, there can be multiple definitions of the same tag since the struct ``TagName_`` is only declared but not defined and there can be duplicate typedefs.
 
-Note that this restriction does not apply for internally used tags (e.g.
-those that have an underscore postfix) since these can be renamed
-without breaking the public API.
+    For tags (also those used for specialization) that have template parameters, the case is different.
+    Here, we cannot wrap them inside the ``Tag<>`` template with a typedef since it still depends on parameters.
+    Also we want to be able to instantiate tags so we can pass them as function arguments.
+    Thus, we have to add a struct body and thus define the struct.
+    There cannot be multiple identical definitions in C++.
+    Thus, each tag with parameters must have a unique name throughout SeqAn.
+    Possibly too generic names should be avoided.
+    E.g. ``Chained`` should be reserved as the name for a global tag but ``ChainedFile<>`` can be used as a specialization tag in a file-related module.
 
-.. raw:: html
-
-   </pre>
+    Note that this restriction does not apply for internally used tags (e.g.  those that have an underscore postfix) since these can be renamed without breaking the public API.
 
 In-Place Member Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+Whenever possible, functions should be declared and defined outside the class.
+The constructor, destructor and few operators have to be defined inside the class, however.
 
-    #FoldOut
-    Whenever possible, functions should be declared and defined outside the class.
-    The constructor, destructor and few operators have to be defined inside the class, however.
-    ----
-    The following has to be defined and declared within the class (also see [http://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B Wikipedia]):
+.. container:: foldable
 
-    *constructors
-    *destructors
-    *function call operator <tt>operator()</tt>
-    *type cast operator <tt>operator T()</tt>
-    *array subscript operator <tt>operator[]()</tt>
-    *dereference-and-access-member operator <tt>operator->()</tt>
-    *assignment operator <tt>operator=()</tt>
+    The following has to be defined and declared within the class (also see `Wikipedia <http://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B>`_):
+
+    * constructors
+    * destructors
+    * function call operator ``operator()``
+    * type cast operator ``operator T()``
+    * array subscript operator ``operator[]()``
+    * dereference-and-access-member operator ``operator->()``
+    * assignment operator ``operator=()``
 
 Formatting
 ~~~~~~~~~~
@@ -384,153 +320,127 @@ Formatting
 Constructor Initialization Lists
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+If the whole function prototype fits in one line, keep it in one line.
+Otherwise, wrap line after column and put each argument on its own line indented by one level.
+Align the initialization list.
 
-    #FoldOut
-    If the whole function prototype fits in one line, keep it in one line.
-    Otherwise, wrap line after column and put each argument on its own line indented by one level.
-    Align the initialization list.
-    ----
+.. container:: foldable
+
     Example:
 
-    <pre>
-    #cpp
-    class Class
-    {
-        MyClass() :
-            member1(0),
-            member2(1),
-            member3(3)
-        {}
-    };
+    .. code-block:: cpp
 
-.. raw:: html
-
-   </pre>
+        class Class
+        {
+            MyClass() :
+                member1(0),
+                member2(1),
+                member3(3)
+            {}
+        };
 
 Line Length
 ^^^^^^^^^^^
 
-The maximum line length is 120. Use a line length of 80 for header
-comments and the code section separators.
+The maximum line length is 120. Use a line length of 80 for header comments and the code section separators.
 
 Non-ASCII Characters
 ^^^^^^^^^^^^^^^^^^^^
 
-::
+All files should be UTF-8, non-ASCII characters should not occur in them nevertheless.
 
-    #FoldOut
-    All files should be UTF-8, non-ASCII characters should not occur in them nevertheless.
-    ----
-    In comments, use <tt>ss</tt> instead of <tt>ß</tt> and <tt>ae</tt> instead of <tt>ä</tt> etc.
+.. container:: foldable
 
-    In strings, use UTF-8 coding. For example, <tt>"\xEF\xBB\xBF"</tt> is the Unicode zero-width no-break space character, which would be invisible if included in the source as straight UTF-8.
+    In comments, use ``ss`` instead of ``ß`` and ``ae`` instead of ``ä`` etc.
+
+    In strings, use UTF-8 coding.
+    For example, ``"\xEF\xBB\xBF"`` is the Unicode zero-width no-break space character, which would be invisible if included in the source as straight UTF-8.
 
 Spaces VS Tabs
 ^^^^^^^^^^^^^^
 
-::
+Do not use tabs, use spaces.
+Use ``"\t"`` in strings instead of plain tabs.
 
-    #FoldOut
-    Do not use tabs, use spaces.
-    Use <tt>"\t"</tt> in strings instead of plain tabs.
-    ----
+.. container:: foldablej
+
     After some discussion, we settled on this.
     All programmer's editors can be configured to use spaces instead of tabs.
     We use a four spaces to a tab.
 
     There can be problems when indenting in for loops with tabs, for example.
-    Consider the following (<tt>-->|</tt> is a tab, <tt>_</tt> is a space):
+    Consider the following (``-->|`` is a tab, ``_`` is a space):
 
-    <pre>
-    #cpp
-    for (int i = 0, j = 0, k = 0, ...;
-    <u>_</u>cond1 && cond2 &&; ++i)
-    {
-      // ...
-    }
+    .. code-block:: cpp
 
-Here, indentation can happen up to match the previous line. Mixing tabs
-and spaces works, too. However, since tabs are not shown in the editor,
-people might indent a file with mixed tabs and spaces with spaces if
-they are free to mix tabs and spaces.
+        for (int i = 0, j = 0, k = 0, ...;
+        _____cond1 && cond2 &&; ++i)
+        {
+          // ...
+        }
 
-::
+    Here, indentation can happen up to match the previous line.
+    Mixing tabs and spaces works, too.
+    However, since tabs are not shown in the editor, people might indent a file with mixed tabs and spaces with spaces if they are free to mix tabs and spaces.
 
-    #cpp
-    for (int i = 0, j = 0, k = 0, ...;
-    -->|_cond1 && cond2 &&; ++i)
-    {
-      // ...
-    }
+    .. code-block:: cpp
 
-.. raw:: html
-
-   </pre>
+        for (int i = 0, j = 0, k = 0, ...;
+        -->|_cond1 && cond2 &&; ++i)
+        {
+          // ...
+        }
 
 Indentation
 ^^^^^^^^^^^
 
 We use an indentation of four spaces per level.
 
-::
+Note that '''namespaces do not cause an increase in indentation level.'''
 
-    #FoldOut
-    Note that '''namespaces do not cause an increase in indentation level.'''
-    ----
-    <pre>#cpp
-    namespace seqan {
+.. container:: foldable
 
-    class SomeClass
-    {
-    };
+    .. code-block:: cpp
 
-    }  // namespace seqan
+        namespace seqan {
 
-.. raw:: html
+        class SomeClass
+        {
+        };
 
-   </pre>
+        }  // namespace seqan
 
 Trailing Whitespace
 ^^^^^^^^^^^^^^^^^^^
 
-::
+Trailing whitespace is forbidden.
 
-    #FoldOut
-    Trailing whitespace is forbidden.
-    ----
+.. container:: foldable
+
     Trailing whitespace is not visible, leading whitespace for indentation is perceptible through the text following it.
     Anything that cannot be seen can lead to "trash changes" in the SVN when somebody accidently removes it.
 
 Inline Comments
 ^^^^^^^^^^^^^^^
 
-::
+Use inline comments to document variables.
 
-    #FoldOut
-    Use inline comments to document variables.
-    ----
-    Possibly align inline comments.
+Possibly align inline comments.
 
-    <pre>
-    #cpp
-    short x;    // a short is enough!
-    int myVar;  // this is my variable, do not touch it
+.. container:: foldable
 
-.. raw:: html
+    .. code-block:: cpp
 
-   </pre>
+        short x;    // a short is enough!
+        int myVar;  // this is my variable, do not touch it
 
 Brace Positions
 ^^^^^^^^^^^^^^^
 
-::
+Always put brace positions on the next line.
 
-    #FoldOut
-    Always put brace positions on the next line.
-    ----
-    <pre>
-    #cpp
+.. code-block:: cpp
+
     class MyClass
     {
     public:
@@ -550,516 +460,425 @@ Brace Positions
         // ...
     }
 
-.. raw:: html
-
-   </pre>
-
 Conditionals
 ^^^^^^^^^^^^
 
-::
+Use no spaces inside the parantheses, the ``else`` keyword belongs on a new line, use block braces consistently.
 
-    #FoldOut
-    Use no spaces inside the parantheses, the <tt>else</tt> keyword belongs on a new line, use block braces consistently.
-    ----
+.. container:: foldable
+
     Conditional statements should look like this:
 
-    <pre>
-    #cpp
-    if (a == b)
-    {
-        return 0;
-    }
-    else if (c == d)
-    {
-        int x = a + b + d;
-        return x;
-    }
+    .. code-block:: cpp
 
-    if (a == b)
-        return 0;
-    else if (c == d)
-        return a + b + d;
+        if (a == b)
+        {
+            return 0;
+        }
+        else if (c == d)
+        {
+            int x = a + b + d;
+            return x;
+        }
 
-Do not leave out the spaces before and after the parantheses, do not put
-leading or trailing space in the paranthesis. The following is wrong:
+        if (a == b)
+            return 0;
+        else if (c == d)
+            return a + b + d;
 
-::
+    Do not leave out the spaces before and after the parantheses, do not put leading or trailing space in the paranthesis.
+    The following is wrong:
 
-    #cpp
-    if (foo){
-        return 0;
-    }
-    if(foo)
-        return 0;
-    if (foo )
-        return 0;
+    .. code-block:: cpp
 
-Make sure to add braces to all blocks if any block has one. The
-following is wrong:
+        if (foo){
+            return 0;
+        }
+        if(foo)
+            return 0;
+        if (foo )
+            return 0;
 
-::
+    Make sure to add braces to all blocks if any block has one.
+    The following is wrong:
 
-    #cpp
-    if (a == b)
-        return 0;
-    else if (c == d)
-    {
-        int x = a + b + d;
-        return x;
-    }
+    .. code-block:: cpp
 
-.. raw:: html
-
-   </pre>
+        if (a == b)
+            return 0;
+        else if (c == d)
+        {
+            int x = a + b + d;
+            return x;
+        }
 
 Loops and Switch Statements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+Switch statements may use braces for blocks.
+Empty loop bodies should use ``{}`` or ``continue``.
 
-    #FoldOut
-    Switch statements may use braces for blocks.
-    Empty loop bodies should use <tt>{}</tt> or <tt>continue</tt>.
-    ----
+.. container:: foldable
+
     Format your switch statements as follows.
     The usage of blocks is optional.
     Blocks can be useful for declaring variables inside the switch statement.
 
-    <pre>
-    #cpp
-    switch (var)
-    {
-    case 0:
-        return 1;
-    case 1:
-        return 0;
-    default:
-        SEQAN_FAIL("Invalid value!");
-    }
+    .. code-block:: cpp
 
-    switch (var2)
-    {
-    case 0:
-        return 1;
-    case 1:
-    {
-        int x = 0;
-        for (int i = 0; i < var3; ++i)
-            x ++ i;
-        return x;
-    }
-    default:
-        SEQAN_FAIL("Invalid value!");
-    }
+        switch (var)
+        {
+        case 0:
+            return 1;
+        case 1:
+            return 0;
+        default:
+            SEQAN_FAIL("Invalid value!");
+        }
 
-Empty loop bodies should use ``{}`` or ``continue``, but not a single
-semicolon.
+        switch (var2)
+        {
+        case 0:
+            return 1;
+        case 1:
+        {
+            int x = 0;
+            for (int i = 0; i < var3; ++i)
+                x ++ i;
+            return x;
+        }
+        default:
+            SEQAN_FAIL("Invalid value!");
+        }
 
-::
+    Empty loop bodies should use ``{}`` or ``continue``, but not a single semicolon.
 
-    #cpp
-    while (condition)
-    {
-      // Repeat test until it returns false.
-    }
+    .. code-block:: cpp
 
-    for (int i = 0; i < kSomeNumber; ++i)
-        {}  // Good - empty body.
-    while (condition)
-        continue;  // Good - continue indicates no logic.
+        while (condition)
+        {
+          // Repeat test until it returns false.
+        }
 
-.. raw:: html
-
-   </pre>
+        for (int i = 0; i < kSomeNumber; ++i)
+            {}  // Good - empty body.
+        while (condition)
+            continue;  // Good - continue indicates no logic.
 
 Expressions
 ^^^^^^^^^^^
 
-::
+Binary expressions are surrounded by one space. Unary expressions are preceded by one space.
 
-    #FoldOut
-    Binary expressions are surrounded by one space. Unary expressions are preceded by one space.
-    ----
+.. container:: foldable
+
     Example:
 
-    <pre>
-    #cpp
-    {|
-    ! c == d
-    ! e == f
-    ! x)
-    |}
+    .. code-block:: cpp
 
-    {
-        // ...
-    }
-
-    bool y = x;
-    unsigned i = ~j;
-
-.. raw:: html
-
-   </pre>
+        if (a == b || c == d || e == f || !x)
+        {
+            // ...
+        }
+        bool y = !x;
+        unsigned i = ~j;
 
 Type Expressions
 ^^^^^^^^^^^^^^^^
 
-::
+No spaces around period or arrow.
+Add spaces before and after pointer and references.
+``const`` comes after the type.
 
-    #FoldOut
-    No spaces around period or arrow.
-    Add spaces before and after pointer and references.
-    <tt>const</tt> comes after the type.
-    ----
+.. container:: foldable
+
     The following are good examples:
 
-    <pre>
-    #cpp
-    int x = 0;
-    int * ptr = x;                     // OK, spaces are good.
-    int const & ref = x;               // OK, const after int
-    int main(int argc, char ** argv);  // OK, group pointers.
+    .. code-block:: cpp
 
-Bad Examples:
+        int x = 0;
+        int * ptr = x;                     // OK, spaces are good.
+        int const & ref = x;               // OK, const after int
+        int main(int argc, char ** argv);  // OK, group pointers.
 
-::
+    Bad Examples:
 
-    #cpp
-    int x = 0;
-    int* ptr = x;         // bad spaces
-    int *ptr = x;         // bad spaces
-    const int & ref = x;  // wrong placement of const
-    int x = ptr -> z;     // bad spaces
-    int x = obj. z;       // bad spaces
+    .. code-block:: cpp
 
-.. raw:: html
-
-   </pre>
+        int x = 0;
+        int* ptr = x;         // bad spaces
+        int *ptr = x;         // bad spaces
+        const int & ref = x;  // wrong placement of const
+        int x = ptr -> z;     // bad spaces
+        int x = obj. z;       // bad spaces
 
 Function Return Types
 ^^^^^^^^^^^^^^^^^^^^^
 
-::
+If a function definition is short, everything is on the same line.
+Otherwise, split.
 
-    #FoldOut
-    If a function definition is short, everything is on the same line. Otherwise, split.
-    ----
+.. container:: foldable
+
     Good example:
 
-    <pre>
-    #cpp
-    int foo();
+    .. code-block:: cpp
 
-    template <typename TString>
-    typename Value<TString>::Type
-    anotherFunction(TString const & foo, TString const & bar, /*...*/)
-    {
-        // ...
-    }
+        int foo();
 
-.. raw:: html
-
-   </pre>
+        template <typename TString>
+        typename Value<TString>::Type
+        anotherFunction(TString const & foo, TString const & bar, /*...*/)
+        {
+            // ...
+        }
 
 Inline Functions
 ^^^^^^^^^^^^^^^^
 
-::
+If a function definition is short, everything is on the same line. Otherwise put inline and return type in the same line.
 
-    #FoldOut
-    If a function definition is short, everything is on the same line. Otherwise put inline and return type in the same line.
-    ----
+.. container:: foldable
+
     Good example:
 
-    <pre>
-    #cpp
-    inline int foo();
+    .. code-block:: cpp
 
-    template <typename TString>
-    inline typename Value<TString>::Type
-    anotherFunction(TString const & foo, TString const & bar, /*...*/)
-    {
-        // ...
-    }
+        inline int foo();
 
-.. raw:: html
-
-   </pre>
+        template <typename TString>
+        inline typename Value<TString>::Type
+        anotherFunction(TString const & foo, TString const & bar, /*...*/)
+        {
+            // ...
+        }
 
 Function Argument Lists
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+If it fits in one line, keep in one line.
+Otherwise, wrap at the paranthesis, put each argument on its own line.
+For very long function names and parameter lines, break after opening bracket.
 
-    #FoldOut
-    If it fits in one line, keep in one line.
-    Otherwise, wrap at the paranthesis, put each argument on its own line.
-    For very long function names and parameter lines, break after opening bracket.
-    ----
+.. container:: foldable
+
     Good example:
 
-    <pre>
-    #cpp
-    template <typename TA, typename TB>
-    inline void foo(TA & a, TB & b);
+    .. code-block:: cpp
 
-    template </*...*/>
-    inline void foo2(TA & a,
-                     TB & b,
-                     ...
-                     TY & y,
-                     TZ & z);
+        template <typename TA, typename TB>
+        inline void foo(TA & a, TB & b);
 
-    template </*...*/>
-    inline void _functionThisIsAVeryVeryLongFunctionNameSinceItsAHelper(
-        TThisTypeWasMadeToForceYouToWrapInTheLongNameMode & a,
-        TB & b,
-        TC & c,
-        TB & d,
-        ...);
+        template </*...*/>
+        inline void foo2(TA & a,
+                         TB & b,
+                         ...
+                         TY & y,
+                         TZ & z);
 
-.. raw:: html
-
-   </pre>
+        template </*...*/>
+        inline void _functionThisIsAVeryVeryLongFunctionNameSinceItsAHelper(
+            TThisTypeWasMadeToForceYouToWrapInTheLongNameMode & a,
+            TB & b,
+            TC & c,
+            TB & d,
+            ...);
 
 Template Argument Lists
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+Follow conventions of function parameter lists, no blank after opening ``<``.
 
-    #FoldOut
-    Follow conventions of function parameter lists, no blank after opening <tt><</tt>.
-    ----
+.. container:: foldable
+
     As for function parameters, try to fit everything on one line if possible, otherwise, break the template parameters over multiple lines and put the commas directly after the type names.
-    <pre>
-    #cpp
-    template <typename T1, typename T1>
-    void foo() {}
 
-    template <typename T1, typename T2, ...
-              typename T10, typename T11>
-    void bar() {}
+    .. code-block:: cpp
 
-Multiple closing ``>`` go to the same line and are only separated by
-spaces if two closing angular brackets come after each other.
+        template <typename T1, typename T1>
+        void foo() {}
 
-::
+        template <typename T1, typename T2, ...
+                  typename T10, typename T11>
+        void bar() {}
 
-    #cpp
-    typedef Iterator<Value<TValue>::Type,
-                     Standard> ::Type
+Multiple closing ``>`` go to the same line and are only separated by spaces if two closing angular brackets come after each other.
 
-    typedef String<char, Alloc<> > TMyString
-    // -------------------------^
+.. container:: foldable
 
-.. raw:: html
+    .. code-block:: cpp
 
-   </pre>
+        typedef Iterator<Value<TValue>::Type,
+                         Standard> ::Type
+
+        typedef String<char, Alloc<> > TMyString
+        // -------------------------^
 
 Function Calls
 ^^^^^^^^^^^^^^
 
-::
+Similar rules as in `Function Argument Lists`_ apply.
+When wrapped, not each parameter has to occur on its own line.
 
-    #FoldOut
-    Similar rules as in [#FunctionArgumentLists Function Argument Lists] apply.
-    When wrapped, not each parameter has to occur on its own line.
-    ----
+.. container:: foldable
+
     Example:
-    <pre>
-    #cpp
-    foo(a, b);
 
-    foo2(a, b, c, ...
-         x, y, z);
+    .. code-block:: cpp
 
-    if (x)
-    {
-        if (y)
+        foo(a, b);
+
+        foo2(a, b, c, ...
+             x, y, z);
+
+        if (x)
         {
-            _functionThisIsAVeryVeryLongFunctionNameSinceItsAHelper(
-                firstParameterWithALongName, b, c, d);
+            if (y)
+            {
+                _functionThisIsAVeryVeryLongFunctionNameSinceItsAHelper(
+                    firstParameterWithALongName, b, c, d);
+            }
         }
-    }
-
-.. raw:: html
-
-   </pre>
 
 Naming Rules
 ~~~~~~~~~~~~
 
-In the following, camel case means that the first letter of each word is
-written upper case, the remainder is written in lower case.
-Abbreviations of length 2 are kept in upper case, longer abbreviations
-are camel-cased.
+In the following, camel case means that the first letter of each word is written upper case, the remainder is written in lower case.
+Abbreviations of length 2 are kept in upper case, longer abbreviations are camel-cased.
 
 Macros
 ^^^^^^
 
-::
+Macros are all upper case, separated by underscores, prefixed with ``SEQAN_``.
 
-    #FoldOut
-    Macros are all upper case, separated by underscores, prefixed with <tt>SEQAN_</tt>.
-    ----
+.. container:: foldable
+
     Example:
 
-    <pre>
-    #cpp
-    SEQAN_ASSERT_EQ(val1, val2);
+    .. code-block:: cpp
 
-    #define SEQAN_MY_TMP_MACRO(x) f(x)
-    // ...
-    SEQAN_MY_TMP_MACRO(1);
-    // ...
-    #undef SEQAN_MY_TMP_MACRO
+        SEQAN_ASSERT_EQ(val1, val2);
 
-.. raw:: html
-
-   </pre>
+        #define SEQAN_MY_TMP_MACRO(x) f(x)
+        // ...
+        SEQAN_MY_TMP_MACRO(1);
+        // ...
+        #undef SEQAN_MY_TMP_MACRO
 
 Variable Naming
 ^^^^^^^^^^^^^^^
 
-::
+Variables are named in camel case, starting with a lower-case parameter.
+Internal member variables have an underscore prefix.
 
-    #FoldOut
-    Variables are named in camel case, starting with a lower-case parameter.
-    Internal member variables have an underscore prefix.
-    ----
+.. container:: foldable
+
     Example:
 
-    <pre>
-    #cpp
-    int x;
-    int myVar;
-    int saValue(/*...*/);
-    int getSAValue(/*...*/);
+    .. code-block:: cpp
 
-    struct FooBar
-    {
-        int _x;
-    };
+        int x;
+        int myVar;
+        int saValue(/*...*/);
+        int getSAValue(/*...*/);
 
-.. raw:: html
-
-   </pre>
+        struct FooBar
+        {
+            int _x;
+        };
 
 Constant / Enum Value Naming
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+Constant and enum values are named like macros: all-upper case, separated by dashes.
 
-    #FoldOut
-    Constant and enum values are named like macros: All-upper case, separated by dashes.
-    ----
+.. container:: foldable
+
     Example:
 
-    <pre>
-    #cpp
-    enum MyEnum
-    {
-        MY_ENUM_VALUE1 = 1,
-        MY_ENUM_VALUE2 = 20
-    };
+    .. code-block:: cpp
 
-    int const MY_VAR = 10;
+        enum MyEnum
+        {
+            MY_ENUM_VALUE1 = 1,
+            MY_ENUM_VALUE2 = 20
+        };
 
-.. raw:: html
-
-   </pre>
+        int const MY_VAR = 10;
 
 Struct / Enum / Class Naming
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+Types are written in camel case, starting with an upper case character.
 
-    #FoldOut
-    Types are written in camel case, starting with an upper case character.
-    ----
+.. container:: foldable
+
     Internal library types have an underscore suffix.
 
     Example:
 
-    <pre>
-    #cpp
-    struct InternalType_
-    {};
+    .. code-block:: cpp
 
-    struct SAValue
-    {};
+        struct InternalType_
+        {};
 
-    struct LcpTable
-    {};
+        struct SAValue
+        {};
 
-.. raw:: html
-
-   </pre>
+        struct LcpTable
+        {};
 
 Metafunction Naming
 ^^^^^^^^^^^^^^^^^^^
 
-::
+Metafunctions are named like structs, defined values are named ``VALUE``, types ``Type``.
 
-    #FoldOut
-    Metafunctions are named like structs, defined values are named <tt>VALUE</tt>, types <tt>Type</tt>.
-    ----
+.. container:: foldable
+
     Metafunctions should not export any other types or values publically, e.g. they should have an underscore suffix.
 
     Example:
 
-    <pre>
-    #cpp
-    template <typename T>
-    struct MyMetaFunction
-    {
-        typedef typename RemoveConst<T>::Type TNoConst_;
-        typedef TNonConst_ Type;
-    };
+    .. code-block:: cpp
 
-    template <typename T>
-    struct MyMetaFunction2
-    {
-        typedef True Type;
-        static bool const VALUE = false;
-    };
+        template <typename T>
+        struct MyMetaFunction
+        {
+            typedef typename RemoveConst<T>::Type TNoConst_;
+            typedef TNonConst_ Type;
+        };
 
-.. raw:: html
-
-   </pre>
+        template <typename T>
+        struct MyMetaFunction2
+        {
+            typedef True Type;
+            static bool const VALUE = false;
+        };
 
 Function Naming
 ^^^^^^^^^^^^^^^
 
-::
+The same naming rule as for variables applies.
 
-    #FoldOut
-    The same naming rule as for variables applies.
-    ----
+.. container:: foldable
+
     Example:
 
-    <pre>
-    #cpp
-    void fooBar();
+    .. code-block:: cpp
 
-    template <typename T>
-    int saValue(T & x);
+        void fooBar();
 
-    template <typename T>
-    void lcpTable(T & x);
+        template <typename T>
+        int saValue(T & x);
 
-.. raw:: html
-
-   </pre>
+        template <typename T>
+        void lcpTable(T & x);
 
 Names In Documentation
 ^^^^^^^^^^^^^^^^^^^^^^
 
-In the documentation, classes have the same name as in the source code,
-e.g. the class StringSet is documented as "class StringSet."
-Specializations are named "``$SPEC $CLASS``\ ", e.g. "Concat StringSet",
-"Horspool Finder."
+In the documentation, classes have the same name as in the source code, e.g. the class StringSet is documented as "class StringSet."
+Specializations are named "``$SPEC $CLASS``\ ", e.g. "Concat StringSet", "Horspool Finder."
 
 Comments
 ~~~~~~~~
@@ -1067,91 +886,79 @@ Comments
 File Comments
 ^^^^^^^^^^^^^
 
-::
+Each file should begin with a file header.
 
-    #FoldOut
-    Each file should begin with a file header.
-    ----
+.. container:: foldable
+
     The file header has the format.
-    The ''skel.py'' tool automatically generates files with appropriate headers.
+    The ``skel.py`` tool automatically generates files with appropriate headers.
 
-    <pre>
-    #cpp
-    // ==========================================================================
-    //                              $PROJECT NAME
-    // ==========================================================================
-    // Copyright (C) 2010 $AUTHOR, $ORGANIZATION
-    //
-    // $LICENSE
-    //
-    // ==========================================================================
-    // Author: $NAME <$EMAIL>
-    // ==========================================================================
-    // $FILE_DESCRIPTION
-    // ==========================================================================
+    .. code-block:: cpp
 
-.. raw:: html
-
-   </pre>
+        // ==========================================================================
+        //                              $PROJECT NAME
+        // ==========================================================================
+        // Copyright (C) 2010 $AUTHOR, $ORGANIZATION
+        //
+        // $LICENSE
+        //
+        // ==========================================================================
+        // Author: $NAME <$EMAIL>
+        // ==========================================================================
+        // $FILE_DESCRIPTION
+        // ==========================================================================
 
 Class, Function, Metafunction, Enum, Macro DDDoc Comments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+Each public class, function, metafunction, enum, and macro should be documented using :ref:`dox API docs<style-guide-dox-api-docs>`.
+Internal code should be documented, too.
 
-    #FoldOut
-    Each public class, function, metafunction, enum, and macro should be documented using [[HowTo/DocumentCode| DDDoc]].
-    Internal code should be documented, too.
-    ----
+.. container:: foldable
+
     Example:
 
-    <pre>
-    #cpp
-    /**
-    .Class.IntervalAndCargo:
-    ..cat:Miscellaneous
-    ..summary:A simple record type that stores an interval and a cargo value.
-    ..signature:IntervalAndCargo<TValue, TCargo>
-    ..param.TValue:The value type, that is the type of the interval borders.
-    ...default:int.
-    ...metafunction:Metafunction.Value
-    ..param.TCargo:The cargo type.
-    ...default:int.
-    ...metafunction:Metafunction.Cargo
-    ..include:seqan/refinement.h
-    */
+    .. code-block:: cpp
 
-    template <typename TValue = int, typename TCargo = int>
-    class IntervalAndCargo
-    {
-    // ...
-    };
+        /*!
+         * @class IntervalAndCargo
+         * @headerfile <seqan/refinement.h>
+         * @brief A simple record type that stores an interval and a cargo value.
+         *
+         * @signature template <typename TValue, typename TCargo>
+         *            struct IntervalAndCargo;
+         *
+         * @tparam TValue The value type of the record, defaults to int.
+         * @tparam TCargo The cargo type of the record, defaults to int.
+         */
 
-    // This functions helps the XYZ class to fulfill the ABC functionality.
-    //
-    // It corresponds to function FUNC() in the paper describing the original
-    // algorithm.  The variables in this function correspond to the names in the
-    // paper and thus the code style is broken locally.
+        template <typename TValue = int, typename TCargo = int>
+        class IntervalAndCargo
+        {
+            // ...
+        };
 
-    void _helperFunction(/*...*/)
-    {}
+        // This functions helps the XYZ class to fulfill the ABC functionality.
+        //
+        // It corresponds to function FUNC() in the paper describing the original
+        // algorithm.  The variables in this function correspond to the names in the
+        // paper and thus the code style is broken locally.
 
-.. raw:: html
-
-   </pre>
+        void _helperFunction(/*...*/)
+        {}
 
 Implementation Comments
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-All functions etc. should be well-documented. In most cases, it is more
-important how something is done instead of of what is done.
+All functions etc. should be well-documented.
+In most cases, it is more important how something is done instead of of what is done.
 
 TODO Comments
 ^^^^^^^^^^^^^
 
-TODO comments have the format ``// TODO($USERNAME): $TODO_COMMENT``. The
-username is the username of the one writing the item, not the one to fix
-it. Use tickets for this.
+TODO comments have the format ``// TODO($USERNAME): $TODO_COMMENT``.
+The username is the username of the one writing the item, not the one to fix it.
+Use GitHub issues for this.
 
 Source Tree Structure
 ~~~~~~~~~~~~~~~~~~~~~
@@ -1159,49 +966,18 @@ Source Tree Structure
 File Name Rules
 ^^^^^^^^^^^^^^^
 
-::
+File and directories are named all-lower case, words are separated by underscores.
 
-    #FoldOut
-    File and directories are named all-lower case, words are separated by underscores.
-    ----
-    Exceptions are ''INFO'', ''COPYING'', ''README'', ... files.
+.. container:: foldable
+
+    Exceptions are ``INFO``, ``COPYING``, ``README``, ... files.
 
     Examples:
 
-    *''string_base.h''
-    *''string_packed.h''
-    *''suffix_array.h''
-    *''lcp_table.h''
-
-Overall Structure
-^^^^^^^^^^^^^^^^^
-
-Can be found in wiki:WhitePapers/RepositoryStructure for now.
-
-Repositories
-^^^^^^^^^^^^
-
-Can be found in wiki:WhitePapers/RepositoryStructure for now.
-
-Library Modules
-^^^^^^^^^^^^^^^
-
-Can be found in wiki:WhitePapers/RepositoryStructure for now.
-
-Tests
-^^^^^
-
-Can be found in wiki:WhitePapers/RepositoryStructure for now.
-
-Demos
-^^^^^
-
-Can be found in wiki:WhitePapers/RepositoryStructure for now.
-
-Apps
-^^^^
-
-Can be found in wiki:WhitePapers/RepositoryStructure for now.
+    * ``string_base.h``
+    * ``string_packed.h``
+    * ``suffix_array.h``
+    * ``lcp_table.h``
 
 File Structure
 ~~~~~~~~~~~~~~
@@ -1209,47 +985,36 @@ File Structure
 Header ``#define`` guard
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+The header ``#define`` include guards are constructed from full paths to the repository root.
 
-    #FoldOut
-    The header <tt>#define</tt> include guards are constructed from full paths to the repository root.
-    ----
+.. container:: foldable
+
     Example:
 
-    {|
-    ! '''filename'''
-    ! '''preprocessor symbol'''
-    |-
-    |  seqan/core/include/seqan/basic/iterator_base.h
-    |  <tt>SEQAN_CORE_INCLUDE_SEQAN_BASIC_ITERATOR_BASE_H_</tt>
-    |}
+    +------------------------------------------------+-----------------------------------------------------+
+    | filename                                       | preprocessor symbol                                 |
+    +================================================+=====================================================+
+    | seqan/core/include/seqan/basic/iterator_base.h | ``SEQAN_CORE_INCLUDE_SEQAN_BASIC_ITERATOR_BASE_H_`` |
+    +------------------------------------------------+-----------------------------------------------------+
 
+    .. code-block:: cpp
 
-    <pre>
-    #cpp
-    #ifndef SEQAN_CORE_INCLUDE_SEQAN_BASIC_ITERATOR_BASE_H_
-    #define SEQAN_CORE_INCLUDE_SEQAN_BASIC_ITERATOR_BASE_H_
-    #endif  // #ifndef SEQAN_CORE_INCLUDE_SEQAN_BASIC_ITERATOR_BASE_H_
-
-.. raw:: html
-
-   </pre>
+        #ifndef SEQAN_CORE_INCLUDE_SEQAN_BASIC_ITERATOR_BASE_H_
+        #define SEQAN_CORE_INCLUDE_SEQAN_BASIC_ITERATOR_BASE_H_
+        #endif  // #ifndef SEQAN_CORE_INCLUDE_SEQAN_BASIC_ITERATOR_BASE_H_
 
 Include Order
 ^^^^^^^^^^^^^
 
-The include order should be (1) standard library requirements, (2)
-external requirements, (3) required SeqAn modules.
+The include order should be (1) standard library requirements, (2) external requirements, (3) required SeqAn modules.
 
-In SeqAn module headers (e.g. *basic.h*), then all files in the module
-are included.
+In SeqAn module headers (e.g. *basic.h*), then all files in the module are included.
 
 CPP File Structure
 ^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: cpp
 
-    #cpp
     // ==========================================================================
     //                                $APP_NAME
     // ==========================================================================
@@ -1304,9 +1069,8 @@ CPP File Structure
 Application Header Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: cpp
 
-    #cpp
     // ==========================================================================
     //                                $APP_NAME
     // ==========================================================================
@@ -1379,9 +1143,8 @@ Application Header Structure
 Library Header Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: cpp
 
-    #cpp
     // ==========================================================================
     //                 SeqAn - The Library for Sequence Analysis
     // ==========================================================================
@@ -1454,7 +1217,3 @@ Library Header Structure
     }  // namespace seqan
 
     #endif  // CORE_INCLUDE_SEQAN_BASIC_ITERATOR_BASE_H_
-
-.. raw:: mediawiki
-
-   {{TracNotice|{{PAGENAME}}}}

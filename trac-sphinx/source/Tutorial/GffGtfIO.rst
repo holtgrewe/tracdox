@@ -25,7 +25,7 @@ It starts out with a quick reminder on the structure of GFF and GTF files and wi
 
 The GFF and GTF formats are used for annotating genomic intervals (an interval with begin/end position on a contig/chromosome).
 GFF exist in versions 2 and 3 and GTF is sometimes called "GFF 2.5".
-There are specifications for `GFF 2 <http://www.sanger.ac.uk/resources/software/gff/spec.html>`__, `GFF 3 <http://www.sequenceontology.org/gff3.shtml>`__, and `GTF <http://mblab.wustl.edu/GTF22.html>`__ available elsewhere.
+There are specifications for `GFF 2 <http://www.sanger.ac.uk/resources/software/gff/spec.html>`_, `GFF 3 <http://www.sequenceontology.org/gff3.shtml>`_, and `GTF <http://mblab.wustl.edu/GTF22.html>`_ available elsewhere.
 GFF and GTF are TSV-based formats and in general have the same structure.
 The main difference is the underlying system/ontology for the annotation but also smaller differences in the format.
 
@@ -260,11 +260,10 @@ Assignment 2
 
         .. includefrags:: extras/demos/tutorial/gff_io/solution2.cpp
 
+        The output is
+
         .. code-block:: console
 
-           The output is
-
-           <pre>#ShellBox
            RECORDS ON CONTIGS
            ctg123  23
 

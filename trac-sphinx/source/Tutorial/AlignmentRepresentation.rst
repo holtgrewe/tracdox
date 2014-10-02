@@ -174,7 +174,7 @@ This can be quite useful if one needs to parse the alignment rows to access posi
 First, we have to define the type of the ``Iterator``, which can be easily done by using the metafunction :dox:`ContainerConcept#Iterator Iterator`.
 Remember that we iterate over an ``TRow`` object.
 Then we have to construct the iterators ``it`` which points to the begin of ``row1`` using the :dox:`ContainerConcept#begin begin` function and ``itEnd`` which points behind the last value of ``row1`` using the :dox:`ContainerConcept#end end` function.
-If you need to refresh the **Iterator Concept** you can read the wiki page `Iterators <Tutorial/Iterators>`__.
+If you need to refresh the **Iterator Concept** you can read the Tutorial :ref:`tutorial-iterators`.
 While we iterate over the gapped sequence, we can ask if the current value, at which the iterator ``it`` points to, is a gap or not by using the function :dox:`Gaps#isGap isGap()`.
 Use :dox:`AlphabetWithGapsConcept#gapValue gapValue` to print the correct gap symbol.
 
@@ -283,7 +283,7 @@ The second output prints our desired alignment.
             || ||
             TTAGT
 
-The general usage of graphs is explained in the `Graphs <Tutorial/Graphs>`__ tutorial.
+The general usage of graphs is explained in the :ref:`tutorial-graphs` tutorial.
 
 Assignment 2
 ^^^^^^^^^^^^

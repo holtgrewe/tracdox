@@ -152,8 +152,6 @@ During a preorder DFS, the descent into subtree can be skipped by :dox:`Annotati
 Asignment 1
 """""""""""
 
-.. TODO: Place gtf file in repository?
-
 .. container:: assignment
 
    Type

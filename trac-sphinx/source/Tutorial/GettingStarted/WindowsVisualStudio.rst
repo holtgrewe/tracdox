@@ -17,14 +17,14 @@ Prerequisites
 
 We assume that you have the following software installed:
 
-* `TortoiseSVN <http://tortoisesvn.net/downloads.html>`__ for version
+* `TortoiseSVN <http://tortoisesvn.net/downloads.html>`_ for version
   control and retrieving
 * Microsoft Visual Studio for compiling C++ code.
-  If you do not have Visual Studio yet, you can download the `free Visual Studio Express Edition from Microsoft <http://www.microsoft.com/express/>`__.
+  If you do not have Visual Studio yet, you can download the `free Visual Studio Express Edition from Microsoft <http://www.microsoft.com/express/>`_.
   Note that at some point, you can pick between the Express Edition and a demo of the full version.
   Pick the Express Edition here for a smaller and continuously free version.
-* `CMake <http://www.cmake.org/cmake/resources/software.html>`__ for generating project files
-* `Python 2.x <http://python.org/download/>`__ for the code generator.
+* `CMake <http://www.cmake.org/cmake/resources/software.html>`_ for generating project files
+* `Python 2.x <http://python.org/download/>`_ for the code generator.
   Note that Python 3 will not work, thus use a Python 2 version.
 
 Also, we assume that your user name is ``seqan_dev``.
@@ -32,7 +32,7 @@ Replace ``seqan_dev`` by your actual user name in the steps below.
 
 .. warning::
 
-    When installing CMake and Python, make sure to let the installers add the paths to the <tt>cmake.exe</tt> and <tt>python.exe</tt> binaries to your <tt>PATH</tt> environment variable.
+    When installing CMake and Python, make sure to let the installers add the paths to the ``cmake.exe`` and ``python.exe`` binaries to your ``PATH`` environment variable.
 
 Install
 ~~~~~~~
